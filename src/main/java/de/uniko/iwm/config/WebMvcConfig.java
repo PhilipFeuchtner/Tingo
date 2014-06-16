@@ -44,14 +44,16 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	}
 	
 	@Bean
-	public TilesViewResolver configureTilesViewResolver() {
+	public  TilesViewResolver configureTilesViewResolver() {
 		return new TilesViewResolver();
 	}
 	
 	@Bean
-	public TilesConfigurer configureTilesConfigurer() {
+	public  TilesConfigurer configureTilesConfigurer() {
 		TilesConfigurer configurer = new TilesConfigurer();
 		configurer.setDefinitions(new String[] {TILES, VIEWS});
+		// <!--enable CompleteAutoloadTilesContainerFactory -->
+		// configurer.setCompleteAutoload(true); 
 		return configurer;
 	}
 	

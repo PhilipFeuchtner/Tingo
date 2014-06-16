@@ -4,5 +4,7 @@
 
 <h2>QuestionRenderer</h2>
 <p>
-	Hello <security:authentication property="principal.username" />! Welcome to the Spring MVC Quickstart application! 	
+	Hello <security:authentication property="principal.username" />! 
 </p>
+
+<p><img alt="img/simple.svg" src="imp/simple.svg"></p>

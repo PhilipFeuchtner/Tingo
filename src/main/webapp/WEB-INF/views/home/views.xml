@@ -4,15 +4,30 @@
 	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name="homeNotSignedIn" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/home/homeNotSignedIn.jsp"></put-attribute>
+		<put-attribute name="body"
+			value="/WEB-INF/views/home/homeNotSignedIn.jsp"></put-attribute>
 	</definition>
 	<definition name="homeSignedIn" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/home/homeSignedIn.jsp"></put-attribute>
-	</definition>	
+		<put-attribute name="body"
+			value="/WEB-INF/views/home/homeSignedIn.jsp"></put-attribute>
+	</definition>
+
 	<definition name="questionRenderer" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/home/questionRenderer.jsp"></put-attribute>
-	</definition>	
+		<put-attribute name="body">
+			<definition template="/WEB-INF/tiles/question.jsp">
+
+				<!-- <put-attribute name="page-test" expression="${file}" /> -->
+				<put-attribute name="test" expression="${13}" ></put-attribute>
+				<put-attribute name="questionlist"
+					value="/WEB-INF/views/home/questionlist.jsp"></put-attribute>
+				<put-attribute name="questionpage"
+					value="/WEB-INF/views/home/questionpage.jsp"></put-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
 	<definition name="questionDispatcher" extends="default">
-		<put-attribute name="body" value="/WEB-INF/views/home/questionDispatcher.jsp"></put-attribute>
-	</definition>	
+		<put-attribute name="body"
+			value="/WEB-INF/views/home/questionDispatcher.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

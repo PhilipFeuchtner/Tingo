@@ -1,8 +1,15 @@
 package de.uniko.iwm.account;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+
+import de.uniko.iwm.tingo.question.Question;
+import de.uniko.iwm.tingo.questiongroup.QuestionGroup;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,18 +25,22 @@ public class Account implements java.io.Serializable {
 
 	@Column(unique = true)
 	private String email;
-	
+
 	@JsonIgnore
 	private String password;
 
 	private String role = "ROLE_USER";
-	
+
 	private String name;
-	
+
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ID")
+	private Set<QuestionGroup> questions;
+
 	protected Account() {
 
 	}
-	
+
 	public Account(String email, String password, String role) {
 		this.email = email;
 		this.password = password;
@@ -70,5 +81,13 @@ public class Account implements java.io.Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public Set<QuestionGroup> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(Set<QuestionGroup> questions) {
+		this.questions = questions;
 	}
 }
