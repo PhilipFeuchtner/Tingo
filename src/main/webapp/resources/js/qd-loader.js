@@ -1,7 +1,3 @@
-var mansionListener = function(node, index) {
-	$("#qd_text").text(node["display"]);
-	$("#qd_link").attr("href", "mansion/questiongroup/" + index);
-};
 
 window.onload = function() {
 	$("#qd_text").text("");
@@ -26,22 +22,22 @@ window.onload = function() {
 			// $( ".result" ).html( data );
 			// console.log(data);
 
-			jQuery.each(data, function(index) {
-				var node = data[index], state = node["state"];
+			$.each(data, function(index) {
+				var node = data[index], state = node.state;
 
-				svgel = gr.select("#" + node["svgid"]);
+				svgel = gr.select("#" + node.svgid);
 				
-				if (state["correct"]) {
+				if (state.correct == "CORRECT") {
 					svgel.animate({
 						opacity : 0.2
 					}, 1000);
 				} else {
 					svgel.click(function() {
-						// mansionListener(node, index);
-						$("#qd_text").text(node["display"]);
+						
+						$("#qd_text").text(node.display);
 						$("#qd_link").attr("href",
 								"mansion/questiongroup/" + index);
-						$("#qd_badge").text(state["state"] + "/" + state["score"]);
+						$("#qd_badge").text(state.state + "/" + state.correct + "/" + state.score);
 					});
 
 					svgel.attr({

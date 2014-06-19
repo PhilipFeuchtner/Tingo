@@ -2,23 +2,24 @@ package de.uniko.iwm.tingo.simple;
 
 public class SimpleState {
 
-	public enum STATE {UNSEEN, PARTLY, CLOSED};
+	public enum STATE {UNSEEN, PROCESSING, CLOSED};
+	public enum SOLVED {INCORRECT, PARTLY, CORRECT}
 	
-	private boolean correct;
+	private SOLVED correct;
 	private int score;
 	private STATE state;
 	
 	public SimpleState() {
-		correct = false;
+		correct = SOLVED.INCORRECT;
 		score = 0;
 		state = STATE.UNSEEN;
 	}
 
-	public boolean isCorrect() {
+	public SOLVED getCorrect() {
 		return correct;
 	}
 
-	public void setCorrect(boolean correct) {
+	public void setCorrect(SOLVED correct) {
 		this.correct = correct;
 	}
 

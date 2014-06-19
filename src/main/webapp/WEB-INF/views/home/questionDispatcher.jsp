@@ -26,6 +26,10 @@
 
 
 <script src="<c:url value="/resources/js/snap.svg-min.js" />"></script>
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+	// console.log(contextPath);
+</script>
 <script src="<c:url value="/resources/js/qd-loader.js" />"></script>
 
 

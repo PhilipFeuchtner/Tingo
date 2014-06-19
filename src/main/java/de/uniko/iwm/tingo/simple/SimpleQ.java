@@ -1,23 +1,44 @@
 package de.uniko.iwm.tingo.simple;
 
-import de.uniko.iwm.tingo.simple.SimpleState.STATE;
+import java.util.HashSet;
+import java.util.Set;
+
+import de.uniko.iwm.tingo.simple.SimpleState.SOLVED;
 
 public class SimpleQ {
 
 	private String display;
 	private String file;
-	
-	private String correctResp;
-	
+
+	private Set<String> correctResp;
+
 	private SimpleState state;
-	
-	public SimpleQ(String display, String file, String correctRest) {
+
+	public SimpleQ(String display, String file, Set<String> correctRest) {
 		this.display = display;
 		this.file = file;
 		this.correctResp = correctRest;
-		
+
 		state = new SimpleState();
 	}
+
+	// --------------------------------------------------------
+
+	public SOLVED validate(Set<String> challenge) {
+
+		if (correctResp.containsAll(challenge)) {
+			return challenge.containsAll(correctResp) ? SOLVED.CORRECT
+					: SOLVED.PARTLY;
+		} 
+		
+		for (String test : challenge) {
+			if (correctResp.contains(test)) return SOLVED.PARTLY;
+		}
+
+		return SOLVED.INCORRECT;
+	}
+
+	// --------------------------------------------------------
 
 	public String getDisplay() {
 		return display;
@@ -35,11 +56,11 @@ public class SimpleQ {
 		this.file = file;
 	}
 
-	public String getCorrectResp() {
+	public Set<String> getCorrectResp() {
 		return correctResp;
 	}
 
-	public void setCorrectResp(String correctResp) {
+	public void setCorrectResp(Set<String> correctResp) {
 		this.correctResp = correctResp;
 	}
 
@@ -49,5 +70,5 @@ public class SimpleQ {
 
 	public void setState(SimpleState state) {
 		this.state = state;
-	}	
+	}
 }

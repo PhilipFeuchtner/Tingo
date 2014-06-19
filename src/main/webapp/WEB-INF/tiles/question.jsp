@@ -23,5 +23,9 @@
 	</div>
 </div>
 
+<script type="text/javascript">
+	var contextPath = "${pageContext.request.contextPath}";
+	// console.log(contextPath);
+</script>
 <script src="<c:url value="/resources/js/qp-loader.js" />"></script>
 
