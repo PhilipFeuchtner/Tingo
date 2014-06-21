@@ -7,18 +7,23 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
+<%@ taglib prefix="tingo" uri="/WEB-INF/tingotags.tld"%>
+
 
 <div class="panel panel-default">
 	<div class="panel-body">
-		<jsp:include page="${file}"/> 
+		<jsp:include page="${file}" />
 	</div>
-	<ul class="nav nav-pills nav-stacked">
-		<li class="active"><a id="qp_link" href="#">
-				<span id="qp_badge" class="badge pull-right">qp_badge</span>
-				<button id="qp_submit" type="button" class="btn btn-default">Submit</button>
-				<span id="qp_text">qp_text</span>
-		</a></li>
-	</ul>
+
+	<c:if test="${questionindex != null}">
+		<ul class="nav nav-pills nav-stacked">
+			<li class="active"><a id="qp_link" href="#"> <span
+					id="qp_badge" class="badge pull-right">qp_badge</span>
+					<button id="qp_submit" type="button" class="btn btn-default">Submit</button>
+					<span id="qp_text">qp_text</span>
+			</a></li>
+		</ul>
+	</c:if>
 </div>
 
 

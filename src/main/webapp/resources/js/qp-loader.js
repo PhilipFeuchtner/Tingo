@@ -3,13 +3,11 @@ window.onload = function() {
 	$("#qp_link").attr("href", "#");
 	$("#qp_badge").text("");
 
-	var list = [ "a a", "b,b", "c", "d" ];
-
-	alert("results=" + list);
+	var list = [];
 	
 	$.ajax({
 		type : "POST",
-		url : contextPath + "/question/ajax/0/1",
+		url : contextPath + "/question/ajax/0/0",
 		data : "results=" + list,
 		
 		success : function(response) {
@@ -17,7 +15,6 @@ window.onload = function() {
 			// $( ".result" ).html( data );
 			// console.log(data);
 
-			alert("success: " + response);
 		},
 		error : function(e) {
 			alert("error: " + e);

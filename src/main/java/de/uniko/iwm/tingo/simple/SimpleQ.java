@@ -26,8 +26,8 @@ public class SimpleQ {
 
 	public SOLVED validate(Set<String> challenge) {
 
-		if (correctResp.containsAll(challenge)) {
-			return challenge.containsAll(correctResp) ? SOLVED.CORRECT
+		if (challenge.containsAll(correctResp)) {
+			return correctResp.containsAll(challenge) ? SOLVED.CORRECT
 					: SOLVED.PARTLY;
 		} 
 		

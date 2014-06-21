@@ -17,10 +17,12 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.uniko.iwm.support.web.Feedback;
 import de.uniko.iwm.tingo.question.Question;
 import de.uniko.iwm.tingo.question.QuestionController;
 import de.uniko.iwm.tingo.simple.SimpleQ;
 import de.uniko.iwm.tingo.simple.SimpleQG;
+import de.uniko.iwm.tingo.simple.SimpleState;
 import de.uniko.iwm.tingo.simple.SimpleState.SOLVED;
 
 @Controller
@@ -114,7 +116,7 @@ public class HomeController {
 		
 		model.addAttribute("qg", questions.get(index));
 		model.addAttribute("groupindex", index);
-		//model.addAttribute("file", "/resources/questions/" + questions.get(index).getQuestions().get(0).getFile());
+		model.addAttribute("feedback", new Feedback(SOLVED.PARTLY));
 		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
 		
 		return mav;
@@ -154,11 +156,12 @@ public class HomeController {
 			@RequestParam("results") String[] results, Model model) {
 		LOG.info("question/ajax/" + group + "/" + question);
 		
-		String temp = "";
+		Set<String> chal = new HashSet<String>();
 		for (int i=0; i< results.length; i++) {
-			temp += i + ":" + results[i] + " ";
+			chal.add(results[i]);
 		};
-		LOG.info( results.length + "/" + temp);
+		
+		LOG.info("Callenge: " + questions.get(group).getQuestions().get(question).validate(chal));
 	
 		return true;
 	}
