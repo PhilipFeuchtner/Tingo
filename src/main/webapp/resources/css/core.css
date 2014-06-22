@@ -15,3 +15,12 @@ body {
 .feedback-incorrect {
     background-color: #FFD9B7;
 }
+
+.tingo-question {
+	/* cursor: pointer; */
+	
+}
+
+.tingo-green-item {
+    background-color: #A5FF8A;
+}

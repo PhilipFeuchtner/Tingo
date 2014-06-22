@@ -16,13 +16,7 @@
 	</div>
 
 	<c:if test="${questionindex != null}">
-		<ul class="nav nav-pills nav-stacked">
-			<li class="active"><a id="qp_link" href="#"> <span
-					id="qp_badge" class="badge pull-right">qp_badge</span>
-					<button id="qp_submit" type="button" class="btn btn-default">Submit</button>
-					<span id="qp_text">qp_text</span>
-			</a></li>
-		</ul>
+		<tingo:submit />
 	</c:if>
 </div>
 

@@ -12,7 +12,15 @@
 	<c:forEach var="q" items="${qg.questions}" varStatus="status">
 		<a
 			href="${pageContext.request.contextPath}/mansion/questionpage/${groupindex}/${status.index}"
-			class="list-group-item${questionindex == status.index ? " active" : ""}"> <c:out value="${q.display}" />
+			class="list-group-item ${questionindex == status.index ? "active" : ""}">
+			<c:out value="${q.display}" />
 		</a>
 	</c:forEach>
+
+	<a href="${pageContext.request.contextPath}/"
+		class="list-group-item tingo-green-item"> <span
+		class="glyphicon glyphicon-arrow-left"></span> <c:out
+			value="Back to Mansion" />
+	</a>
+
 </div>

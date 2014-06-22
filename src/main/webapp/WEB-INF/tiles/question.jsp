@@ -39,7 +39,8 @@
 </div>
 
 <script type="text/javascript">
-	var contextPath = "${pageContext.request.contextPath}";
+	var contextPath = "${pageContext.request.contextPath}", groupindex = "${groupindex}", questionindex = "${questionindex}";
+
 	// console.log(contextPath);
 </script>
 <script src="<c:url value="/resources/js/qp-loader.js" />"></script>

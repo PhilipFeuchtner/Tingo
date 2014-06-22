@@ -7,7 +7,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-public class MultipleChoiceRenderer extends TagSupport {
+public class TingoSingleChoiceRenderer extends TagSupport {
 
 	/**
 	 * 
@@ -18,7 +18,7 @@ public class MultipleChoiceRenderer extends TagSupport {
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
 		try {
-			out.println("<h2>MultipleChoiceRenderer</h2>");
+			out.println("<h2>SingleChoiceRenderer</h2>");
 		} catch (IOException e) {
 			throw new JspException(e.toString());
 		}
