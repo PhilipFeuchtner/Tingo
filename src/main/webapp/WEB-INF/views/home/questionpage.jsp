@@ -7,10 +7,15 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras"
 	prefix="tilesx"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <%@ taglib prefix="tingo" uri="/WEB-INF/tingotags.tld"%>
 
 
 <div class="panel panel-default">
+	
+	<div id="Tingo-Feedback"></div>
+
 	<div class="panel-body">
 		<jsp:include page="${file}" />
 	</div>

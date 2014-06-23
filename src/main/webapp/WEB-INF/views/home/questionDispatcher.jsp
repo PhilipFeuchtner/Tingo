@@ -3,25 +3,29 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-<h2>QuestionDispatcher</h2>
-<p>
-	Hello
-	<security:authentication property="principal.username" />
-	!
-</p>
+<!-- <h2>QuestionDispatcher</h2> -->
 
-<p>
-	<svg id="svg-mansion"></svg>
-</p>
+<div class="modal-body row">
+	<div class="col-md-3">
+		<div class="list-group">
+			<c:forEach var="q" items="${questiongroups}" varStatus="status">
+				<a href="#" class="list-group-item" id="list-${q.svgid}"> <c:out value="${q.display}" />
+				</a>
+			</c:forEach>
+		</div>
+	</div>
+
+	<div class="col-md-9">
+		<svg id="svg-mansion"></svg>
+	</div>
+</div>
 
 <ul class="nav nav-pills nav-stacked">
-  <li class="active">
-    <a id="qd_link" href="mansion/ajax">
-      <span id="qd_badge" class="badge pull-right">qd_badge</span>
-      <button id="qd_submit" type="button" class="btn btn-default">Submit</button>
-      <span id="qd_text">qd_text</span>
-    </a>
-  </li>
+	<li class="active"><a id="qd_link" href="mansion/ajax"> <span
+			id="qd_badge" class="badge pull-right">qd_badge</span>
+			<button id="qd_submit" type="button" class="btn btn-default">Submit</button>
+			<span id="qd_text">qd_text</span>
+	</a></li>
 </ul>
 
 
@@ -31,5 +35,3 @@
 	// console.log(contextPath);
 </script>
 <script src="<c:url value="/resources/js/qd-loader.js" />"></script>
-
-

@@ -24,7 +24,13 @@ public class SimpleQ {
 
 	// --------------------------------------------------------
 
-	public SOLVED validate(Set<String> challenge) {
+	public void validate(Set<String> challenge) {
+		SOLVED result = test(challenge);
+		
+		state.setCorrect(result);
+	}
+	
+	private SOLVED test(Set<String> challenge) {
 
 		if (challenge.containsAll(correctResp)) {
 			return correctResp.containsAll(challenge) ? SOLVED.CORRECT
