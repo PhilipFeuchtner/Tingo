@@ -46,18 +46,16 @@ public class HomeController {
 
 		a1.add("B");
 
-		a2.add("A");
-		a2.add("E");
-		a2.add("I");
-
 		SimpleQ q01 = new SimpleQ("Birds Mania", "birds.jsp", a0);
 		SimpleQ q02 = new SimpleQ("Crazy Cars", "cars.jsp", a1);
-		SimpleQ q03 = new SimpleQ("Vocal Validator", "letters.jsp", a2);
-
+		SimpleQ q03 = new SimpleQ("Vocal Validator", "emptyQuestion.jsp", a2);
+		SimpleQ q04 = new SimpleQ("GoT Quotes", "emptyQuestion.jsp", a2);
+		
 		ArrayList<SimpleQ> sq0 = new ArrayList<SimpleQ>();
 		sq0.add(q01);
 		sq0.add(q02);
 		sq0.add(q03);
+		sq0.add(q04);
 
 		SimpleQ q11 = new SimpleQ("Question 11", "File 1",
 				new HashSet<String>());

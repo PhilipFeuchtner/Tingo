@@ -22,6 +22,8 @@ window.onload = function() {
 											: "<span class=\"glyphicon glyphicon-remove\"></span>";
 
 									$(".panel-footer:last", element).html(html);
+									
+									return false;
 								});
 					});
 
@@ -75,6 +77,7 @@ window.onload = function() {
 									}).appendTo(info);
 
 									$("#Tingo-Feedback").html("").append(info);
+									$("#badge-" + questionindex).text(response.type);
 								},
 								error : function(e) {
 									alert("error: " + e);

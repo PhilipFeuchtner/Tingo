@@ -28,7 +28,7 @@ public class TingoMultipleChoiceRenderer extends TagSupport {
 			out.print("    <h4 class=\"panel-title\">Tingo Multiple Choice</h3>");
 			out.print("  </div>");
 			out.print("  <div class=\"panel-body\">");
-			out.print("    <a"
+			out.print("    <a href=\"\""
 					+ (style == null ? "" : " class=\"" + style + "\"") + ">");
 
 		} catch (IOException e) {

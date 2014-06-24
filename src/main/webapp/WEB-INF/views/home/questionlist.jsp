@@ -13,7 +13,8 @@
 		<a
 			href="${pageContext.request.contextPath}/mansion/questionpage/${groupindex}/${status.index}"
 			class="list-group-item${questionindex == status.index ? " active" : ""}">
-			<c:out value="${q.display}" /> ${q.state.correct}
+			<c:out value="${q.display}" /> <span class="badge pull-right"
+			id="badge-${status.index}">${q.state.correct}</span>
 		</a>
 	</c:forEach>
 
