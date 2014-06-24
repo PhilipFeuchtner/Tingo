@@ -9,7 +9,7 @@
 	<div class="col-md-3">
 		<div class="list-group">
 			<c:forEach var="q" items="${questiongroups}" varStatus="status">
-				<a href="#" class="list-group-item" id="list-${q.svgid}"> <c:out value="${q.display}" />
+				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}"> <c:out value="${q.display}" />
 				</a>
 			</c:forEach>
 		</div>

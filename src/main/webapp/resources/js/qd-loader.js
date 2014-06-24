@@ -33,29 +33,27 @@ window.onload = function() {
 
 					item.addClass('list-group-item-success');
 				} else {
-					svgel.click(function() {
+					var clickListener = function() {
+						return function() {
+							$("#qd_text").text(node.display);
+							$("#qd_link").attr("href",
+									"mansion/questiongroup/" + index);
+							$("#qd_badge").text(
+									state.state + "/" + state.correct + "/"
+											+ state.score);
+							
+							$(".last-active").removeClass("active").removeClass("last-active");
+							item.addClass("last-active");
+							item.addClass("active");
+						};
+					};
 
-						$("#qd_text").text(node.display);
-						$("#qd_link").attr("href",
-								"mansion/questiongroup/" + index);
-						$("#qd_badge").text(
-								state.state + "/" + state.correct + "/"
-										+ state.score);
-					});
-
+					svgel.click(clickListener());
 					svgel.attr({
 						"cursor" : "pointer"
 					});
 
-					item.click(function() {
-
-						$("#qd_text").text(node.display);
-						$("#qd_link").attr("href",
-								"mansion/questiongroup/" + index);
-						$("#qd_badge").text(
-								state.state + "/" + state.correct + "/"
-										+ state.score);
-					});
+					item.click(clickListener());
 				}
 			});
 		});

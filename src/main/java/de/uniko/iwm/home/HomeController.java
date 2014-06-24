@@ -95,10 +95,10 @@ public class HomeController {
 		sq3.add(q32);
 		sq3.add(q33);
 
-		SimpleQG sqg0 = new SimpleQG("Gruppentext 0", "medic", sq0);
-		SimpleQG sqg1 = new SimpleQG("Gruppentext 1", "music", sq1);
-		SimpleQG sqg2 = new SimpleQG("Gruppentext 2", "games", sq2);
-		SimpleQG sqg3 = new SimpleQG("Gruppentext 3", "tools", sq3);
+		SimpleQG sqg0 = new SimpleQG("Medic", "medic", sq0);
+		SimpleQG sqg1 = new SimpleQG("Music", "music", sq1);
+		SimpleQG sqg2 = new SimpleQG("Games", "games", sq2);
+		SimpleQG sqg3 = new SimpleQG("Tools", "tools", sq3);
 
 		sqg2.getState().setCorrect(SOLVED.PARTLY);
 		sqg3.getState().setCorrect(SOLVED.CORRECT);
