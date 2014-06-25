@@ -9,7 +9,8 @@
 	<div class="col-md-3">
 		<div class="list-group">
 			<c:forEach var="q" items="${questiongroups}" varStatus="status">
-				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}"> <c:out value="${q.display}" />
+				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}">
+					<c:out value="${q.display}" />
 				</a>
 			</c:forEach>
 		</div>
@@ -20,14 +21,12 @@
 	</div>
 </div>
 
-<ul class="nav nav-pills nav-stacked">
-	<li class="active"><a id="qd_link" href="mansion/ajax"> <span
-			id="qd_badge" class="badge pull-right">qd_badge</span>
-			<button id="qd_submit" type="button" class="btn btn-default">Submit</button>
-			<span id="qd_text">qd_text</span>
-	</a></li>
-</ul>
-
+<div class="well">
+	<form id="qd_form" action="mansion/ajax">
+		<button id="qd_submit" type="submit" class="btn btn-default">
+			Weiter &rarr;</button>
+	</form>
+</div>
 
 <script src="<c:url value="/resources/js/snap.svg-min.js" />"></script>
 <script type="text/javascript">

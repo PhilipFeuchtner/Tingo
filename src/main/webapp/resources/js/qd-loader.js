@@ -43,12 +43,8 @@ window.onload = function() {
 				} else {
 					var clickListener = function() {
 						return function() {
-							$("#qd_text").text(node.display);
-							$("#qd_link").attr("href",
+							$("#qd_form").attr("action",
 									"mansion/questiongroup/" + index);
-							$("#qd_badge").text(
-									state.state + "/" + state.correct + "/"
-											+ state.score);
 							
 							$(".last-active").removeClass("active").removeClass("last-active");
 							item.addClass("last-active");
