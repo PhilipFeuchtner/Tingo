@@ -30,6 +30,14 @@ window.onload = function() {
 					svgel.animate({
 						opacity : 0.2
 					}, 1000);
+					
+					var t = new Snap.Matrix(), clone = svgel.clone();
+					t.scale(0.5);
+					t.translate(500, 400);
+					
+					// t.rotate(20, 100, 100);
+					
+					clone.transform(t);
 
 					item.addClass('list-group-item-success');
 				} else {
