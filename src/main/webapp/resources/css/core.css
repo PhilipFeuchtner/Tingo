@@ -21,6 +21,10 @@ body {
 	
 }
 
+.form-control {
+    width:100px;
+}
+
 .tingo-green-item {
     background-color: #A5FF8A;
 }

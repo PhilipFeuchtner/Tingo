@@ -49,7 +49,7 @@ public class HomeController {
 		SimpleQ q01 = new SimpleQ("Birds Mania", "birds.jsp", a0);
 		SimpleQ q02 = new SimpleQ("Crazy Cars", "cars.jsp", a1);
 		SimpleQ q03 = new SimpleQ("Vocal Validator", "emptyQuestion.jsp", a2);
-		SimpleQ q04 = new SimpleQ("GoT Quotes", "emptyQuestion.jsp", a2);
+		SimpleQ q04 = new SimpleQ("GoT Quotes", "got-quotes.jsp", a2);
 		
 		ArrayList<SimpleQ> sq0 = new ArrayList<SimpleQ>();
 		sq0.add(q01);

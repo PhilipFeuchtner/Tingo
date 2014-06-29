@@ -47,8 +47,8 @@
 	</tag>
 
 	<tag>
-		<name>fillIn</name>
-		<tag-class>de.uniko.iwm.tingo.question.TingoFillInRenderer</tag-class>
+		<name>text</name>
+		<tag-class>de.uniko.iwm.tingo.question.TingoTextRenderer</tag-class>
 		<body-content>scriptless</body-content>
 		<attribute>
 			<name>questionid</name>
@@ -57,6 +57,16 @@
 		</attribute>
 		<attribute>
 			<name>response</name>
+			<required>false</required>
+			<fragment>true</fragment>
+		</attribute>
+		<attribute>
+			<name>correct</name>
+			<required>false</required>
+			<fragment>true</fragment>
+		</attribute>
+		<attribute>
+			<name>placeholder</name>
 			<required>false</required>
 			<fragment>true</fragment>
 		</attribute>
