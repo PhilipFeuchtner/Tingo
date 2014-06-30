@@ -9,7 +9,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<%@ taglib prefix="tingo" uri="/WEB-INF/tingotags.tld"%>
+<%@ taglib prefix="tingo" uri="/WEB-INF/tags/tingotags.tld"%>
 
 
 <div class="panel panel-default">

@@ -23,12 +23,13 @@ public class TingoTextRenderer extends TagSupport {
 
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
+		
 		try {
 			// out.println("<h2>TextRenderer</h2>");
 			
 			// out.println("  <div class=\"form-group\">");
 			// out.println("  <div class=\"col-md-3\">");
-			out.println("    <input path=\"fooList[${i.index}].name\" type=\"text\"");
+			out.println("    <form:input path=\"fooList[${i.index}].name\" type=\"text\"");
 			out.println("           class=\"form-control-x tingo-form-control\"");
 			out.print(placeholder == null ? "" : " placeholder=\"" + placeholder + "\"");
 			out.println("     />");
@@ -38,12 +39,12 @@ public class TingoTextRenderer extends TagSupport {
 			throw new JspException(e.toString());
 		}
 		
-		return EVAL_PAGE;
-	}
-	
-	public int doAfterTag() {
 		return EVAL_BODY_AGAIN;
 	}
+	
+//	public int doAfterTag() {
+//		return EVAL_BODY_AGAIN;
+//	}
 
 	public String getQuestionid() {
 		return questionid;
