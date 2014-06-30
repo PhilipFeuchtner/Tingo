@@ -8,16 +8,18 @@
 	prefix="tilesx"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<%@ taglib prefix="tingo" uri="/WEB-INF/tags/tingotags.tld"%>
-
+<c:set var="i" value="${0}" scope="request" />
 
 <div class="panel panel-default">
-	
+
 	<div id="Tingo-Feedback"></div>
 
 	<div class="panel-body">
-		<jsp:include page="${file}" />
+		<form:form method="post" modelAttribute="result">
+			<jsp:include page="${file}" />
+		</form:form>
 	</div>
 
 	<c:if test="${questionindex != null}">

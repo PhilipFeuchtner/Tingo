@@ -1,4 +1,4 @@
-<%@ taglib prefix="tingo" uri="/WEB-INF/tags/tingotags.tld"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="tingo"%>
 
 <h1>Question</h1>
 <p>What is my favorite bird?</p>

@@ -1,5 +1,6 @@
 package de.uniko.iwm.tingo.task;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskListWrapper {
@@ -7,7 +8,7 @@ public class TaskListWrapper {
 	private List<Task> taskList;
 
 	public TaskListWrapper() {
-
+        this.taskList = new ArrayList<Task>();
 	}
 
 	public List<Task> getTaskList() {

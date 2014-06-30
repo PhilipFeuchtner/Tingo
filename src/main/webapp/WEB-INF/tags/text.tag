@@ -6,8 +6,16 @@
 <%@ attribute name="placeholder" required="false"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<% String placeh = placeholder == null ? "Here!" : placeholder; %>
+<%
+	String placeh = placeholder == null ? "Here!" : placeholder;
+%>
 
- <form:input path="questionindex" type="text" class="form-control-x tingo-form-control" placeholder="<%= placeh %>"></form:input>
+<form:input path="taskList[${i}].value" type="text"
+	class="form-control" placeholder="<%= placeh %>"></form:input>
+
+<c:set var="i" value="${1+i}" scope="request" />
+
+
 

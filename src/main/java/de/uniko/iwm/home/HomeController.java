@@ -24,6 +24,8 @@ import de.uniko.iwm.tingo.simple.SimpleQ;
 import de.uniko.iwm.tingo.simple.SimpleQG;
 import de.uniko.iwm.tingo.simple.SimpleState;
 import de.uniko.iwm.tingo.simple.SimpleState.SOLVED;
+import de.uniko.iwm.tingo.task.Task;
+import de.uniko.iwm.tingo.task.TaskListWrapper;
 
 @Controller
 public class HomeController {
@@ -143,10 +145,22 @@ public class HomeController {
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("questionRenderer");
+		
+		TaskListWrapper tl = new TaskListWrapper();
+		tl.add(new Task(""));
+		tl.add(new Task(""));
+		tl.add(new Task(""));
+		tl.add(new Task(""));
+		tl.add(new Task(""));
+		tl.add(new Task(""));
+		tl.add(new Task(""));
 
 		model.addAttribute("qg", questions.get(group));
 		model.addAttribute("groupindex", group);
 		model.addAttribute("questionindex", question);
+		model.addAttribute("result", tl);
+		
+		
 		// model.addAttribute("file", "/resources/questions/" +
 		// questions.get(index).getQuestions().get(0).getFile());
 		model.addAttribute("file",

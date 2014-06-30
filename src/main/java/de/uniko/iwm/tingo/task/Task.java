@@ -6,7 +6,11 @@ public class Task {
 
 	public Task() {
 	}
-
+	
+	public Task(String value) {
+		this.value = value;
+	}
+	
 	public String getValue() {
 		return value;
 	}
