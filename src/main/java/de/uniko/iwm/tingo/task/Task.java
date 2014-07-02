@@ -2,20 +2,21 @@ package de.uniko.iwm.tingo.task;
 
 public class Task {
 
-	private String value;
+	private String userInput;
 
 	public Task() {
 	}
 	
-	public Task(String value) {
-		this.value = value;
-	}
-	
-	public String getValue() {
-		return value;
+	public String getUserInput() {
+		return userInput;
 	}
 
-	public void setValue(String value) {
-		this.value = value;
+	public void setUserInput(String userInput) {
+		this.userInput = userInput;
+	}
+
+	@Override
+	public String toString() {
+		return "Task[" + userInput + "]";
 	}
 }

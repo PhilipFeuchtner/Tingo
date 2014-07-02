@@ -19,7 +19,9 @@ public class TaskListWrapper {
 		this.taskList = taskList;
 	}
 
-	public void add(Task task) {
+	public int add(Task task) {
 		taskList.add(task);
+		
+		return taskList.size() -1; 
 	}
 }

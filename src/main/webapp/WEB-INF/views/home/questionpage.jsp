@@ -17,14 +17,15 @@
 	<div id="Tingo-Feedback"></div>
 
 	<div class="panel-body">
-		<form:form method="post" modelAttribute="result">
+		<form:form method="post" modelAttribute="results">
 			<jsp:include page="${file}" />
+
+			<c:if test="${questionindex != null}">
+				<form:button class="btn" type="submit">Submit</form:button>
+			</c:if>
+
 		</form:form>
 	</div>
-
-	<c:if test="${questionindex != null}">
-		<tingo:submit />
-	</c:if>
 </div>
 
 

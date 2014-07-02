@@ -10,6 +10,7 @@ import javax.annotation.PostConstruct;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ import de.uniko.iwm.tingo.simple.SimpleQ;
 import de.uniko.iwm.tingo.simple.SimpleQG;
 import de.uniko.iwm.tingo.simple.SimpleState;
 import de.uniko.iwm.tingo.simple.SimpleState.SOLVED;
+import de.uniko.iwm.tingo.task.Correct;
+import de.uniko.iwm.tingo.task.CorrectValueWrapper;
 import de.uniko.iwm.tingo.task.Task;
 import de.uniko.iwm.tingo.task.TaskListWrapper;
 
@@ -33,6 +36,9 @@ public class HomeController {
 			.getLogger(QuestionController.class);
 
 	private List<SimpleQG> questions;
+	
+	@Autowired
+	private CorrectValueWrapper cvw;
 
 	@PostConstruct
 	void init() {
@@ -52,7 +58,7 @@ public class HomeController {
 		SimpleQ q02 = new SimpleQ("Crazy Cars", "cars.jsp", a1);
 		SimpleQ q03 = new SimpleQ("Vocal Validator", "emptyQuestion.jsp", a2);
 		SimpleQ q04 = new SimpleQ("GoT Quotes", "got-quotes.jsp", a2);
-		
+
 		ArrayList<SimpleQ> sq0 = new ArrayList<SimpleQ>();
 		sq0.add(q01);
 		sq0.add(q02);
@@ -115,9 +121,10 @@ public class HomeController {
 		LOG.info("/");
 
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName(principal != null ? "questionDispatcher" : "homeNotSignedIn");
+		mav.setViewName(principal != null ? "questionDispatcher"
+				: "homeNotSignedIn");
 		mav.addObject("questiongroups", questions);
-		
+
 		return mav;
 	}
 
@@ -139,28 +146,68 @@ public class HomeController {
 
 	@RequestMapping(value = "mansion/questionpage/{group}/{question}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView handleQuestionPage(@PathVariable int group,
+	public ModelAndView handleQuestionIntroPage(@PathVariable int group,
 			@PathVariable int question, Model model) {
-		LOG.info("mansion/questiongroup/" + group + "/" + question);
+		LOG.info("mansion/questionintro/" + group + "/" + question);
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("questionRenderer");
-		
-		TaskListWrapper tl = new TaskListWrapper();
-		tl.add(new Task(""));
-		tl.add(new Task(""));
-		tl.add(new Task(""));
-		tl.add(new Task(""));
-		tl.add(new Task(""));
-		tl.add(new Task(""));
-		tl.add(new Task(""));
 
 		model.addAttribute("qg", questions.get(group));
 		model.addAttribute("groupindex", group);
 		model.addAttribute("questionindex", question);
-		model.addAttribute("result", tl);
-		
-		
+		model.addAttribute("results", new TaskListWrapper());
+		model.addAttribute("correctResp", cvw);
+
+		// model.addAttribute("file", "/resources/questions/" +
+		// questions.get(index).getQuestions().get(0).getFile());
+		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+
+		return mav;
+
+	}
+
+	@RequestMapping(value = "mansion/questionpage/{group}/{question}", method = RequestMethod.POST)
+	@ResponseStatus(value = HttpStatus.OK)
+	public String handleQuestionPage(@PathVariable int group,
+			@PathVariable int question,
+			@ModelAttribute("results") TaskListWrapper tl,
+			Model model) {
+		LOG.info("mansion/questionpage/" + group + "/" + question);
+
+//		int i = 0;
+//		LOG.info("Correct List");
+//		if (correctList != null) {
+//
+//			for (Correct e : correctList.getCorrectList()) {
+//				LOG.info(e.toString());
+//			}
+//		} else {
+//			LOG.info("no correct responses");
+//		}
+
+		int i = 0;
+		LOG.info("Tasks List");
+		if (tl != null) {
+
+			for (Task e : tl.getTaskList()) {
+				LOG.info(e.toString() +": " + cvw.getCorrectValues().get(i++));
+			}
+		} else {
+			LOG.info("no tasks");
+		}
+
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("questionRenderer");
+
+		//TaskListWrapper tl = new TaskListWrapper();
+
+		model.addAttribute("qg", questions.get(group));
+		model.addAttribute("groupindex", group);
+		model.addAttribute("questionindex", question);
+		model.addAttribute("results", tl);
+		model.addAttribute("correctResp", cvw );
+
 		// model.addAttribute("file", "/resources/questions/" +
 		// questions.get(index).getQuestions().get(0).getFile());
 		model.addAttribute("file",
@@ -168,7 +215,7 @@ public class HomeController {
 						+ questions.get(group).getQuestions().get(question)
 								.getFile());
 
-		return mav;
+		return "questionRenderer";
 	}
 
 	// ----------------------------------------------------------------------------
