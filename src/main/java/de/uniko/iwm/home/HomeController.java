@@ -18,6 +18,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import de.uniko.iwm.Repository.Init;
 import de.uniko.iwm.support.web.Feedback;
 import de.uniko.iwm.tingo.question.Question;
 import de.uniko.iwm.tingo.question.QuestionController;
@@ -36,12 +37,15 @@ public class HomeController {
 			.getLogger(QuestionController.class);
 
 	private List<SimpleQG> questions;
-	
+
 	@Autowired
 	private CorrectValueWrapper cvw;
 
 	@PostConstruct
 	void init() {
+		Init i = new Init();
+		i.getParse();
+		
 		questions = new ArrayList<SimpleQG>();
 
 		Set<String> a0 = new HashSet<String>();
@@ -159,9 +163,10 @@ public class HomeController {
 		model.addAttribute("results", new TaskListWrapper());
 		model.addAttribute("correctResp", cvw);
 
-		// model.addAttribute("file", "/resources/questions/" +
-		// questions.get(index).getQuestions().get(0).getFile());
-		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+		model.addAttribute("file",
+				"/resources/questions/"
+						+ questions.get(group).getQuestions().get(question).getFile());
+		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
 
 		return mav;
 
@@ -171,27 +176,26 @@ public class HomeController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String handleQuestionPage(@PathVariable int group,
 			@PathVariable int question,
-			@ModelAttribute("results") TaskListWrapper tl,
-			Model model) {
+			@ModelAttribute("results") TaskListWrapper tl, Model model) {
 		LOG.info("mansion/questionpage/" + group + "/" + question);
 
-//		int i = 0;
-//		LOG.info("Correct List");
-//		if (correctList != null) {
-//
-//			for (Correct e : correctList.getCorrectList()) {
-//				LOG.info(e.toString());
-//			}
-//		} else {
-//			LOG.info("no correct responses");
-//		}
+		// int i = 0;
+		// LOG.info("Correct List");
+		// if (correctList != null) {
+		//
+		// for (Correct e : correctList.getCorrectList()) {
+		// LOG.info(e.toString());
+		// }
+		// } else {
+		// LOG.info("no correct responses");
+		// }
 
 		int i = 0;
 		LOG.info("Tasks List");
 		if (tl != null) {
 
 			for (Task e : tl.getTaskList()) {
-				LOG.info(e.toString() +": " + cvw.getCorrectValues().get(i++));
+				LOG.info(e.toString() + ": " + cvw.getCorrectValues().get(i++));
 			}
 		} else {
 			LOG.info("no tasks");
@@ -200,13 +204,13 @@ public class HomeController {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("questionRenderer");
 
-		//TaskListWrapper tl = new TaskListWrapper();
+		// TaskListWrapper tl = new TaskListWrapper();
 
 		model.addAttribute("qg", questions.get(group));
 		model.addAttribute("groupindex", group);
 		model.addAttribute("questionindex", question);
 		model.addAttribute("results", tl);
-		model.addAttribute("correctResp", cvw );
+		model.addAttribute("correctResp", cvw);
 
 		// model.addAttribute("file", "/resources/questions/" +
 		// questions.get(index).getQuestions().get(0).getFile());

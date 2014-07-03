@@ -1,0 +1,31 @@
+
+{ "test" : "test",
+  "groupitemlist" : [
+    { "questionitemlist" : [
+        { "taskitemlist" : [
+            { "value" : "A" },
+            { "value" : "B" }
+          ]
+        },
+        { "taskitemlist" : [
+            { "value" : "C" },
+            { "value" : "D" }
+          ]
+        }
+      ]
+    },
+    { "questionitemlist" : [
+        { "taskitemlist" : [
+            { "value" : "E" },
+            { "value" : "F" }
+          ]
+        },
+        { "taskitemlist" : [
+            { "value" : "G" },
+            { "value" : "H" }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -24,9 +24,12 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
 	private static final String TILES = "/WEB-INF/tiles/tiles.xml";
 	private static final String VIEWS = "/WEB-INF/views/**/views.xml";
 	
-	private static final String RESOURCES_HANDLER = "/resources/";
-	private static final String RESOURCES_LOCATION = RESOURCES_HANDLER + "**";
-	
+//	private static final String RESOURCES_HANDLER = "/resources/";
+//	private static final String RESOURCES_LOCATION = RESOURCES_HANDLER + "**";
+
+	private static final String RESOURCES_HANDLER = "/resources/**";
+	private static final String RESOURCES_LOCATION = "/resources/";
+
 	@Override
 	public RequestMappingHandlerMapping requestMappingHandlerMapping() {
 		RequestMappingHandlerMapping requestMappingHandlerMapping = super.requestMappingHandlerMapping();
