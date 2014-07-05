@@ -1,4 +1,4 @@
-package de.uniko.iwm.tingo.simple;
+package de.uniko.iwm.Repo;
 
 public class SimpleState {
 

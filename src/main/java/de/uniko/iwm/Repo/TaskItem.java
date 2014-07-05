@@ -1,4 +1,4 @@
-package de.uniko.iwm.Repository;
+package de.uniko.iwm.Repo;
 
 public class TaskItem {
 

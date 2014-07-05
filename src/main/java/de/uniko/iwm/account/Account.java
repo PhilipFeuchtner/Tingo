@@ -8,8 +8,6 @@ import javax.persistence.*;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-import de.uniko.iwm.tingo.question.Question;
-import de.uniko.iwm.tingo.questiongroup.QuestionGroup;
 
 @SuppressWarnings("serial")
 @Entity
@@ -33,9 +31,9 @@ public class Account implements java.io.Serializable {
 
 	private String name;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "ID")
-	private Set<QuestionGroup> questions;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "ID")
+//	private Set<QuestionGroup> questions;
 
 	protected Account() {
 
@@ -82,7 +80,7 @@ public class Account implements java.io.Serializable {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
+/*
 	public Set<QuestionGroup> getQuestions() {
 		return questions;
 	}
@@ -90,4 +88,5 @@ public class Account implements java.io.Serializable {
 	public void setQuestions(Set<QuestionGroup> questions) {
 		this.questions = questions;
 	}
+	*/
 }

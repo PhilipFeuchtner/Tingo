@@ -9,12 +9,11 @@
 
 
 <div class="list-group">
-	<c:forEach var="q" items="${qg.questions}" varStatus="status">
+	<c:forEach var="q" items="${groups}" varStatus="status">
 		<a
 			href="${pageContext.request.contextPath}/mansion/questionpage/${groupindex}/${status.index}"
 			class="list-group-item${questionindex == status.index ? " active" : ""}">
-			<c:out value="${q.display}" /> <span class="badge pull-right"
-			id="badge-${status.index}">${q.state.correct}</span>
+			<c:out value="${q.title}" /> 
 		</a>
 	</c:forEach>
 

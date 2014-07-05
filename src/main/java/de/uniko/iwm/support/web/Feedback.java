@@ -1,6 +1,6 @@
 package de.uniko.iwm.support.web;
 
-import de.uniko.iwm.tingo.simple.SimpleState.SOLVED;
+import de.uniko.iwm.Repo.SimpleState.SOLVED;
 
 /**
  * A message to be displayed in web context. Depending on the type, different
