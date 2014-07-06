@@ -17,50 +17,54 @@ window.onload = function() {
 
 		// ----------------------------- //
 
-		$.getJSON("mansion/ajax", function(data) {
-			// $( ".result" ).html( data );
-			// console.log(data);
+		// $.getJSON("mansion/ajax", function(data) {
+		// $( ".result" ).html( data );
+		// console.log(data);
 
-			$.each(data, function(index) {
-				var node = data[index], state = node.state, svgel = gr
-						.select("#" + node.svgid), item = $("#list-"
-						+ node.svgid);
+		// $.each(svgids, function(index) {
+		svgids.forEach(function(id, index) {
+			// var node = data[index], state = node.state, svgel = gr
+			// .select("#" + node.svgid), item = $("#list-"
+			// + node.svgid);
 
-				if (state.correct == "CORRECT") {
-					svgel.animate({
-						opacity : 0.2
-					}, 1000);
-					
-					var t = new Snap.Matrix(), clone = svgel.clone();
-					t.scale(0.5);
-					t.translate(500, 400);
-					
-					// t.rotate(20, 100, 100);
-					
-					clone.transform(t);
+			var svgel = gr.select("#" + id), item = $("#list-" + id);
 
-					item.addClass('list-group-item-success');
-				} else {
-					var clickListener = function() {
-						return function() {
-							$("#qd_form").attr("action",
-									"mansion/questiongroup/" + index);
-							
-							$(".last-active").removeClass("active").removeClass("last-active");
-							item.addClass("last-active");
-							item.addClass("active");
-						};
-					};
+			// if (state.correct == "CORRECT") {
+			// svgel.animate({
+			// opacity : 0.2
+			// }, 1000);
+			//					
+			// var t = new Snap.Matrix(), clone = svgel.clone();
+			// t.scale(0.5);
+			// t.translate(500, 400);
+			//					
+			// // t.rotate(20, 100, 100);
+			//					
+			// clone.transform(t);
+			//
+			// item.addClass('list-group-item-success');
+			// } else {
+			var clickListener = function() {
+				return function() {
+					$("#qd_form").attr("action",
+							"mansion/questiongroup/" + index);
 
-					svgel.click(clickListener());
-					svgel.attr({
-						"cursor" : "pointer"
-					});
+					$(".last-active").removeClass("active").removeClass(
+							"last-active");
+					item.addClass("last-active");
+					item.addClass("active");
+				};
+			};
 
-					item.click(clickListener());
-				}
+			svgel.click(clickListener());
+			svgel.attr({
+				"cursor" : "pointer"
 			});
+
+			item.click(clickListener());
+			// }
 		});
+		// });
 
 	});
 };

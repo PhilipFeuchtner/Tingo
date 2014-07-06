@@ -5,13 +5,24 @@
 
 <!-- <h2>QuestionDispatcher</h2> -->
 
+
 <div class="modal-body row">
 	<div class="col-md-3">
 		<div class="list-group">
-			<c:forEach var="q" items="${questiongroups}" varStatus="status">
+			<c:forEach var="q" items="${groups}" varStatus="status">
 				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}">
-					<c:out value="${q.display}" />
+					<c:out value="${q.title}" />
 				</a>
+
+				<c:choose>
+					<c:when test="${status.first}">
+						<c:set var="svgids" value="${q.svgid}" />
+					</c:when>
+					<c:otherwise>
+						<c:set var="svgids" value="${svgids} ${q.svgid}" />
+					</c:otherwise>
+				</c:choose>
+				
 			</c:forEach>
 		</div>
 	</div>
@@ -30,7 +41,8 @@
 
 <script src="<c:url value="/resources/js/snap.svg-min.js" />"></script>
 <script type="text/javascript">
-	var contextPath = "${pageContext.request.contextPath}";
+	var contextPath = "${pageContext.request.contextPath}", svgids_string = "${svgids}", svgids = svgids_string
+			.split(" ");
 	// console.log(contextPath);
 </script>
 <script src="<c:url value="/resources/js/qd-loader.js" />"></script>
