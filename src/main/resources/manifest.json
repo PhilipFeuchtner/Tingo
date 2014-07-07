@@ -3,6 +3,11 @@
     "index": 0,
     "sectionlist": [ 
 	{
+	    "title": "Dummy",
+	    "svgid": "missing",
+	    "index": 0
+	},
+	{
  	    "title": "Demosection",
 	    "svgid": "medic",
 	    "index": 0,
@@ -15,32 +20,32 @@
 			    "file" : "got/quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
-				{ "value" : "A" },
-				{ "value" : "B" }
+				{ "correct" : "A" },
+				{ "correct" : "B" }
 			    ]
 			},
 			{ 
 			    "file" : "got/quotes02.jsp",
 			    "title": "Games of Thrones II",
 			    "taskitemlist" : [
-				{ "value" : "C" },
-				{ "value" : "D" }
+				{ "correct" : "C" },
+				{ "correct" : "D" }
 			    ]
 			},
 			{ 
 			    "file" : "got/quotes03.jsp",
 			    "title": "Games of Thrones III",
 			    "taskitemlist" : [
-				{ "value" : "E" },
-				{ "value" : "F" }
+				{ "correct" : "E" },
+				{ "correct" : "F" }
 			    ]
 			},
 			{ 
 			    "file" : "got/quotes04.jsp",
 			    "title": "Games of Thrones IV",
 			    "taskitemlist" : [
-				{ "value" : "G" },
-				{ "value" : "H" }
+				{ "correct" : "G" },
+				{ "correct" : "H" }
 			    ]
 			}
 		    ]
@@ -54,8 +59,8 @@
 			    "file" : "got/quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
-				{ "value" : "A" },
-				{ "value" : "B" }
+				{ "correct" : "I" },
+				{ "correct" : "J" }
 			    ]
 			}
 		    ]
@@ -69,8 +74,8 @@
 			    "file" : "got/quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
-				{ "value" : "A" },
-				{ "value" : "B" }
+				{ "correct" : "K" },
+				{ "correct" : "L" }
 			    ]
 			}
 		    ]

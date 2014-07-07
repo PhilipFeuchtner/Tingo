@@ -33,7 +33,7 @@
 </div>
 
 <div class="well">
-	<form id="qd_form" action="mansion/ajax">
+	<form id="qd_form" action="mansion/ajax" method="get">
 		<button id="qd_submit" type="submit" class="btn btn-default">
 			Weiter &rarr;</button>
 	</form>

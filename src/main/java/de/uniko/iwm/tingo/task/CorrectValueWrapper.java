@@ -1,26 +1,27 @@
 package de.uniko.iwm.tingo.task;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
+import de.uniko.iwm.Repo.TaskItem;
 
-@Component
-@Scope("session")
-public class CorrectValueWrapper {
+public class CorrectValueWrapper implements Serializable {
 
-	private HashMap<Integer, String> correctValue;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2420474683858920696L;
+	private HashMap<Integer, TaskItem> values;
 	
 	public CorrectValueWrapper() {
-		correctValue = new HashMap<Integer, String>();
+		values = new HashMap<Integer, TaskItem>();
 	}
 
-	public HashMap<Integer, String> getCorrectValues() {
-		return correctValue;
+	public HashMap<Integer, TaskItem> getValues() {
+		return values;
 	}
 	
-	public void add(Integer i, String value) {
-		correctValue.put(i, value);
+	public void add(Integer i, String correct, int score) {
+		values.put(i, new TaskItem(correct, score));
 	}
 }

@@ -25,24 +25,28 @@
 				<div class="navbar-collapse collapse sidebar-navbar-collapse">
 					<ul class="nav navbar-nav">
 
-						<c:set var="si" value="${Repo.index}" scope="request"/>
-						<c:set var="gi" value="${Repo.sectionlist[si].index}" scope="request" />
+						<c:set var="si" value="${Repo.index}" scope="request" />
+						<c:set var="gi" value="${Repo.sectionlist[si].index}"
+							scope="request" />
 						<c:set var="qi"
-							value="${Repo.sectionlist[gi].groupitemlist[gi].index}" scope="request"/>
-						<c:set var="ti" value="${Repo.index}" scope="request"/>
+							value="${Repo.sectionlist[gi].groupitemlist[gi].index}"
+							scope="request" />
+						<c:set var="ti" value="${Repo.index}" scope="request" />
 
+						<!-- ${si} ${gi} ${qi} -->
 
-						<c:forEach var="q"
-							items="${Repo.sectionlist[si].groupitemlist}"
+						<c:forEach var="q" items="${Repo.sectionlist[si].groupitemlist}"
 							varStatus="status">
 							<li><c:set var="href"
-									value="${pageContext.request.contextPath}/mansion/questionpage/${gi}/${status.index}" />
+									value="${pageContext.request.contextPath}/mansion/questionpage/${status.index}" />
 								<c:choose>
-									<c:when test="${qi == status.index}">
-										<a href="${href}"><c:out value="${q.title}" /></a>
+									<c:when test="${gi == status.index}">
+										<a href="${href}" class="list-group-item active"><c:out
+												value="${q.title}" /></a>
 									</c:when>
 									<c:otherwise>
-										<a href="${href}" class="active"><c:out value="${q.title}" /></a>
+										<a href="${href}" class="list-group-item"><c:out
+												value="${q.title}" /></a>
 									</c:otherwise>
 								</c:choose></li>
 						</c:forEach>

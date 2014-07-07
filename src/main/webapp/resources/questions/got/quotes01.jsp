@@ -4,7 +4,7 @@
 <p>Fill in the missing words, please.</p>
 
 <p>
-	<tingo:text questionid="q1" correct="Ygritte" />
+	<tingo:text questionid="q1" correct="Ygritte" score="7"/>
 </p>
 <p>
 	You Know

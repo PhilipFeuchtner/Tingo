@@ -1,5 +1,6 @@
 package de.uniko.iwm.home;
 
+import java.io.Serializable;
 import java.security.Principal;
 
 import org.slf4j.Logger;
@@ -30,30 +31,30 @@ import de.uniko.iwm.tingo.task.TaskListWrapper;
 
 @Controller
 @Scope("session")
-@SessionAttributes("Repo")
-public class HomeController {
+@SessionAttributes({ "Repo", "CorrectValues" })
+public class HomeController implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1178938782319091910L;
+
 	private static final Logger LOG = LoggerFactory
 			.getLogger(HomeController.class);
-
-// 	@Autowired
-	private CorrectValueWrapper cvw;
 
 	@Value("classpath:manifest.json")
 	private Resource manifestFile;
 
-	// @Autowired
-	// private Repo repo;
+	@ModelAttribute("Repo")
+	public Repo repo() {
+		Init i = new Init(manifestFile);
+		return i.getParse();
+	}
 
-	// @PostConstruct
-	// void init() {
-	//
-	// }
-	//
-	// @ModelAttribute("Repo")
-	// public Repo repo() {
-	// Init i = new Init(manifestFile);
-	// return i.getParse();
-	// }
+	@ModelAttribute("CorrectValues")
+	public CorrectValueWrapper cvw() {
+		return new CorrectValueWrapper();
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String index(Principal principal, Model model) {
@@ -62,54 +63,68 @@ public class HomeController {
 		if (principal == null)
 			return "homeNotSignedIn";
 
-		if (!model.containsAttribute("Repo")) {
-			Init i = new Init(manifestFile);
-			Repo repo = i.getParse();
-			model.addAttribute("Repo", repo);
-		}
-		
 		return "questionDispatcher";
 	}
-
-	@RequestMapping(value = "mansion/questiongroup/{index}", method = RequestMethod.GET)
-	@ResponseStatus(value = HttpStatus.OK)
-	public String mansonQuestion(@PathVariable int index,
-			Model model) {
-		LOG.info("mansion/questiongroup/" + index);
-		
-		if (!model.containsAttribute("Repo")) {
-			// Init i = new Init(manifestFile);
-			// Repo repo = i.getParse();
-			// model.addAttribute("Repo", repo);
-			
-			model.addAttribute("message", new Message("Session expired.", Message.Type.ERROR));
 	
-			return "redirect:/";
-		}		
-
-		// model.addAttribute("qg", questions.get(index));
-		model.addAttribute("groupindex", index);
-		model.addAttribute("feedback", new Feedback(SOLVED.PARTLY));
-		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+	@RequestMapping(value = "mansion/questiondefault/{index}", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	public String questionDefault(@PathVariable int index,
+			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			Model model) {
+		LOG.info("get mansion/questiondefault/" + index);
 		
+		Repo repo = (Repo)model.asMap().get("Repo");
+		repo.setIndex(index);
+
+		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+
+		return "questionRenderer";		
+	}	
+
+	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	public String questionPageGET(
+			@PathVariable int index,
+			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			Model model) {
+		LOG.info("get mansion/questionpage");
+
+		if (!model.containsAttribute("Repo")) {
+			model.addAttribute("message", new Message("Session expired.",
+					Message.Type.ERROR));
+
+			return "redirect:/";
+		}
+		
+		Repo repo = (Repo)model.asMap().get("Repo");
+		int si = repo.getIndex();
+		repo.getSectionlist().get(si).setIndex(index);
+		
+		// System.out.println("si: " + si);
+		
+
+		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+
 		model.addAttribute("results", new TaskListWrapper());
 		model.addAttribute("correctResp", cvw);
 
 		return "questionRenderer";
 	}
 
-	@RequestMapping(value = "mansion/questionpage/{group}/{question}", method = RequestMethod.GET)
+	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView handleQuestionIntroPage(@PathVariable int group,
-			@PathVariable int question, Model model) {
-		LOG.info("mansion/questionintro/" + group + "/" + question);
+	public ModelAndView questionPagePOST(
+			@PathVariable int index,
+			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			Model model) {
+		LOG.info("GET  mansion/questionintro");
 
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("questionRenderer");
 
 		// model.addAttribute("qg", questions.get(group));
-		model.addAttribute("groupindex", group);
-		model.addAttribute("questionindex", question);
+//		model.addAttribute("groupindex", group);
+//		model.addAttribute("questionindex", question);
 		model.addAttribute("results", new TaskListWrapper());
 		model.addAttribute("correctResp", cvw);
 
@@ -122,12 +137,14 @@ public class HomeController {
 
 	}
 
-	@RequestMapping(value = "mansion/questionpage/{group}/{question}", method = RequestMethod.POST)
+	@RequestMapping(value = "mansion/questiongroup/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String handleQuestionPage(@PathVariable int group,
-			@PathVariable int question,
-			@ModelAttribute("results") TaskListWrapper tl, Model model) {
-		LOG.info("mansion/questionpage/" + group + "/" + question);
+	public String handleQuestionPage(@PathVariable int index,
+//			@PathVariable int question,
+			@ModelAttribute("results") TaskListWrapper tl,
+			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			Model model) {
+		LOG.info("POST mansion/questiongroup/" + index );
 
 		// int i = 0;
 		// LOG.info("Correct List");
@@ -145,7 +162,7 @@ public class HomeController {
 		if (tl != null) {
 
 			for (Task e : tl.getTaskList()) {
-				LOG.info(e.toString() + ": " + cvw.getCorrectValues().get(i++));
+				LOG.info(e.toString() + ": " + cvw.getValues().get(i++));
 			}
 		} else {
 			LOG.info("no tasks");
@@ -157,8 +174,8 @@ public class HomeController {
 		// TaskListWrapper tl = new TaskListWrapper();
 
 		// model.addAttribute("qg", questions.get(group));
-		model.addAttribute("groupindex", group);
-		model.addAttribute("questionindex", question);
+//		model.addAttribute("groupindex", group);
+//		model.addAttribute("questionindex", question);
 		model.addAttribute("results", tl);
 		model.addAttribute("correctResp", cvw);
 

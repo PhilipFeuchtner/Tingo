@@ -47,7 +47,7 @@ window.onload = function() {
 			var clickListener = function() {
 				return function() {
 					$("#qd_form").attr("action",
-							"mansion/questiongroup/" + index);
+							"mansion/questiondefault/" + index);
 
 					$(".last-active").removeClass("active").removeClass(
 							"last-active");
@@ -56,12 +56,14 @@ window.onload = function() {
 				};
 			};
 
-			svgel.click(clickListener());
-			svgel.attr({
-				"cursor" : "pointer"
-			});
+			if (svgel != null) {
+				svgel.click(clickListener());
+				svgel.attr({
+					"cursor" : "pointer"
+				});
 
-			item.click(clickListener());
+				item.click(clickListener());
+			}
 			// }
 		});
 		// });
