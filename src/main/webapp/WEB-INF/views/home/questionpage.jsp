@@ -18,7 +18,17 @@
 
 	<div class="panel-body">
 		<form:form method="post" modelAttribute="results">
-			<jsp:include page="${file}" />
+		
+			<c:forEach var="q"
+				items="${Repo.sectionlist[si].groupitemlist[qi].questionitemlist}"
+				varStatus="status">
+				
+				<div class="well">
+					<h4>${q.title}</h4>
+					<jsp:include page="/resources/questions/${q.file}" />
+				</div>
+				
+			</c:forEach>
 
 			<c:if test="${questionindex != null}">
 				<form:button class="btn" type="submit">Submit</form:button>

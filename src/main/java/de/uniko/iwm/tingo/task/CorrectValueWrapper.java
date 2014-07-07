@@ -2,9 +2,12 @@ package de.uniko.iwm.tingo.task;
 
 import java.util.HashMap;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Component
+@Scope("session")
 public class CorrectValueWrapper {
 
 	private HashMap<Integer, String> correctValue;

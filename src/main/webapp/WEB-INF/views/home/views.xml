@@ -15,11 +15,6 @@
 	<definition name="questionRenderer" extends="default">
 		<put-attribute name="body">
 			<definition template="/WEB-INF/tiles/question.jsp">
-
-				<!-- <put-attribute name="page-test" expression="${file}" /> -->
-				<put-attribute name="test" expression="${13}" ></put-attribute>
-				<put-attribute name="questionlist"
-					value="/WEB-INF/views/home/questionlist.jsp"></put-attribute>
 				<put-attribute name="questionpage"
 					value="/WEB-INF/views/home/questionpage.jsp"></put-attribute>
 			</definition>

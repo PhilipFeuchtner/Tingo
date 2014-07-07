@@ -14,7 +14,7 @@ public class Section {
 		
 	}
 
-	public List<GroupItem> getGroupItemlist() {
+	public List<GroupItem> getGroupitemlist() {
 		return groupitemlist;
 	}
 
