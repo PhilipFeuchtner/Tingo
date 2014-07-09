@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -65,28 +66,28 @@ public class HomeController implements Serializable {
 
 		return "questionDispatcher";
 	}
-	
+
 	@RequestMapping(value = "mansion/questiondefault/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionDefault(@PathVariable int index,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
 			Model model) {
 		LOG.info("get mansion/questiondefault/" + index);
-		
-		Repo repo = (Repo)model.asMap().get("Repo");
+
+		Repo repo = (Repo) model.asMap().get("Repo");
 		repo.setIndex(index);
 
-		model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+		model.addAttribute("start", false);
 
-		return "questionRenderer";		
-	}	
+		return "questionRenderer";
+	}
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String questionPageGET(
-			@PathVariable int index,
+	public String questionPageGET(@PathVariable int index,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
-			Model model) {
+			@RequestParam(required = false) String quiz, Model model) {
 		LOG.info("get mansion/questionpage");
 
 		if (!model.containsAttribute("Repo")) {
@@ -95,13 +96,14 @@ public class HomeController implements Serializable {
 
 			return "redirect:/";
 		}
-		
-		Repo repo = (Repo)model.asMap().get("Repo");
+
+		Repo repo = (Repo) model.asMap().get("Repo");
 		int si = repo.getIndex();
 		repo.getSectionlist().get(si).setIndex(index);
-		
+
+		model.addAttribute("start", (quiz == null ? false : true));
+
 		// System.out.println("si: " + si);
-		
 
 		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
 
@@ -113,8 +115,7 @@ public class HomeController implements Serializable {
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView questionPagePOST(
-			@PathVariable int index,
+	public ModelAndView questionPagePOST(@PathVariable int index,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
 			Model model) {
 		LOG.info("GET  mansion/questionintro");
@@ -123,8 +124,8 @@ public class HomeController implements Serializable {
 		mav.setViewName("questionRenderer");
 
 		// model.addAttribute("qg", questions.get(group));
-//		model.addAttribute("groupindex", group);
-//		model.addAttribute("questionindex", question);
+		// model.addAttribute("groupindex", group);
+		// model.addAttribute("questionindex", question);
 		model.addAttribute("results", new TaskListWrapper());
 		model.addAttribute("correctResp", cvw);
 
@@ -139,12 +140,13 @@ public class HomeController implements Serializable {
 
 	@RequestMapping(value = "mansion/questiongroup/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String handleQuestionPage(@PathVariable int index,
-//			@PathVariable int question,
+	public String handleQuestionPage(
+			@PathVariable int index,
+			// @PathVariable int question,
 			@ModelAttribute("results") TaskListWrapper tl,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
 			Model model) {
-		LOG.info("POST mansion/questiongroup/" + index );
+		LOG.info("POST mansion/questiongroup/" + index);
 
 		// int i = 0;
 		// LOG.info("Correct List");
@@ -174,8 +176,8 @@ public class HomeController implements Serializable {
 		// TaskListWrapper tl = new TaskListWrapper();
 
 		// model.addAttribute("qg", questions.get(group));
-//		model.addAttribute("groupindex", group);
-//		model.addAttribute("questionindex", question);
+		// model.addAttribute("groupindex", group);
+		// model.addAttribute("questionindex", question);
 		model.addAttribute("results", tl);
 		model.addAttribute("correctResp", cvw);
 

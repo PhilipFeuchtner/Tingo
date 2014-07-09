@@ -10,57 +10,9 @@
 <!-- <h2>QuestionRendererTemplate</h2> -->
 
 <div class="row">
+
 	<div class="col-sm-3">
-		<div class="sidebar-nav">
-			<div class="navbar navbar-default" role="navigation">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".sidebar-navbar-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
-					<span class="visible-xs navbar-brand">Sidebar menu</span>
-				</div>
-				<div class="navbar-collapse collapse sidebar-navbar-collapse">
-					<ul class="nav navbar-nav">
-
-						<c:set var="si" value="${Repo.index}" scope="request" />
-						<c:set var="gi" value="${Repo.sectionlist[si].index}"
-							scope="request" />
-						<c:set var="qi"
-							value="${Repo.sectionlist[gi].groupitemlist[gi].index}"
-							scope="request" />
-						<c:set var="ti" value="${Repo.index}" scope="request" />
-
-						<!-- ${si} ${gi} ${qi} -->
-
-						<c:forEach var="q" items="${Repo.sectionlist[si].groupitemlist}"
-							varStatus="status">
-							<li><c:set var="href"
-									value="${pageContext.request.contextPath}/mansion/questionpage/${status.index}" />
-								<c:choose>
-									<c:when test="${gi == status.index}">
-										<a href="${href}" class="list-group-item active"><c:out
-												value="${q.title}" /></a>
-									</c:when>
-									<c:otherwise>
-										<a href="${href}" class="list-group-item"><c:out
-												value="${q.title}" /></a>
-									</c:otherwise>
-								</c:choose></li>
-						</c:forEach>
-
-						<li><a href="${pageContext.request.contextPath}/"
-							class="list-group-item tingo-green-item"> <span
-								class="glyphicon glyphicon-arrow-left"></span>Back to Mansion
-						</a></li>
-
-					</ul>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
+		<tiles:insertAttribute name="questionlist" defaultValue="" />
 	</div>
 
 	<div class="col-sm-9">

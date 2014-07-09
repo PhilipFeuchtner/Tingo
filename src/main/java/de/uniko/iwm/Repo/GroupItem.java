@@ -6,6 +6,8 @@ public class GroupItem {
 
 	private List<QuestionItem> questionitemlist;
 	private String title;
+	private int count;
+	private String image;
 	
 	private int index;
 	
@@ -35,5 +37,21 @@ public class GroupItem {
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 }

@@ -20,7 +20,7 @@
 		<form:form method="post" modelAttribute="results">
 
 			<c:choose>
-				<c:when test="${empty file}">
+				<c:when test="${start}">
 					<c:forEach var="q"
 						items="${Repo.sectionlist[si].groupitemlist[gi].questionitemlist}"
 						varStatus="status">
@@ -36,8 +36,9 @@
 				</c:when>
 
 				<c:otherwise>
-					<jsp:include page="${file}" />
+					<img src="${pageContext.request.contextPath}/resources/questions/${imagepanel}" class="img-responsive" alt="Responsive image">
 				</c:otherwise>
+			
 			</c:choose>
 		</form:form>
 	</div>
