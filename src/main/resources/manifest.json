@@ -58,6 +58,7 @@
 		    "index": 0,
 		    "count":7,
 		    "image": "Capitalisation/calendar_1.png",
+		    "media": ["Capitalisation/capitalisation.html"],
 		    "questionitemlist" : [
 			{ 
 			    "file" : "Capitalisation/cap01.jsp",

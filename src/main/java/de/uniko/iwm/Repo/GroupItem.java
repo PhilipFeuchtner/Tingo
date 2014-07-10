@@ -5,6 +5,7 @@ import java.util.List;
 public class GroupItem {
 
 	private List<QuestionItem> questionitemlist;
+	private List<String> media;
 	private String title;
 	private int count;
 	private String image;
@@ -21,6 +22,14 @@ public class GroupItem {
 
 	public void setQuestionitemlist(List<QuestionItem> questionitemlist) {
 		this.questionitemlist = questionitemlist;
+	}
+
+	public List<String> getMedia() {
+		return media;
+	}
+
+	public void setMedia(List<String> media) {
+		this.media = media;
 	}
 
 	public String getTitle() {

@@ -39,6 +39,13 @@
 				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
 					class="glyphicon glyphicon-arrow-right"></span> Start Quiz</a>
 
+				<c:if test="${not empty q.media}">
+					<c:forEach var="m" items="${q.media}">
+						<a href="${pageContext.request.contextPath}/resources/questions/${m}" class="list-group-item list-group-item-info"><span
+							class="glyphicon glyphicon-download"></span> <c:out value="${m}" /></a>
+					</c:forEach>
+				</c:if>
+
 				<c:set var="imagepanel" value="${q.image}" scope="request" />
 
 			</c:when>

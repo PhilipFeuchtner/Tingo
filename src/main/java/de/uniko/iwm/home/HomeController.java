@@ -31,7 +31,7 @@ import de.uniko.iwm.tingo.task.Task;
 import de.uniko.iwm.tingo.task.TaskListWrapper;
 
 @Controller
-@Scope("session")
+// @Scope("session")
 @SessionAttributes({ "Repo", "CorrectValues" })
 public class HomeController implements Serializable {
 
