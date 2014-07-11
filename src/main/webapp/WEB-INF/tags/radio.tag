@@ -9,7 +9,7 @@
 	response="<%=response%>">
 
 	<div class="panel-heading">
-		<h4 class="panel-title">Tingo Multiple Choice</h4>
+		<h4 class="panel-title">Tingo Radio Choice</h4>
 
 	</div>
 	<div class="panel-body">

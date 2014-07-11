@@ -5,7 +5,7 @@ import java.util.List;
 public class GroupItem {
 
 	private List<QuestionItem> questionitemlist;
-	private List<String> media;
+	private List<Mediaobject> media;
 	private String title;
 	private int count;
 	private String image;
@@ -24,11 +24,11 @@ public class GroupItem {
 		this.questionitemlist = questionitemlist;
 	}
 
-	public List<String> getMedia() {
+	public List<Mediaobject> getMedia() {
 		return media;
 	}
 
-	public void setMedia(List<String> media) {
+	public void setMedia(List<Mediaobject> media) {
 		this.media = media;
 	}
 

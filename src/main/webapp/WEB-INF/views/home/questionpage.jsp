@@ -36,9 +36,18 @@
 				</c:when>
 
 				<c:otherwise>
-					<img src="${pageContext.request.contextPath}/resources/questions/${imagepanel}" class="img-responsive" alt="Responsive image">
+					<c:choose>
+						<c:when test="${not empty imagepanel}">
+							<img
+								src="${pageContext.request.contextPath}/resources/questions/${imagepanel}"
+								class="img-responsive" alt="Responsive image">
+						</c:when>
+						<c:otherwise>
+							<jsp:include page="/resources/questions/emptyQuestion.jsp" />
+						</c:otherwise>
+					</c:choose>
 				</c:otherwise>
-			
+
 			</c:choose>
 		</form:form>
 	</div>

@@ -41,8 +41,10 @@
 
 				<c:if test="${not empty q.media}">
 					<c:forEach var="m" items="${q.media}">
-						<a href="${pageContext.request.contextPath}/resources/questions/${m}" class="list-group-item list-group-item-info"><span
-							class="glyphicon glyphicon-download"></span> <c:out value="${m}" /></a>
+						<a
+							href="${pageContext.request.contextPath}/resources/questions/${m.link}"
+							class="list-group-item list-group-item-info"><span
+							class="glyphicon glyphicon-paperclip"></span> <c:out value="${m.label}" /></a>
 					</c:forEach>
 				</c:if>
 

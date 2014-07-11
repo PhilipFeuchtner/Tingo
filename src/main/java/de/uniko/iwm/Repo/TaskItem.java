@@ -1,9 +1,12 @@
 package de.uniko.iwm.Repo;
 
 public class TaskItem {
+	
+	public enum TYPE {TEXT, RADIO, CHECK};
 
 	private String correct, userinput;
 	private int score;
+	private TYPE type;
 	
 	public TaskItem() {
 		System.out.println("Task created.");
@@ -41,6 +44,14 @@ public class TaskItem {
 		this.score = score;
 	}
 	
+	public TYPE getType() {
+		return type;
+	}
+
+	public void setType(TYPE type) {
+		this.type = type;
+	}
+
 	@Override
 	public String toString() {
 		return "TaskItem [" + userinput + ", " + correct + ", " + score + "]"; 
