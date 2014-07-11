@@ -21,14 +21,23 @@
 
 			<c:choose>
 				<c:when test="${start}">
+
+					<c:set var="counter_question" value="0" scope="request" />
+
 					<c:forEach var="q"
 						items="${Repo.sectionlist[si].groupitemlist[gi].questionitemlist}"
 						varStatus="status">
+
+						<!-- ${CorrectValues.addQuestion()} -->						
+						<c:set var="counter_task" value="0" scope="request" />
 
 						<div class="well">
 							<h4>${q.title}</h4>
 							<jsp:include page="/resources/questions/${q.file}" />
 						</div>
+						
+						<!-- ${results.addQuestion()} -->
+						<c:set var="counter_question" value="${counter_question+1}" scope="request" />						
 
 					</c:forEach>
 

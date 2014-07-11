@@ -1,7 +1,8 @@
 package de.uniko.iwm.tingo.task;
 
 import java.io.Serializable;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 import de.uniko.iwm.Repo.TaskItem;
 
@@ -11,17 +12,26 @@ public class CorrectValueWrapper implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 2420474683858920696L;
-	private HashMap<Integer, TaskItem> values;
-	
+	private List<List<TaskItem>> values;
+
 	public CorrectValueWrapper() {
-		values = new HashMap<Integer, TaskItem>();
+		values = new ArrayList<List<TaskItem>>();
 	}
 
-	public HashMap<Integer, TaskItem> getValues() {
+	public List<List<TaskItem>> getValues() {
 		return values;
 	}
-	
-	public void add(Integer i, String correct, int score) {
-		values.put(i, new TaskItem(correct, score));
+
+	public void addQuestion() {
+		List<TaskItem> tasks = new ArrayList<TaskItem>();
+		
+		values.add(tasks);
 	}
+
+	public void addTask(String correct, int score, int type) {
+		List<TaskItem> tasks = values.get(values.size() -1);
+		
+		tasks.add(new TaskItem(correct, score, type));
+	}
+
 }

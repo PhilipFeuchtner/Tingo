@@ -1,24 +1,49 @@
 package de.uniko.iwm.Repo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import de.uniko.iwm.home.HomeController;
+
 public class TaskItem {
-	
-	public enum TYPE {TEXT, RADIO, CHECK};
+
+
+	private static final Logger LOG = LoggerFactory
+			.getLogger(TaskItem.class);
+
+	public enum TYPE {
+		TEXT, RADIO, CHECK
+	};
 
 	private String correct, userinput;
 	private int score;
 	private TYPE type;
-	
+
 	public TaskItem() {
-		System.out.println("Task created.");
+		// System.out.println("Task created.");
 	}
 
-	public TaskItem(String correct, int score) {
+	public TaskItem(String correct, int score, int type) {
 		this.correct = correct;
 		this.score = score;
-		
-		System.out.println(this.toString());
+
+		switch (type) {
+		case 0:
+			this.type = TYPE.TEXT;
+			break;
+		case 1:
+			this.type = TYPE.RADIO;
+			break;
+		case 2:
+			this.type = TYPE.CHECK;
+			break;
+		default:
+			LOG.error("unknown type: " + type);
+		}
+
+		LOG.info(this.toString());
 	}
-	
+
 	public String getCorrect() {
 		return correct;
 	}
@@ -43,7 +68,7 @@ public class TaskItem {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	public TYPE getType() {
 		return type;
 	}
@@ -54,6 +79,7 @@ public class TaskItem {
 
 	@Override
 	public String toString() {
-		return "TaskItem [" + userinput + ", " + correct + ", " + score + "]"; 
+		return "TaskItem [" + userinput + ", " + correct + ", " + score + ", "
+				+ type + "]";
 	}
 }

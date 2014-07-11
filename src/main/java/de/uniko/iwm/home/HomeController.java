@@ -2,6 +2,7 @@ package de.uniko.iwm.home;
 
 import java.io.Serializable;
 import java.security.Principal;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +24,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.uniko.iwm.Repo.Init;
 import de.uniko.iwm.Repo.Repo;
+import de.uniko.iwm.Repo.TaskItem;
 import de.uniko.iwm.Repo.SimpleState.SOLVED;
 import de.uniko.iwm.support.web.Feedback;
 import de.uniko.iwm.support.web.Message;
 import de.uniko.iwm.tingo.task.CorrectValueWrapper;
 import de.uniko.iwm.tingo.task.Task;
-import de.uniko.iwm.tingo.task.TaskListWrapper;
+import de.uniko.iwm.tingo.task.ResultListWrapper;
 
 @Controller
 // @Scope("session")
@@ -86,7 +88,6 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPageGET(@PathVariable int index,
-			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
 			@RequestParam(required = false) String quiz, Model model) {
 		LOG.info("get mansion/questionpage");
 
@@ -102,91 +103,28 @@ public class HomeController implements Serializable {
 		repo.getSectionlist().get(si).setIndex(index);
 
 		model.addAttribute("start", (quiz == null ? false : true));
-
-		// System.out.println("si: " + si);
-
-		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
-
-		model.addAttribute("results", new TaskListWrapper());
-		model.addAttribute("correctResp", cvw);
+		model.addAttribute("results", new ResultListWrapper());
+		model.addAttribute("CorrectValues", new CorrectValueWrapper());
 
 		return "questionRenderer";
 	}
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public ModelAndView questionPagePOST(@PathVariable int index,
+	public String questionPagePOST(@PathVariable int index,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			@ModelAttribute() ResultListWrapper results,
 			Model model) {
-		LOG.info("GET  mansion/questionintro");
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("questionRenderer");
-
-		// model.addAttribute("qg", questions.get(group));
-		// model.addAttribute("groupindex", group);
-		// model.addAttribute("questionindex", question);
-		model.addAttribute("results", new TaskListWrapper());
-		model.addAttribute("correctResp", cvw);
-
-		// model.addAttribute("file",
-		// "/resources/questions/"
-		// + questions.get(group).getQuestions().get(question).getFile());
-		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
-
-		return mav;
-
-	}
-
-	@RequestMapping(value = "mansion/questiongroup/{index}", method = RequestMethod.POST)
-	@ResponseStatus(value = HttpStatus.OK)
-	public String handleQuestionPage(
-			@PathVariable int index,
-			// @PathVariable int question,
-			@ModelAttribute("results") TaskListWrapper tl,
-			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
-			Model model) {
-		LOG.info("POST mansion/questiongroup/" + index);
-
-		// int i = 0;
-		// LOG.info("Correct List");
-		// if (correctList != null) {
-		//
-		// for (Correct e : correctList.getCorrectList()) {
-		// LOG.info(e.toString());
-		// }
-		// } else {
-		// LOG.info("no correct responses");
-		// }
-
-		int i = 0;
-		LOG.info("Tasks List");
-		if (tl != null) {
-
-			for (Task e : tl.getTaskList()) {
-				LOG.info(e.toString() + ": " + cvw.getValues().get(i++));
+		LOG.info("POST  mansion/questionpage/" + index);
+		
+		int i=0;
+		for (List<TaskItem> u: cvw.getValues()) {
+			for (TaskItem v: u) {
+				v.setUserinput(results.getResultList().get(i));
+				System.out.println(i + ": " + v);
+				i++;
 			}
-		} else {
-			LOG.info("no tasks");
 		}
-
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("questionRenderer");
-
-		// TaskListWrapper tl = new TaskListWrapper();
-
-		// model.addAttribute("qg", questions.get(group));
-		// model.addAttribute("groupindex", group);
-		// model.addAttribute("questionindex", question);
-		model.addAttribute("results", tl);
-		model.addAttribute("correctResp", cvw);
-
-		// model.addAttribute("file", "/resources/questions/" +
-		// questions.get(index).getQuestions().get(0).getFile());
-		// model.addAttribute("file",
-		// "/resources/questions/"
-		// + questions.get(group).getQuestions().get(question)
-		// .getFile());
 
 		return "questionRenderer";
 	}

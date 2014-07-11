@@ -15,11 +15,14 @@
 	Integer	scoreValue = score == null ? 1 : score;
 %>
 
-<form:input path="taskList[${i}].userInput" type="text" class="form-control"
+[${counter_question}/${counter_task}]
+
+<form:input path="resultList[${i}]" type="text" class="form-control"
 	placeholder="<%= placeh %>" />
 	
 <c:set var="sc" value="<%= scoreValue %>" />
-<!-- ${correctResp.add(i,correct,sc)} -->
+<!-- ${CorrectValues.addTask(correct,sc,0)} -->
 
 <c:set var="i" value="${1+i}" scope="request" /> 
+<c:set var="counter_task" value="${counter_task+1}" scope="request" /> 
 
