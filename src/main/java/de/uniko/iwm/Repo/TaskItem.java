@@ -15,7 +15,7 @@ public class TaskItem {
 		TEXT, RADIO, CHECK
 	};
 
-	private String correct, userinput;
+	private String correct, userinput = "";
 	private int score;
 	private TYPE type;
 

@@ -1,26 +1,24 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 
 <%@ attribute name="questionid" required="true"%>
-<%@ attribute name="response" required="true"%>
 <%@ attribute name="correct" required="false"%>
 <%@ attribute name="style" required="false"%>
+<%@ attribute name="score" required="false" type="java.lang.Integer" %>
 
-<div class="panel panel-default tingo-question" qid="<%=questionid%>"
-	response="<%=response%>">
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-	<div class="panel-heading">
-		<h4 class="panel-title">Tingo Radio Choice</h4>
+<%
+	Integer	scoreValue = score == null ? 1 : score;
+%>
 
-	</div>
-	<div class="panel-body">
-		<a href="" <%=style == null ? "" : "class=\"" + style + "\""%>>
+[${counter_question}/${counter_task}]
 
-			<jsp:doBody />
+<form:radiobutton class="form-control" path="resultList[${counter_question}][0]" value="${counter_task}" />
 
-		</a>
-	</div>
+<c:set var="sc" value="<%= scoreValue %>" />
+<!-- ${counter_task == 0 ? CorrectValues.addTask(correct,sc,1) : ""} -->
+<!-- ${counter_task == 0 ? resultlist.add("") : ""} -->
 
-	<div class="panel-footer">
-		<span class="glyphicon glyphicon-minus"></span>
-	</div>
-</div>
+<c:set var="counter_task" value="${counter_task+1}" scope="request" /> 
+

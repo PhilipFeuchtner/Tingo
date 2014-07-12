@@ -113,17 +113,44 @@ public class HomeController implements Serializable {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPagePOST(@PathVariable int index,
 			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
-			@ModelAttribute() ResultListWrapper results,
-			Model model) {
+			@ModelAttribute() ResultListWrapper results, Model model) {
 		LOG.info("POST  mansion/questionpage/" + index);
 		
-		int i=0;
-		for (List<TaskItem> u: cvw.getValues()) {
-			int j=0;
-			for (TaskItem v: u) {
-				v.setUserinput(results.getResultList().get(i).get(j));
+		List<List<TaskItem>> rl = cvw.getValues();
+		int i = 0;
+		for (List<String> u : results.getResultList()) { // ;cvw.getValues()) {
+
+			if (u != null) {
+				int j = 0;
+				for (String v : u) {
+					List<TaskItem> ti = rl.get(i);
+
+					switch (ti.get(j).getType()) {
+					case TEXT:
+						ti.get(j).setUserinput(v);
+						break;
+					case RADIO:
+						ti.get(0).setUserinput(v);
+						break;
+					case CHECK:
+						int w = Integer.parseInt(v);
+						ti.get(w).setUserinput(v);
+						break;
+					default:
+						LOG.error("Unknown question type: "
+								+ ti.get(j).getType());
+					}
+
+					j++;
+				}
+			}
+			i++;
+		}
+
+		i = 0;
+		for (List<TaskItem> u : cvw.getValues()) {
+			for (TaskItem v : u) {
 				System.out.println(i + ": " + v);
-				j++;
 			}
 			i++;
 		}
