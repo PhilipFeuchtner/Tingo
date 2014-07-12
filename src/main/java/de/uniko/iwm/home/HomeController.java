@@ -119,11 +119,13 @@ public class HomeController implements Serializable {
 		
 		int i=0;
 		for (List<TaskItem> u: cvw.getValues()) {
+			int j=0;
 			for (TaskItem v: u) {
-				v.setUserinput(results.getResultList().get(i));
+				v.setUserinput(results.getResultList().get(i).get(j));
 				System.out.println(i + ": " + v);
-				i++;
+				j++;
 			}
+			i++;
 		}
 
 		return "questionRenderer";

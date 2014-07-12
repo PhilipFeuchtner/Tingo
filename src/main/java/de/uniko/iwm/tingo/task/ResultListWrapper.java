@@ -5,32 +5,28 @@ import java.util.List;
 
 public class ResultListWrapper {
 
-	private List<String> resultList;
-	private List<Integer> questionIndices;
-
+	private List<List<String>> resultList;
+	private int i;
 	
 	public ResultListWrapper() {
-        resultList = new ArrayList<String>();
-        questionIndices = new ArrayList<Integer>();
+        resultList = new ArrayList<List<String>>();
+        i=0;
 	}
 
-	public List<String> getResultList() {
+	public List<List<String>> getResultList() {
 		return resultList;
 	}
 
-	public void setResultList(List<String> resultList) {
+	public void setResultList(List<List<String>> resultList) {
 		this.resultList = resultList;
 	}
 
 	public void addQuestion() {
-		questionIndices.add(resultList.size());
+		resultList.add(new ArrayList<String>());
+		i++;
 	}
 	
 	public void add(String value) {
-		resultList.add(value);
-	}
-	
-	public List<Integer> getQuestionIndices() {
-		return questionIndices;
+		resultList.get(i).add(value);
 	}
 }

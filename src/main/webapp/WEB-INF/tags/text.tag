@@ -17,7 +17,7 @@
 
 [${counter_question}/${counter_task}]
 
-<form:input path="resultList[${i}]" type="text" class="form-control"
+<form:input path="resultList[${counter_question}][${counter_task}]" type="text" class="form-control"
 	placeholder="<%= placeh %>" />
 	
 <c:set var="sc" value="<%= scoreValue %>" />
