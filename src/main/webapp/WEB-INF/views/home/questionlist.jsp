@@ -36,9 +36,6 @@
 					<c:param name="quiz" value="start" />
 				</c:url>
 
-				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
-					class="glyphicon glyphicon-arrow-right"></span> Start Quiz</a>
-
 				<c:if test="${not empty q.media}">
 					<c:forEach var="m" items="${q.media}">
 						<a
@@ -47,6 +44,9 @@
 							class="glyphicon glyphicon-paperclip"></span> <c:out value="${m.label}" /></a>
 					</c:forEach>
 				</c:if>
+
+				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
+					class="glyphicon glyphicon-arrow-right"></span> Start Quiz</a>
 
 				<c:set var="imagepanel" value="${q.image}" scope="request" />
 
