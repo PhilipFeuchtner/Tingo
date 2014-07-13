@@ -3,12 +3,20 @@ package de.uniko.iwm.Repo;
 import java.util.List;
 
 public class Repo {
-	
+
 	private List<Section> sectionlist;
-	private int index;
-	
+
 	public Repo() {
-		
+
+	}
+
+	public List<GroupItem> getGroups(Navigation nav) {
+		return sectionlist.get(nav.getSection()).getGroupitemlist();
+	}
+
+	public List<QuestionItem> getQuestions(Navigation nav) {
+		return sectionlist.get(nav.getSection()).getGroupitemlist()
+				.get(nav.getQuestion()).getQuestionitemlist();
 	}
 
 	public List<Section> getSectionlist() {
@@ -19,13 +27,4 @@ public class Repo {
 		this.sectionlist = sectionlist;
 	}
 
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-	
-	
 }

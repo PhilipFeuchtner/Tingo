@@ -9,7 +9,7 @@
 <div class="modal-body row">
 	<div class="col-md-3">
 		<div class="list-group">
-			<c:forEach var="q" items="${Repo.sectionlist}" varStatus="status">
+			<c:forEach var="q" items="${repo.sectionlist}" varStatus="status">
 				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}">
 					<c:out value="${q.title}" />
 				</a>

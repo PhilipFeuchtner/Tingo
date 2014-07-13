@@ -1,7 +1,7 @@
 <%@ tag language="java" pageEncoding="UTF-8"%>
 
 <%@ attribute name="questionid" required="true"%>
-<%@ attribute name="correct" required="false"%>
+<%@ attribute name="correct" required="false" %>
 <%@ attribute name="style" required="false"%>
 <%@ attribute name="score" required="false" type="java.lang.Integer" %>
 
@@ -10,14 +10,16 @@
 
 <%
 	Integer	scoreValue = score == null ? 1 : score;
+    // boolean correctValue = correct == null || !correct;
 %>
 
 [${counter_question}/${counter_task}]
 
 <form:checkbox class="form-control" path="resultList[${counter_question}]" value="${counter_task}" />
 
-<c:set var="sc" value="<%= scoreValue %>" />
-<!-- ${CorrectValues.addTask(correct,sc,2)} -->
+<c:set var="cv" value="${correctValue ? -1 : counter_task}" />
+				
+<!-- ${correctValues.addTask(correct,1,2)} -->
 
 <c:set var="counter_task" value="${counter_task+1}" scope="request" /> 
 

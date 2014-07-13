@@ -25,19 +25,26 @@
 					<c:set var="counter_question" value="0" scope="request" />
 
 					<c:forEach var="q"
-						items="${Repo.sectionlist[si].groupitemlist[gi].questionitemlist}"
+						items="${repo.sectionlist[si].groupitemlist[gi].questionitemlist}"
 						varStatus="status">
 
-						<!-- ${CorrectValues.addQuestion()} -->						
+						<div class="page-header">
+							<h4>
+								Question ${status.index} <small>  </small>
+							</h4>
+						</div>
+						
+						<!-- ${correctValues.addQuestion()} -->
 						<c:set var="counter_task" value="0" scope="request" />
 
 						<div class="well">
 							<h4>${q.title}</h4>
 							<jsp:include page="/resources/questions/${q.file}" />
 						</div>
-						
+
 						<!-- ${results.addQuestion()} -->
-						<c:set var="counter_question" value="${counter_question+1}" scope="request" />						
+						<c:set var="counter_question" value="${counter_question+1}"
+							scope="request" />
 
 					</c:forEach>
 

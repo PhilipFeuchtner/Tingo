@@ -11,15 +11,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="list-group">
-	<c:set var="si" value="${Repo.index}" scope="request" />
-	<c:set var="gi" value="${Repo.sectionlist[si].index}" scope="request" />
-	<c:set var="qi" value="${Repo.sectionlist[gi].groupitemlist[gi].index}"
+	<c:set var="si" value="${navigation.section}" scope="request" />
+	<c:set var="gi" value="${navigation.group}" scope="request" />
+	<c:set var="qi" value="${navigation.question}"
 		scope="request" />
-	<c:set var="ti" value="${Repo.index}" scope="request" />
 
 	<!-- ${si} ${gi} ${qi} -->
 
-	<c:forEach var="q" items="${Repo.sectionlist[si].groupitemlist}"
+	<c:forEach var="q" items="${repo.sectionlist[si].groupitemlist}"
 		varStatus="status">
 
 		<c:set var="base" value="/mansion/questionpage/${status.index}" />

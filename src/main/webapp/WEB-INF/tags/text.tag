@@ -21,7 +21,7 @@
 	placeholder="<%= placeh %>" />
 	
 <c:set var="sc" value="<%= scoreValue %>" />
-<!-- ${CorrectValues.addTask(correct,sc,0)} -->
+<!-- ${correctValues.addTask(correct,sc,0)} -->
 
 <c:set var="i" value="${1+i}" scope="request" /> 
 <c:set var="counter_task" value="${counter_task+1}" scope="request" /> 

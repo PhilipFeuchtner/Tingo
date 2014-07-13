@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import de.uniko.iwm.Repo.Init;
+import de.uniko.iwm.Repo.Navigation;
 import de.uniko.iwm.Repo.Repo;
 import de.uniko.iwm.Repo.TaskItem;
 import de.uniko.iwm.Repo.SimpleState.SOLVED;
@@ -34,7 +35,7 @@ import de.uniko.iwm.tingo.task.ResultListWrapper;
 
 @Controller
 // @Scope("session")
-@SessionAttributes({ "Repo", "CorrectValues" })
+@SessionAttributes({ "repo", "correctValues", "navigation" })
 public class HomeController implements Serializable {
 
 	/**
@@ -48,13 +49,20 @@ public class HomeController implements Serializable {
 	@Value("classpath:manifest.json")
 	private Resource manifestFile;
 
-	@ModelAttribute("Repo")
+	@ModelAttribute("repo")
 	public Repo repo() {
+		LOG.info("new reop.");
 		Init i = new Init(manifestFile);
 		return i.getParse();
 	}
+	
+	@ModelAttribute("navigation")
+	public Navigation navigation() {
+		LOG.info("new navigation.");
+		return new Navigation();
+	}
 
-	@ModelAttribute("CorrectValues")
+	@ModelAttribute("correctValues")
 	public CorrectValueWrapper cvw() {
 		return new CorrectValueWrapper();
 	}
@@ -72,14 +80,15 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questiondefault/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionDefault(@PathVariable int index,
-			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			@ModelAttribute("correctValues") CorrectValueWrapper cvw,
 			Model model) {
 		LOG.info("get mansion/questiondefault/" + index);
 
-		Repo repo = (Repo) model.asMap().get("Repo");
-		repo.setIndex(index);
+		Navigation navigation = (Navigation) model.asMap().get("navigation");
+		navigation.setSection(index);
 
-		// model.addAttribute("file", "/resources/questions/emptyQuestion.jsp");
+		LOG.info(navigation.toString());
+
 		model.addAttribute("start", false);
 
 		return "questionRenderer";
@@ -87,24 +96,28 @@ public class HomeController implements Serializable {
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String questionPageGET(@PathVariable int index,
+	public String questionPageGET(
+			@PathVariable int index,
 			@RequestParam(required = false) String quiz, Model model) {
 		LOG.info("get mansion/questionpage");
 
-		if (!model.containsAttribute("Repo")) {
+		if (!model.containsAttribute("repo")) {
 			model.addAttribute("message", new Message("Session expired.",
 					Message.Type.ERROR));
 
 			return "redirect:/";
 		}
 
-		Repo repo = (Repo) model.asMap().get("Repo");
-		int si = repo.getIndex();
-		repo.getSectionlist().get(si).setIndex(index);
+		// Repo repo = (Repo) model.asMap().get("repo");
+		Navigation navigation = (Navigation) model.asMap().get("navigation");
+
+		navigation.setGroup(index);
+
+		LOG.info(navigation.toString());
 
 		model.addAttribute("start", (quiz == null ? false : true));
 		model.addAttribute("results", new ResultListWrapper());
-		model.addAttribute("CorrectValues", new CorrectValueWrapper());
+		model.addAttribute("correctValues", new CorrectValueWrapper());
 
 		return "questionRenderer";
 	}
@@ -112,10 +125,12 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPagePOST(@PathVariable int index,
-			@ModelAttribute("CorrectValues") CorrectValueWrapper cvw,
+			@ModelAttribute("correctValues") CorrectValueWrapper cvw,
 			@ModelAttribute() ResultListWrapper results, Model model) {
 		LOG.info("POST  mansion/questionpage/" + index);
-		
+
+		Repo repo = (Repo) model.asMap().get("repo");
+
 		List<List<TaskItem>> rl = cvw.getValues();
 		int i = 0;
 		for (List<String> u : results.getResultList()) { // ;cvw.getValues()) {
@@ -141,6 +156,7 @@ public class HomeController implements Serializable {
 								+ ti.get(j).getType());
 					}
 
+					ti.get(j).validate();
 					j++;
 				}
 			}

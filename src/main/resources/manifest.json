@@ -1,20 +1,16 @@
 
 { 
-    "index": 0,
     "sectionlist": [ 
 	{
 	    "title": "Dummy",
-	    "svgid": "missing",
-	    "index": 0
+	    "svgid": "missing"
 	},
 	{
  	    "title": "Demosection",
 	    "svgid": "medic",
-	    "index": 0,
 	    "groupitemlist" : [
 		{ 
 		    "title": "Games of Thrones",
-		    "index": 0,
 		    "count":0,
 		    "image": "got/game_of_thrones.png",
 		    "questionitemlist" : [
@@ -55,7 +51,6 @@
 
 		{ 
 		    "title": "Capitalisation Calendar",
-		    "index": 0,
 		    "count":7,
 		    "image": "Capitalisation/calendar_1.png",
 		    "media": [
@@ -115,7 +110,6 @@
 
 		{ 
 		    "title": "Cars & Busses",
-		    "index": 0,
 		    "questionitemlist" : [
 			{ 
 			    "file" : "got/quotes01.jsp",
@@ -130,7 +124,6 @@
 
 		{ 
 		    "title": "Birds",
-		    "index": 0,
 		    "questionitemlist" : [
 			{ 
 			    "file" : "got/quotes01.jsp",
@@ -147,18 +140,15 @@
 	},
 	{ 
 	    "title": "Section 2: Music",
-	    "svgid": "music",
-	    "index": 0
+	    "svgid": "music"
 	},
 	{ 
 	    "title": "Section 3: Games",
-	    "svgid": "games",
-	    "index": 0
+	    "svgid": "games"
 	},	
 	{ 
 	    "title": "Section 4: Tools",
-	    "svgid": "tools",
-	    "index": 0
+	    "svgid": "tools"
 	}
     ]
 } 

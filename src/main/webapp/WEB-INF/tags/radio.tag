@@ -17,7 +17,7 @@
 <form:radiobutton class="form-control" path="resultList[${counter_question}][0]" value="${counter_task}" />
 
 <c:set var="sc" value="<%= scoreValue %>" />
-<!-- ${counter_task == 0 ? CorrectValues.addTask(correct,sc,1) : ""} -->
+<!-- ${counter_task == 0 ? correctValues.addTask(correct,sc,1) : ""} -->
 <!-- ${counter_task == 0 ? resultlist.add("") : ""} -->
 
 <c:set var="counter_task" value="${counter_task+1}" scope="request" /> 

@@ -8,8 +8,6 @@ public class Section {
 	private String title;
 	private String svgid;
 	
-	private int index;
-	
 	public Section() {
 		
 	}
@@ -36,13 +34,5 @@ public class Section {
 
 	public void setSvgid(String svgid) {
 		this.svgid = svgid;
-	}
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
 	}
 }
