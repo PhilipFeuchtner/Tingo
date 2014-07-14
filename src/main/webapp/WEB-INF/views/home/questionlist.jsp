@@ -11,9 +11,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="list-group">
-	<c:set var="si" value="${navigation.section}" scope="request" />
-	<c:set var="gi" value="${navigation.group}" scope="request" />
-	<c:set var="qi" value="${navigation.question}"
+	<c:set var="si" value="${repo.navigation.section}" scope="request" />
+	<c:set var="gi" value="${repo.navigation.group}" scope="request" />
+	<c:set var="qi" value="${repo.navigation.question}"
 		scope="request" />
 
 	<!-- ${si} ${gi} ${qi} -->
@@ -32,7 +32,7 @@
 					</c:if></a>
 
 				<c:url var="quizUrl" value="${base}">
-					<c:param name="quiz" value="start" />
+					<c:param name="state" value="QUIZ" />
 				</c:url>
 
 				<c:if test="${not empty q.media}">

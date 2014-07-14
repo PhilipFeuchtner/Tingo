@@ -20,7 +20,7 @@
 		<form:form method="post" modelAttribute="results">
 
 			<c:choose>
-				<c:when test="${start}">
+				<c:when test="${state=='QUIZ'}">
 
 					<c:set var="counter_question" value="0" scope="request" />
 
@@ -30,10 +30,10 @@
 
 						<div class="page-header">
 							<h4>
-								Question ${status.index} <small>  </small>
+								Question ${status.index} <small> </small>
 							</h4>
 						</div>
-						
+
 						<!-- ${correctValues.addQuestion()} -->
 						<c:set var="counter_task" value="0" scope="request" />
 
@@ -51,7 +51,11 @@
 					<form:button class="btn" type="submit">Submit</form:button>
 				</c:when>
 
-				<c:otherwise>
+				<c:when test="${state=='REVIEW'}">
+					<h4>REVIEW</h4>
+				</c:when>
+
+				<c:when test="${state=='IMAGE'}">
 					<c:choose>
 						<c:when test="${not empty imagepanel}">
 							<img
@@ -62,6 +66,10 @@
 							<jsp:include page="/resources/questions/emptyQuestion.jsp" />
 						</c:otherwise>
 					</c:choose>
+				</c:when>
+
+				<c:otherwise>
+					<h4>Unknown state: [${state}]</h4>
 				</c:otherwise>
 
 			</c:choose>

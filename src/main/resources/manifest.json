@@ -1,5 +1,11 @@
 
 { 
+    "navigation": {
+	"section": 0,
+	"group": 0,
+	"question": 0
+    },
+
     "sectionlist": [ 
 	{
 	    "title": "Dummy",

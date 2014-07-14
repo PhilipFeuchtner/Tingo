@@ -5,6 +5,7 @@ import java.util.List;
 public class Repo {
 
 	private List<Section> sectionlist;
+	private Navigation navigation;
 
 	public Repo() {
 
@@ -25,6 +26,14 @@ public class Repo {
 
 	public void setSectionlist(List<Section> sectionlist) {
 		this.sectionlist = sectionlist;
+	}
+
+	public Navigation getNavigation() {
+		return navigation;
+	}
+
+	public void setNavigation(Navigation navigation) {
+		this.navigation = navigation;
 	}
 
 }
