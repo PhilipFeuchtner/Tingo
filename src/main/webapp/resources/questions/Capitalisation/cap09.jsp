@@ -11,10 +11,10 @@
 
 <ul class="list-group">
 	<li class="list-group-item"><tingo:check questionid="q1"
-			correct="T" score="1" />Titles as parts of names of persons are
+			correct="true" score="1" />Titles as parts of names of persons are
 		capitalized.</li>
 	<li class="list-group-item"><tingo:check questionid="q1"
-			correct="T" score="1" />Titles that stand on their own are not
+			score="1" />Titles that stand on their own are not
 		capitalized.</li>
 </ul>
 

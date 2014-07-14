@@ -65,11 +65,12 @@ public class TaskItem implements Serializable {
 		switch(type) {
 		case TEXT:
 		case RADIO:
+		case CHECK:
 			result = userinput.equals(correct);
 			break;
-		case CHECK:
-			result = !userinput.isEmpty() && !correct.isEmpty();
-			break;
+		
+			//result = !userinput.isEmpty() && !correct.isEmpty();
+			//break;
 		}
 		
 		setValid(result);

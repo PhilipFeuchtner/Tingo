@@ -28,17 +28,19 @@
 						items="${repo.sectionlist[si].groupitemlist[gi].questionitemlist}"
 						varStatus="status">
 
+						<%--
 						<div class="page-header">
 							<h4>
 								Question ${status.index} <small> </small>
 							</h4>
 						</div>
+--%>
 
 						<!-- ${correctValues.addQuestion()} -->
 						<c:set var="counter_task" value="0" scope="request" />
 
 						<div class="well">
-							<h4>${q.title}</h4>
+<%-- 							<h4>${q.title}</h4> --%>
 							<jsp:include page="/resources/questions/${q.file}" />
 						</div>
 
