@@ -160,12 +160,16 @@ public class HomeController implements Serializable {
 			i++;
 		}
 
+		List<QuestionItem> rqi = repo.getQuestions(); 
 		i = 0;
+		
 		for (List<TaskItem> u : cvw.getValues()) {
 			for (TaskItem v : u) {
 				v.validate();
 				System.out.println(i + ": " + v);
 			}
+			
+			rqi.get(i).setTaskitemlist(u);
 			i++;
 		}
 
