@@ -24,7 +24,8 @@
 			    "file" : "got/quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
-				{ "correct" : "A" },
+				{ "userinput": "Ygritte",
+				  "correct" : "A" },
 				{ "correct" : "B" }
 			    ]
 			},
@@ -62,6 +63,10 @@
 		    "media": [
 			{
 			    "label": "Vip-Info",
+			    "link": "Capitalisation/capitalisation.html"
+			},
+						{
+			    "label": "Vip-Info II",
 			    "link": "Capitalisation/capitalisation.html"
 			}
 		    ],

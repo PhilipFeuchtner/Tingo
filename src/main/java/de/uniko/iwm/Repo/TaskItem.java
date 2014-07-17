@@ -19,7 +19,7 @@ public class TaskItem implements Serializable {
 		TEXT, RADIO, CHECK
 	};
 
-	private String correct, userinput = "";
+	private String correct = "", userinput = "";
 	private int score;
 	private TYPE type;
 	private boolean valid;
@@ -32,7 +32,7 @@ public class TaskItem implements Serializable {
 		this.correct = correct;
 		this.score = score;
 		this.type = type;
-		valid = false;
+		valid = validate();
 	}
 
 	public TaskItem(String correct, int score, int type) {
@@ -56,27 +56,32 @@ public class TaskItem implements Serializable {
 
 		LOG.info(this.toString());
 	}
-	
+
 	// -------------------------------------------------------
-	
-	public  boolean validate() {
+
+	public boolean validate() {
 		boolean result = false;
-		
-		switch(type) {
+
+		switch (type) {
 		case TEXT:
 		case RADIO:
 		case CHECK:
 			result = userinput.equals(correct);
 			break;
-		
-			//result = !userinput.isEmpty() && !correct.isEmpty();
-			//break;
+		// case CHECK:
+		// 	result = (!userinput.isEmpty() && !correct.isEmpty())
+		// 			|| (userinput.isEmpty() && correct.isEmpty());
+		// 	break;
+		default:
+			LOG.error("unknown type: " + type);
+			result = false;
 		}
-		
+
 		setValid(result);
-		
+
 		return result;
 	}
+
 	// -------------------------------------------------------
 
 	public String getCorrect() {

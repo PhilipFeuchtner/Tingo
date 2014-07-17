@@ -6,11 +6,14 @@ import java.util.List;
 public class ResultListWrapper {
 
 	private List<List<String>> resultList;
-	private int i;
+	
+	private int count_questions, count_tasks;
 	
 	public ResultListWrapper() {
         resultList = new ArrayList<List<String>>();
-        i=0;
+        
+		count_questions = 0;
+		count_tasks = 0;
 	}
 
 	public List<List<String>> getResultList() {
@@ -22,11 +25,24 @@ public class ResultListWrapper {
 	}
 
 	public void addQuestion() {
-		resultList.add(new ArrayList<String>());
-		i++;
+		count_questions++;
+		count_tasks = 0;
+
+		if (count_questions > resultList.size()) {
+			List<String> tasks = new ArrayList<String>();
+			resultList.add(tasks);
+		}
 	}
 	
-	public void add(String value) {
-		resultList.get(i).add(value);
+	public void add(String value) {		
+		count_tasks++;
+
+		List<String> tasks = resultList.get(count_questions - 1);
+
+		if (count_tasks > tasks.size()) {
+			tasks.add(value);
+		} else {
+			tasks.set(count_tasks - 1, value);
+		}
 	}
 }

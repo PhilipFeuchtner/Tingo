@@ -12,8 +12,6 @@
 	Integer	scoreValue = score == null ? 1 : score;
 %>
 
-[${counter_question}/${counter_task}]
-
 <form:radiobutton class="form-control" path="resultList[${counter_question}][0]" value="${counter_task}" />
 
 <c:set var="sc" value="<%= scoreValue %>" />

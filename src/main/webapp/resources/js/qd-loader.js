@@ -9,6 +9,13 @@ window.onload = function() {
 		viewBox : [ 0, 0, 600, 200 ]
 	});
 
+	Snap.load("resources/img/demo.svg", function(f) {
+
+		var top = g.g(), gr = f.select("#svg3134-x");
+
+		top.add(gr);
+	});
+	
 	Snap.load("resources/img/simple.svg", function(f) {
 
 		var top = g.g(), gr = f.select("#simple");

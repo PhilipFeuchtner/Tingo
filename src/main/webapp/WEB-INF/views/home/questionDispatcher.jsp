@@ -29,6 +29,7 @@
 
 	<div class="col-md-9">
 		<svg id="svg-mansion"></svg>
+		<svg id="svg-demo"></svg>
 	</div>
 </div>
 

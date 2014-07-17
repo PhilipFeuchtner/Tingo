@@ -13,14 +13,12 @@
 	boolean correctValue = correct != null && correct;
 %>
 
-[${counter_question}/${counter_task}]
-
 <form:checkbox class="form-control"
 	path="resultList[${counter_question}]" value="${counter_task}" />
 
 <c:set var="sc" value="<%=scoreValue%>" />
 
-<c:set var="cv" value="-1" />
+<c:set var="cv" value="" />
 <c:if test="<%=correctValue%>">
 	<c:set var="cv" value="${counter_task}" />
 </c:if>

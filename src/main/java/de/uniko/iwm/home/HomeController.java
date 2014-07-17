@@ -2,6 +2,7 @@ package de.uniko.iwm.home;
 
 import java.io.Serializable;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import de.uniko.iwm.Repo.Init;
 import de.uniko.iwm.Repo.Navigation;
+import de.uniko.iwm.Repo.QuestionItem;
 import de.uniko.iwm.Repo.Repo;
 import de.uniko.iwm.Repo.TaskItem;
 import de.uniko.iwm.Repo.SimpleState.SOLVED;
@@ -95,12 +97,26 @@ public class HomeController implements Serializable {
 			@RequestParam(required = false) STATE state, Model model) {
 		LOG.info("get mansion/questionpage");
 
+		List<List<TaskItem>> cv = new ArrayList<List<TaskItem>>();
+		ResultListWrapper rlw = new ResultListWrapper();
+		
 		Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setGroup(index);
+		
+		for (QuestionItem qi: repo.getQuestions()){
+			List<TaskItem> ql = new ArrayList<TaskItem>();
+			cv.add(ql);
+			rlw.addQuestion();
+			
+			for (TaskItem ti: qi.getTaskitemlist()) {
+				ql.add(ti);
+				rlw.add(ti.getUserinput());
+			}
+		}
 
 		model.addAttribute("state", (state == null ? STATE.IMAGE : state));
-		model.addAttribute("results", new ResultListWrapper());
-		model.addAttribute("correctValues", new CorrectValueWrapper());
+		model.addAttribute("results", rlw);
+		model.addAttribute("correctValues", new CorrectValueWrapper(cv));
 
 		return "questionRenderer";
 	}
@@ -138,8 +154,6 @@ public class HomeController implements Serializable {
 						LOG.error("Unknown question type: "
 								+ ti.get(j).getType());
 					}
-
-					ti.get(j).validate();
 					j++;
 				}
 			}
@@ -149,10 +163,13 @@ public class HomeController implements Serializable {
 		i = 0;
 		for (List<TaskItem> u : cvw.getValues()) {
 			for (TaskItem v : u) {
+				v.validate();
 				System.out.println(i + ": " + v);
 			}
 			i++;
 		}
+
+		model.addAttribute("state", STATE.IMAGE);
 
 		return "questionRenderer";
 	}

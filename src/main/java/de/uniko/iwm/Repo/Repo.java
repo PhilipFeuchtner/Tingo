@@ -11,13 +11,13 @@ public class Repo {
 
 	}
 
-	public List<GroupItem> getGroups(Navigation nav) {
-		return sectionlist.get(nav.getSection()).getGroupitemlist();
+	public List<GroupItem> getGroups() {
+		return sectionlist.get(navigation.getSection()).getGroupitemlist();
 	}
 
-	public List<QuestionItem> getQuestions(Navigation nav) {
-		return sectionlist.get(nav.getSection()).getGroupitemlist()
-				.get(nav.getQuestion()).getQuestionitemlist();
+	public List<QuestionItem> getQuestions() {
+		return sectionlist.get(navigation.getSection()).getGroupitemlist()
+				.get(navigation.getQuestion()).getQuestionitemlist();
 	}
 
 	public List<Section> getSectionlist() {

@@ -15,8 +15,6 @@
 	Integer	scoreValue = score == null ? 1 : score;
 %>
 
-[${counter_question}/${counter_task}]
-
 <form:input path="resultList[${counter_question}][${counter_task}]" type="text" class="form-control"
 	placeholder="<%= placeh %>" />
 	
