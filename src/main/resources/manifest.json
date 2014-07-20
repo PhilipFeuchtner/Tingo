@@ -49,8 +49,9 @@
 			    "file" : "got/quotes04.jsp",
 			    "title": "Games of Thrones IV",
 			    "taskitemlist" : [
-				{ "correct" : "G" },
-				{ "correct" : "H" }
+				{ "userinput": "winter" },
+				{ "userinput": "Winter" },
+				{ "userinput": "Winter" }
 			    ]
 			}
 		    ]

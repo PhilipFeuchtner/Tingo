@@ -16,8 +16,9 @@ public class Repo {
 	}
 
 	public List<QuestionItem> getQuestions() {
+		System.out.println(" ->: " + navigation);
 		return sectionlist.get(navigation.getSection()).getGroupitemlist()
-				.get(navigation.getQuestion()).getQuestionitemlist();
+				.get(navigation.getGroup()).getQuestionitemlist();
 	}
 
 	public List<Section> getSectionlist() {

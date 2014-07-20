@@ -37,7 +37,7 @@ import de.uniko.iwm.tingo.task.ResultListWrapper;
 
 @Controller
 // @Scope("session")
-@SessionAttributes({ "repo", "correctValues"})
+@SessionAttributes({ "repo", "correctValues" })
 public class HomeController implements Serializable {
 
 	/**
@@ -48,8 +48,10 @@ public class HomeController implements Serializable {
 	private static final Logger LOG = LoggerFactory
 			.getLogger(HomeController.class);
 
-	public enum STATE { IMAGE, QUIZ, REVIEW};
-	
+	public enum STATE {
+		IMAGE, QUIZ, REVIEW
+	};
+
 	@Value("classpath:manifest.json")
 	private Resource manifestFile;
 
@@ -85,40 +87,54 @@ public class HomeController implements Serializable {
 		Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setSection(index);
 
-		model.addAttribute("state", STATE.IMAGE);
-
-		return "questionRenderer";
+		return "questionDefault";
 	}
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String questionPageGET(
-			@PathVariable int index,
+	public String questionPageGET(@PathVariable int index,
+			@ModelAttribute() Repo repo,
 			@RequestParam(required = false) STATE state, Model model) {
 		LOG.info("get mansion/questionpage");
 
 		List<List<TaskItem>> cv = new ArrayList<List<TaskItem>>();
 		ResultListWrapper rlw = new ResultListWrapper();
-		
-		Repo repo = (Repo) model.asMap().get("repo");
+
+		// Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setGroup(index);
 		
-		for (QuestionItem qi: repo.getQuestions()){
+		System.out.println("Nav: " + repo.getNavigation());
+
+		for (QuestionItem qi : repo.getQuestions()) {
 			List<TaskItem> ql = new ArrayList<TaskItem>();
 			cv.add(ql);
 			rlw.addQuestion();
-			
-			for (TaskItem ti: qi.getTaskitemlist()) {
+
+			for (TaskItem ti : qi.getTaskitemlist()) {
+				System.out.println(" - " + ti);
 				ql.add(ti);
 				rlw.add(ti.getUserinput());
 			}
 		}
 
-		model.addAttribute("state", (state == null ? STATE.IMAGE : state));
 		model.addAttribute("results", rlw);
 		model.addAttribute("correctValues", new CorrectValueWrapper(cv));
 
-		return "questionRenderer";
+		String nav = "questionDefault";
+		if (state != null) {
+			switch (state) {
+			case QUIZ:
+				nav = "questionRenderer";
+				break;
+			case IMAGE:
+			case REVIEW:
+				break;
+			default:
+			}
+		}
+		System.out.println(" <-- ");
+
+		return nav;
 	}
 
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
@@ -128,11 +144,12 @@ public class HomeController implements Serializable {
 		LOG.info("POST  mansion/questionpage/" + index);
 
 		Repo repo = (Repo) model.asMap().get("repo");
-		CorrectValueWrapper cvw = (CorrectValueWrapper) model.asMap().get("correctValues");
+		CorrectValueWrapper cvw = (CorrectValueWrapper) model.asMap().get(
+				"correctValues");
 
 		List<List<TaskItem>> rl = cvw.getValues();
 		int i = 0;
-		for (List<String> u : results.getResultList()) { 
+		for (List<String> u : results.getResultList()) {
 
 			if (u != null) {
 				int j = 0;
@@ -160,22 +177,20 @@ public class HomeController implements Serializable {
 			i++;
 		}
 
-		List<QuestionItem> rqi = repo.getQuestions(); 
+		List<QuestionItem> rqi = repo.getQuestions();
 		i = 0;
-		
+
 		for (List<TaskItem> u : cvw.getValues()) {
 			for (TaskItem v : u) {
 				v.validate();
 				System.out.println(i + ": " + v);
 			}
-			
+
 			rqi.get(i).setTaskitemlist(u);
 			i++;
 		}
 
-		model.addAttribute("state", STATE.IMAGE);
-
-		return "questionRenderer";
+		return "questionDefault";
 	}
 
 	// ----------------------------------------------------------------------------

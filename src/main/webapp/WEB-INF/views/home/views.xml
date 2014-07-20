@@ -12,13 +12,29 @@
 			value="/WEB-INF/views/home/homeSignedIn.jsp"></put-attribute>
 	</definition>
 
-	<definition name="questionRenderer" extends="default">
+	<definition name="questionDefault" extends="default">
 		<put-attribute name="body">
 			<definition template="/WEB-INF/tiles/question.jsp">
-			<put-attribute name="questionlist"
+				<put-attribute name="questionlist"
 					value="/WEB-INF/views/home/questionlist.jsp"></put-attribute>
 				<put-attribute name="questionpage"
-					value="/WEB-INF/views/home/questionpage.jsp"></put-attribute>
+					value="/WEB-INF/views/home/questionimage.jsp"></put-attribute>
+			</definition>
+		</put-attribute>
+	</definition>
+
+	<definition name="questionRenderer" extends="default">
+		<put-attribute name="body"
+			value="/WEB-INF/views/home/questionpage.jsp"></put-attribute>
+	</definition>
+
+	<definition name="questionResults" extends="default">
+		<put-attribute name="body">
+			<definition template="/WEB-INF/tiles/question.jsp">
+				<put-attribute name="questionlist"
+					value="/WEB-INF/views/home/questionlist.jsp"></put-attribute>
+				<put-attribute name="questionpage"
+					value="/WEB-INF/views/home/questionstats.jsp"></put-attribute>
 			</definition>
 		</put-attribute>
 	</definition>

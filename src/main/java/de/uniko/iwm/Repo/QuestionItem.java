@@ -1,5 +1,6 @@
 package de.uniko.iwm.Repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuestionItem {
@@ -10,7 +11,7 @@ public class QuestionItem {
 	private List<TaskItem> taskitemlist;
 	
 	public QuestionItem() {
-		
+		 taskitemlist = new ArrayList<TaskItem>();
 	}
 
 	public List<TaskItem> getTaskitemlist() {
