@@ -80,11 +80,12 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questiondefault/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionDefault(@PathVariable int index,
+			@ModelAttribute() Repo repo,
 			@ModelAttribute("correctValues") CorrectValueWrapper cvw,
 			Model model) {
 		LOG.info("get mansion/questiondefault/" + index);
 
-		Repo repo = (Repo) model.asMap().get("repo");
+		// Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setSection(index);
 
 		return "questionDefault";
@@ -102,8 +103,6 @@ public class HomeController implements Serializable {
 
 		// Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setGroup(index);
-		
-		System.out.println("Nav: " + repo.getNavigation());
 
 		for (QuestionItem qi : repo.getQuestions()) {
 			List<TaskItem> ql = new ArrayList<TaskItem>();
@@ -111,7 +110,6 @@ public class HomeController implements Serializable {
 			rlw.addQuestion();
 
 			for (TaskItem ti : qi.getTaskitemlist()) {
-				System.out.println(" - " + ti);
 				ql.add(ti);
 				rlw.add(ti.getUserinput());
 			}
@@ -140,10 +138,11 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPagePOST(@PathVariable int index,
+			@ModelAttribute() Repo repo,
 			@ModelAttribute() ResultListWrapper results, Model model) {
 		LOG.info("POST  mansion/questionpage/" + index);
 
-		Repo repo = (Repo) model.asMap().get("repo");
+		// Repo repo = (Repo) model.asMap().get("repo");
 		CorrectValueWrapper cvw = (CorrectValueWrapper) model.asMap().get(
 				"correctValues");
 
