@@ -184,6 +184,9 @@ public class HomeController implements Serializable {
 		List<QuestionItem> rqi = repo.getQuestions();
 		i = 0;
 
+		int sum_score = 0;
+		boolean sum_comp = true;
+		
 		for (List<TaskItem> u : correctValues.getValues()) {
 			int score = 0;
 			boolean isCompleteSolved = true;
@@ -207,9 +210,21 @@ public class HomeController implements Serializable {
 				state.setSolved(score == 0 ? SOLVED.INCORRECT : SOLVED.PARTLY);
 			}
 
+			sum_score += score;
+			sum_comp &= isCompleteSolved;
+			
 			// System.out.println("State: " + state);
 			rqi.get(i).setTaskitemlist(u);
 			i++;
+		}
+		
+		SimpleState g_state = repo.getGroupItem().getState();
+		g_state.setScore(sum_score);
+		
+		if (sum_comp) {
+			g_state.setSolved(SOLVED.CORRECT);
+		} else {
+			g_state.setSolved(sum_score == 0 ? SOLVED.INCORRECT : SOLVED.PARTLY);
 		}
 
 		return "questionDefault";

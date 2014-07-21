@@ -15,7 +15,11 @@
 	<div id="Tingo-Feedback"></div>
 
 	<div class="panel-body">
-		<h3>Results</h3>
+		<c:set var="g_state" value="${repo.groupItem.state}" />
+
+		<h3>
+			Results <small>${g_state.score}/ ${g_state.solved}</small>
+		</h3>
 
 		<ul class="list-group">
 			<c:forEach var="q" items="${repo.questions}" varStatus="status">
