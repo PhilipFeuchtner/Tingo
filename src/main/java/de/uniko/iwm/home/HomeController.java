@@ -27,6 +27,7 @@ import de.uniko.iwm.Repo.Init;
 import de.uniko.iwm.Repo.Navigation;
 import de.uniko.iwm.Repo.QuestionItem;
 import de.uniko.iwm.Repo.Repo;
+import de.uniko.iwm.Repo.SimpleState;
 import de.uniko.iwm.Repo.TaskItem;
 import de.uniko.iwm.Repo.SimpleState.SOLVED;
 import de.uniko.iwm.support.web.Feedback;
@@ -63,7 +64,8 @@ public class HomeController implements Serializable {
 	}
 
 	@ModelAttribute("correctValues")
-	public CorrectValueWrapper cvw() {
+	public CorrectValueWrapper correctValues() {
+		LOG.info("new correctValues.");
 		return new CorrectValueWrapper();
 	}
 
@@ -81,7 +83,6 @@ public class HomeController implements Serializable {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionDefault(@PathVariable int index,
 			@ModelAttribute() Repo repo,
-			@ModelAttribute("correctValues") CorrectValueWrapper cvw,
 			Model model) {
 		LOG.info("get mansion/questiondefault/" + index);
 
@@ -95,6 +96,7 @@ public class HomeController implements Serializable {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPageGET(@PathVariable int index,
 			@ModelAttribute() Repo repo,
+			// @ModelAttribute() CorrectValueWrapper correctValues,
 			@RequestParam(required = false) STATE state, Model model) {
 		LOG.info("get mansion/questionpage");
 
@@ -139,14 +141,17 @@ public class HomeController implements Serializable {
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionPagePOST(@PathVariable int index,
 			@ModelAttribute() Repo repo,
+			// @ModelAttribute() CorrectValueWrapper correctValues,
 			@ModelAttribute() ResultListWrapper results, Model model) {
 		LOG.info("POST  mansion/questionpage/" + index);
 
 		// Repo repo = (Repo) model.asMap().get("repo");
-		CorrectValueWrapper cvw = (CorrectValueWrapper) model.asMap().get(
+		CorrectValueWrapper correctValues = (CorrectValueWrapper) model.asMap().get(
 				"correctValues");
 
-		List<List<TaskItem>> rl = cvw.getValues();
+		repo.increment();
+		
+		List<List<TaskItem>> rl = correctValues.getValues();
 		int i = 0;
 		for (List<String> u : results.getResultList()) {
 
@@ -179,12 +184,30 @@ public class HomeController implements Serializable {
 		List<QuestionItem> rqi = repo.getQuestions();
 		i = 0;
 
-		for (List<TaskItem> u : cvw.getValues()) {
+		for (List<TaskItem> u : correctValues.getValues()) {
+			int score = 0;
+			boolean isCompleteSolved = true;
+			
 			for (TaskItem v : u) {
-				v.validate();
-				System.out.println(i + ": " + v);
+				if (v.validate()) {
+					score += v.getScore(); 
+				} else {
+					isCompleteSolved = false;
+				}
+				
+				// System.out.println(i + ": " + v);
 			}
 
+			SimpleState state = rqi.get(i).getState();
+			state.setScore(score);
+			
+			if (isCompleteSolved) {
+				state.setSolved(SOLVED.CORRECT);
+			} else {
+				state.setSolved(score == 0 ? SOLVED.INCORRECT : SOLVED.PARTLY);
+			}
+
+			// System.out.println("State: " + state);
 			rqi.get(i).setTaskitemlist(u);
 			i++;
 		}
@@ -192,6 +215,15 @@ public class HomeController implements Serializable {
 		return "questionDefault";
 	}
 
+	@RequestMapping(value = "mansion/review", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	public String reviewPage(
+			@ModelAttribute() Repo repo,
+			Model model) {
+		LOG.info("GET mansion/review");
+
+		return "questionResults";
+	}
 	// ----------------------------------------------------------------------------
 	/*
 	 * @RequestMapping(value = "mansion/ajax", method = RequestMethod.GET)
@@ -222,4 +254,6 @@ public class HomeController implements Serializable {
 	 * 
 	 * return new Feedback(q.getState().getCorrect()); }
 	 */
+	
 }
+

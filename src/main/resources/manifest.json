@@ -17,7 +17,6 @@
 	    "groupitemlist" : [
 		{ 
 		    "title": "Games of Thrones",
-		    "count":0,
 		    "image": "got/game_of_thrones.png",
 		    "questionitemlist" : [
 			{ 
@@ -59,7 +58,6 @@
 
 		{ 
 		    "title": "Capitalisation Calendar",
-		    "count":7,
 		    "image": "Capitalisation/calendar_1.png",
 		    "media": [
 			{

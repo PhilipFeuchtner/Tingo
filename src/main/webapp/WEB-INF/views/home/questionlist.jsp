@@ -13,8 +13,7 @@
 <div class="list-group">
 	<c:set var="si" value="${repo.navigation.section}" scope="request" />
 	<c:set var="gi" value="${repo.navigation.group}" scope="request" />
-	<c:set var="qi" value="${repo.navigation.question}"
-		scope="request" />
+	<c:set var="qi" value="${repo.navigation.question}" scope="request" />
 
 	<!-- ${si} ${gi} ${qi} -->
 
@@ -27,8 +26,8 @@
 		<c:choose>
 			<c:when test="${gi == status.index}">
 				<a href="${pageUrl}" class="list-group-item active"><c:out
-						value="${q.title}" /> <c:if test="${q.count != 0}">
-						<span class="badge pull-right">${q.count}</span>
+						value="${q.title}" /> <c:if test="${q.state.count != 0}">
+						<span class="badge pull-right">${q.state.count}</span>
 					</c:if></a>
 
 				<c:url var="quizUrl" value="${base}">
@@ -40,8 +39,15 @@
 						<a
 							href="${pageContext.request.contextPath}/resources/questions/${m.link}"
 							class="list-group-item list-group-item-info"><span
-							class="glyphicon glyphicon-paperclip"></span> <c:out value="${m.label}" /></a>
+							class="glyphicon glyphicon-paperclip"></span> <c:out
+								value="${m.label}" /></a>
 					</c:forEach>
+				</c:if>
+
+				<c:if test="${q.state.count != 0}">
+					<a href="${pageContext.request.contextPath}/mansion/review"
+						class="list-group-item list-group-item-info"><span
+						class="glyphicon glyphicon-info-sign"></span> Review Results</a>
 				</c:if>
 
 				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
@@ -52,7 +58,9 @@
 			</c:when>
 			<c:otherwise>
 				<a href="${pageUrl}" class="list-group-item"><c:out
-						value="${q.title}" /></a>
+						value="${q.title}" /> <c:if test="${q.state.count != 0}">
+						<span class="badge pull-right">${q.state.count}</span>
+					</c:if></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>

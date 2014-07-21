@@ -10,14 +10,53 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:set var="i" value="${0}" scope="request" />
-
 <div class="panel panel-default">
 
 	<div id="Tingo-Feedback"></div>
 
 	<div class="panel-body">
-		<h4>QuestionStats</h4>
+		<h3>Results</h3>
+
+		<ul class="list-group">
+			<c:forEach var="q" items="${repo.questions}" varStatus="status">
+				<c:set var="state" value="${q.state}" />
+
+				<c:choose>
+					<c:when test="${state.solved == 'CORRECT'}">
+						<c:set var="q_class"
+							value="list-group-item list-group-item-success" />
+					</c:when>
+					<c:when test="${state.solved == 'PARTLY'}">
+						<c:set var="q_class"
+							value="list-group-item list-group-item-warning" />
+					</c:when>
+
+					<c:when test="${state.solved == 'INCORRECT'}">
+						<c:set var="q_class"
+							value="list-group-item list-group-item-danger" />
+					</c:when>
+
+					<c:otherwise>
+						<c:set var="q_class" value="list-group-item list-group-item-info" />
+					</c:otherwise>
+
+				</c:choose>
+
+				<li class="${q_class}">
+
+					<div class="page-header">
+						<h4>
+							Question ${status.index +1}
+							<c:if test="${not empty q.title}">
+								<small> ${q.title}</small>
+							</c:if>
+							<span class="badge pull-right">${state.score}</span>
+						</h4>
+					</div> ${state.solved}
+
+				</li>
+			</c:forEach>
+		</ul>
 	</div>
 </div>
 

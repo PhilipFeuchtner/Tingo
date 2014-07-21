@@ -7,11 +7,11 @@ public class GroupItem {
 	private List<QuestionItem> questionitemlist;
 	private List<Mediaobject> media;
 	private String title;
-	private int count;
 	private String image;
+	private SimpleState state;
 	
 	public GroupItem() {
-		
+		state = new SimpleState();
 	}
 
 	public List<QuestionItem> getQuestionitemlist() {
@@ -38,19 +38,19 @@ public class GroupItem {
 		this.title = title;
 	}
 
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
-	}
-
 	public String getImage() {
 		return image;
 	}
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public SimpleState getState() {
+		return state;
+	}
+
+	public void setState(SimpleState state) {
+		this.state = state;
 	}
 }

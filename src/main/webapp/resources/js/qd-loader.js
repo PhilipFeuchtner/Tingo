@@ -69,7 +69,7 @@ window.onload = function() {
 					"cursor" : "pointer"
 				});
 
-				item.click(clickListener());
+				// item.click(clickListener());
 			}
 			// }
 		});

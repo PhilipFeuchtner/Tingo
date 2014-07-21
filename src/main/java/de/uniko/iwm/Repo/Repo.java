@@ -10,9 +10,15 @@ public class Repo {
 	public Repo() {
 
 	}
+	
+	// -------------------- hepler -------------------------------
 
 	public List<GroupItem> getGroups() {
 		return sectionlist.get(navigation.getSection()).getGroupitemlist();
+	}
+	
+	public GroupItem getGroupItem() {
+		return sectionlist.get(navigation.getSection()).getGroupitemlist().get(navigation.getGroup());
 	}
 
 	public List<QuestionItem> getQuestions() {
@@ -20,7 +26,19 @@ public class Repo {
 		return sectionlist.get(navigation.getSection()).getGroupitemlist()
 				.get(navigation.getGroup()).getQuestionitemlist();
 	}
+	
+	public QuestionItem getQuestionItem() {
+		return sectionlist.get(navigation.getSection()).getGroupitemlist()
+				.get(navigation.getGroup()).getQuestionitemlist().get(navigation.getQuestion());
+	}
 
+	public void increment() {
+		 sectionlist.get(navigation.getSection()).getGroupitemlist()
+			.get(navigation.getGroup()).getState().increment();
+	}
+	
+	// -----------------------------------------------------------
+	
 	public List<Section> getSectionlist() {
 		return sectionlist;
 	}

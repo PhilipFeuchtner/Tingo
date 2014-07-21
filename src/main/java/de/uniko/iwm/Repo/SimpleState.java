@@ -2,25 +2,26 @@ package de.uniko.iwm.Repo;
 
 public class SimpleState {
 
-	public enum STATE {UNSEEN, PROCESSING, CLOSED};
-	public enum SOLVED {INCORRECT, PARTLY, CORRECT}
-	
-	private SOLVED correct;
+	public enum SOLVED {
+		INCORRECT, PARTLY, CORRECT
+	}
+
+	private SOLVED solved;
 	private int score;
-	private STATE state;
-	
+	private int count;
+
 	public SimpleState() {
-		correct = SOLVED.INCORRECT;
+		solved = SOLVED.INCORRECT;
 		score = 0;
-		state = STATE.UNSEEN;
+		count = 0;
 	}
 
-	public SOLVED getCorrect() {
-		return correct;
+	public SOLVED getSolved() {
+		return solved;
 	}
 
-	public void setCorrect(SOLVED correct) {
-		this.correct = correct;
+	public void setSolved(SOLVED solved) {
+		this.solved = solved;
 	}
 
 	public int getScore() {
@@ -31,11 +32,31 @@ public class SimpleState {
 		this.score = score;
 	}
 
-	public STATE getState() {
-		return state;
+	public int getCount() {
+		return count;
 	}
 
-	public void setState(STATE state) {
-		this.state = state;
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
+	// -------------------------------------------------------------
+
+	public boolean isValid() {
+		switch (solved) {
+		case CORRECT:
+			return true;
+		default:
+			return false;
+		}
+	}
+	
+	public void increment() {
+		count++;
+	}
+	
+	@Override
+	public String toString() {
+		return "State [" + solved + ", " + score + ", " + count + "]";
 	}
 }
