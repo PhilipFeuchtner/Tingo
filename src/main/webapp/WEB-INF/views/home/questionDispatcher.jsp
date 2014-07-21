@@ -10,8 +10,10 @@
 	<div class="col-md-3">
 		<div class="list-group">
 			<c:forEach var="q" items="${repo.sectionlist}" varStatus="status">
-				<a href="#" class="list-group-item tingo-menu" id="list-${q.svgid}">
-					<c:out value="${q.title}" />
+			
+				<c:url var="link" value="/mansion/questiondefault/${status.index}" />
+				<a href="${link}" class="list-group-item tingo-menu"
+					id="list-${q.svgid}"> <c:out value="${q.title}" />
 				</a>
 
 				<c:choose>
@@ -22,7 +24,7 @@
 						<c:set var="svgids" value="${svgids} ${q.svgid}" />
 					</c:otherwise>
 				</c:choose>
-				
+
 			</c:forEach>
 		</div>
 	</div>
