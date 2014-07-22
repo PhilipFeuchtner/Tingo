@@ -35,10 +35,13 @@
 				</c:url>
 
 				<c:if test="${not empty q.media}">
-					<c:forEach var="m" items="${q.media}">
-						<a
-							href="${pageContext.request.contextPath}/resources/questions/${m.link}"
-							class="list-group-item list-group-item-info"><span
+					<c:forEach var="m" items="${q.media}" varStatus="mIndex">
+						<c:url var="mUrl" value="${base}">
+							<c:param name="state" value="INCLUDE" />
+							<c:param name="media" value="${mIndex.index}" />
+						</c:url>
+						
+						<a href="${mUrl}" class="list-group-item list-group-item-info"><span
 							class="glyphicon glyphicon-paperclip"></span> <c:out
 								value="${m.label}" /></a>
 					</c:forEach>

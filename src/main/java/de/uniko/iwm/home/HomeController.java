@@ -50,7 +50,7 @@ public class HomeController implements Serializable {
 			.getLogger(HomeController.class);
 
 	public enum STATE {
-		IMAGE, QUIZ, REVIEW
+		IMAGE, QUIZ, REVIEW, INCLUDE
 	};
 
 	@Value("classpath:manifest.json")
@@ -97,38 +97,45 @@ public class HomeController implements Serializable {
 	public String questionPageGET(@PathVariable int index,
 			@ModelAttribute() Repo repo,
 			// @ModelAttribute() CorrectValueWrapper correctValues,
-			@RequestParam(required = false) STATE state, Model model) {
-		LOG.info("get mansion/questionpage");
-
-		List<List<TaskItem>> cv = new ArrayList<List<TaskItem>>();
-		ResultListWrapper rlw = new ResultListWrapper();
+			@RequestParam(required = false) STATE state, 
+			@RequestParam(required = false) Integer media, 			
+			Model model) {
+		LOG.info("get mansion/questionpage/" + index);
 
 		// Repo repo = (Repo) model.asMap().get("repo");
 		repo.getNavigation().setGroup(index);
-
-		for (QuestionItem qi : repo.getQuestions()) {
-			List<TaskItem> ql = new ArrayList<TaskItem>();
-			cv.add(ql);
-			rlw.addQuestion();
-
-			for (TaskItem ti : qi.getTaskitemlist()) {
-				ql.add(ti);
-				rlw.add(ti.getUserinput());
-			}
-		}
-
-		model.addAttribute("results", rlw);
-		model.addAttribute("correctValues", new CorrectValueWrapper(cv));
 
 		String nav = "questionDefault";
 		if (state != null) {
 			switch (state) {
 			case QUIZ:
+				List<List<TaskItem>> cv = new ArrayList<List<TaskItem>>();
+				ResultListWrapper rlw = new ResultListWrapper();
+
+				for (QuestionItem qi : repo.getQuestions()) {
+					List<TaskItem> ql = new ArrayList<TaskItem>();
+					cv.add(ql);
+					rlw.addQuestion();
+
+					for (TaskItem ti : qi.getTaskitemlist()) {
+						ql.add(ti);
+						rlw.add(ti.getUserinput());
+					}
+				}
+
+				model.addAttribute("results", rlw);
+				model.addAttribute("correctValues", new CorrectValueWrapper(cv));
+				
 				nav = "questionRenderer";
+				break;
+			case INCLUDE:
+				model.addAttribute("media_index", media);
+				model.addAttribute("return_index", index);
+
+				nav = "questionInclude";
 				break;
 			case IMAGE:
 			case REVIEW:
-				break;
 			default:
 			}
 		}

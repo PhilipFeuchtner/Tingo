@@ -28,6 +28,11 @@
 			value="/WEB-INF/views/home/questionpage.jsp"></put-attribute>
 	</definition>
 
+	<definition name="questionInclude" extends="default">
+		<put-attribute name="body"
+			value="/WEB-INF/views/home/questioninclude.jsp"></put-attribute>
+	</definition>
+	
 	<definition name="questionResults" extends="default">
 		<put-attribute name="body">
 			<definition template="/WEB-INF/tiles/question.jsp">
