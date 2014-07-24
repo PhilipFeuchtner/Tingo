@@ -10,29 +10,40 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:url var="back" value="/mansion/questionpage/${return_index}" />
+<head>
+<c:url var="baseUrl" value="/resources/questions/${repo.groupItem.base}/" />
+<%-- <base href="${pageContext.request.contextPath}/resources/questions/${repo.groupItem.base}/" /> --%>
+<base href="${baseUrl}" />
+</head>
 
-<div class="well">
-	<a href="${back}"><span class="label label-default">Back</span></a>
-</div>
+<body>
+	<c:url var="back" value="/mansion/questionpage/${return_index}" />
 
-<div class="panel panel-default">
-
-	<div class="panel-heading">
-		<h3 class="panel-title">${repo.groupItem.media[media_index].label}</h3>
+	<div class="well">
+		<a href="${back}"><span class="label label-default">Back</span></a>
 	</div>
 
-	<div class="panel-body">
 
-		<c:set var="base"
-			value="/resources/questions/${repo.groupItem.media[media_index].link}" />
+	<c:set var="file" value="${repo.groupItem.media[media_index].link}" />
 
-		<c:import url="${base}" />
+	<div class="panel panel-default">
+
+		<div class="panel-heading">
+			<h3 class="panel-title">${repo.groupItem.media[media_index].label}
+				${file}</h3>
+		</div>
+
+		<div class="panel-body">
+			<%@ include
+				file="/resources/questions/Capitalisation/capitalisation.jsp"%>
+			<%-- 					<jsp:include page="/resources/questions/${repo.groupItem.base}/${q.file}" /> --%>
+
+		</div>
+
 	</div>
 
-</div>
+	<div class="well">
+		<a href="${back}"><span class="label label-default">Back</span></a>
+	</div>
 
-<div class="well">
-	<a href="${back}"><span class="label label-default">Back</span></a>
-</div>
-
+</body>

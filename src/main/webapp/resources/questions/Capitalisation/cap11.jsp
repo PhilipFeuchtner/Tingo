@@ -10,8 +10,8 @@
 
 <ul class="list-group">
 	<li class="list-group-item"><tingo:radio questionid="q1"
-			correct="0" score="1" /> If a word is capitalized, its first letter
-		is written in upper case.</li>
-	<li class="list-group-item"><tingo:radio questionid="q1" score="1" />
-		If a word is capitalized, its first letter is written in lower case.</li>
+			correct="0" score="1"
+			label="If a word is capitalized, its first letter is written in upper case." /></li>
+	<li class="list-group-item"><tingo:radio questionid="q1" score="1"
+			label="If a word is capitalized, its first letter is written in lower case." /></li>
 </ul>

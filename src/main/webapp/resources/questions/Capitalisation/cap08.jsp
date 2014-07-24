@@ -10,10 +10,10 @@
 
 <ul class="list-group">
 	<li class="list-group-item"><tingo:check questionid="q1"
-			correct="True" score="1" /> Capitalization is used at the beginning of
-		a sentence.</li>
-	<li class="list-group-item"><tingo:check questionid="q1" score="1" />
-		Every third word in a sentence has to be capitalized.</li>
+			correct="True" score="1"
+			label="Capitalization is used at the beginning of a sentence." /></li>
+	<li class="list-group-item"><tingo:check questionid="q1" score="1"
+			label="Every third word in a sentence has to be capitalized." /></li>
 </ul>
 
 

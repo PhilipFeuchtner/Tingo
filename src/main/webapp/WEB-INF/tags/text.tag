@@ -11,7 +11,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%
-	String placeh = placeholder == null ? "Here!" : placeholder;
+	String placeh = placeholder == null ? "" : placeholder;
 	Integer	scoreValue = score == null ? 1 : score;
 %>
 

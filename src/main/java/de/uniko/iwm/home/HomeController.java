@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import de.uniko.iwm.Repo.Init;
 import de.uniko.iwm.Repo.Navigation;
@@ -82,8 +83,7 @@ public class HomeController implements Serializable {
 	@RequestMapping(value = "mansion/questiondefault/{index}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	public String questionDefault(@PathVariable int index,
-			@ModelAttribute() Repo repo,
-			Model model) {
+			@ModelAttribute() Repo repo, Model model) {
 		LOG.info("get mansion/questiondefault/" + index);
 
 		// Repo repo = (Repo) model.asMap().get("repo");
@@ -97,9 +97,9 @@ public class HomeController implements Serializable {
 	public String questionPageGET(@PathVariable int index,
 			@ModelAttribute() Repo repo,
 			// @ModelAttribute() CorrectValueWrapper correctValues,
-			@RequestParam(required = false) STATE state, 
-			@RequestParam(required = false) Integer media, 			
-			Model model) {
+			@RequestParam(required = false) STATE state,
+			@RequestParam(required = false) Integer media, Model model, 
+			RedirectAttributes redirectAttributes) {
 		LOG.info("get mansion/questionpage/" + index);
 
 		// Repo repo = (Repo) model.asMap().get("repo");
@@ -123,16 +123,22 @@ public class HomeController implements Serializable {
 					}
 				}
 
-				model.addAttribute("results", rlw);
-				model.addAttribute("correctValues", new CorrectValueWrapper(cv));
-				
-				nav = "questionRenderer";
+				redirectAttributes.addFlashAttribute("results", rlw);
+				redirectAttributes.addFlashAttribute("correctValues", new CorrectValueWrapper(cv));
+
+				// redirectAttributes.addFlashAttribute("basepath", "quiz");
+				redirectAttributes.addFlashAttribute("renderTemplate", "questionRenderer");
+
+				nav = "redirect:/content";
 				break;
 			case INCLUDE:
-				model.addAttribute("media_index", media);
-				model.addAttribute("return_index", index);
+				redirectAttributes.addFlashAttribute("media_index", media);
+				redirectAttributes.addFlashAttribute("return_index", index);
 
-				nav = "questionInclude";
+				// redirectAttributes.addFlashAttribute("basepath", "include");
+				redirectAttributes.addFlashAttribute("renderTemplate", "questionInclude");
+
+				nav = "redirect:/content";
 				break;
 			case IMAGE:
 			case REVIEW:
@@ -144,20 +150,20 @@ public class HomeController implements Serializable {
 		return nav;
 	}
 
-	@RequestMapping(value = "mansion/questionpage/{index}", method = RequestMethod.POST)
+	@RequestMapping(value = "results", method = RequestMethod.POST)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String questionPagePOST(@PathVariable int index,
+	public String questionPagePOST(
 			@ModelAttribute() Repo repo,
 			// @ModelAttribute() CorrectValueWrapper correctValues,
 			@ModelAttribute() ResultListWrapper results, Model model) {
-		LOG.info("POST  mansion/questionpage/" + index);
+		LOG.info("POST results");
 
 		// Repo repo = (Repo) model.asMap().get("repo");
-		CorrectValueWrapper correctValues = (CorrectValueWrapper) model.asMap().get(
-				"correctValues");
+		CorrectValueWrapper correctValues = (CorrectValueWrapper) model.asMap()
+				.get("correctValues");
 
 		repo.increment();
-		
+
 		List<List<TaskItem>> rl = correctValues.getValues();
 		int i = 0;
 		for (List<String> u : results.getResultList()) {
@@ -193,24 +199,24 @@ public class HomeController implements Serializable {
 
 		int sum_score = 0;
 		boolean sum_comp = true;
-		
+
 		for (List<TaskItem> u : correctValues.getValues()) {
 			int score = 0;
 			boolean isCompleteSolved = true;
-			
+
 			for (TaskItem v : u) {
 				if (v.validate()) {
-					score += v.getScore(); 
+					score += v.getScore();
 				} else {
 					isCompleteSolved = false;
 				}
-				
+
 				// System.out.println(i + ": " + v);
 			}
 
 			SimpleState state = rqi.get(i).getState();
 			state.setScore(score);
-			
+
 			if (isCompleteSolved) {
 				state.setSolved(SOLVED.CORRECT);
 			} else {
@@ -219,15 +225,15 @@ public class HomeController implements Serializable {
 
 			sum_score += score;
 			sum_comp &= isCompleteSolved;
-			
+
 			// System.out.println("State: " + state);
 			rqi.get(i).setTaskitemlist(u);
 			i++;
 		}
-		
+
 		SimpleState g_state = repo.getGroupItem().getState();
 		g_state.setScore(sum_score);
-		
+
 		if (sum_comp) {
 			g_state.setSolved(SOLVED.CORRECT);
 		} else {
@@ -239,12 +245,18 @@ public class HomeController implements Serializable {
 
 	@RequestMapping(value = "mansion/review", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
-	public String reviewPage(
-			@ModelAttribute() Repo repo,
-			Model model) {
+	public String reviewPage(@ModelAttribute() Repo repo, Model model) {
 		LOG.info("GET mansion/review");
 
 		return "questionResults";
+	}
+
+	@RequestMapping(value = "content")
+	@ResponseStatus(value = HttpStatus.OK)
+	public String contentRenderPage(Model model) {
+		LOG.info("GET  content -> " + (String)model.asMap().get("renderTemplate"));
+
+		return (String)model.asMap().get("renderTemplate");
 	}
 	// ----------------------------------------------------------------------------
 	/*
@@ -276,6 +288,5 @@ public class HomeController implements Serializable {
 	 * 
 	 * return new Feedback(q.getState().getCorrect()); }
 	 */
-	
-}
 
+}
