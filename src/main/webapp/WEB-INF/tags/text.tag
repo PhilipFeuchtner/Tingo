@@ -2,6 +2,7 @@
 
 <%@ attribute name="questionid" required="true"%>
 <%@ attribute name="response" required="false"%>
+<%@ attribute name="size" required="false"%>
 <%@ attribute name="correct" required="true"%>
 <%@ attribute name="placeholder" required="false"%>
 <%@ attribute name="score" required="false" type="java.lang.Integer"%>
@@ -13,13 +14,18 @@
 <%
 	String placeh = placeholder == null ? "" : placeholder;
 	Integer scoreValue = score == null ? 1 : score;
+	String sizeClass = "form-control";
+	if (size != null) {
+		sizeClass = "tingo-" + size;
+	}
 %>
 
 
 
-		<form:input path="resultList[${counter_question}][${counter_task}]"
-			type="text" class="input-lg" placeholder="<%= placeh %>" />
-	
+	<form:input path="resultList[${counter_question}][${counter_task}]"
+		type="text" class="<%= sizeClass %>"
+		placeholder="<%= placeh %>" />
+
 
 
 <c:set var="sc" value="<%=scoreValue%>" />
