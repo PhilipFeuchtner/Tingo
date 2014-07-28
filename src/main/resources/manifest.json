@@ -73,48 +73,37 @@
 		    ],
 		    "questionitemlist" : [
 			{ 
-			    "file" : "cap01.jsp",
-			    "title": "Title"
+			    "file" : "cap01.jsp"
 			},
 			{ 
-			    "file" : "cap02.jsp",
-			    "title": "Title"
+			    "file" : "cap02.jsp"
 			},
 			{ 
-			    "file" : "cap03.jsp",
-			    "title": "Title"
+			    "file" : "cap03.jsp"
 			},
 			{ 
-			    "file" : "cap04.jsp",
-			    "title": "Title"
+			    "file" : "cap04.jsp"
 			},
 			{ 
-			    "file" : "cap05.jsp",
-			    "title": "Title"
+			    "file" : "cap05.jsp"
 			},
 			{ 
-			    "file" : "cap06.jsp",
-			    "title": "Title"
+			    "file" : "cap06.jsp"
 			},
 			{ 
-			    "file" : "cap07.jsp",
-			    "title": "Title"
+			    "file" : "cap07.jsp"
 			},
 			{ 
-			    "file" : "cap08.jsp",
-			    "title": "Title"
+			    "file" : "cap08.jsp"
 			},
 			{ 
-			    "file" : "cap09.jsp",
-			    "title": "Title"
+			    "file" : "cap09.jsp"
 			},
 			{ 
-			    "file" : "cap10.jsp",
-			    "title": "Title"
+			    "file" : "cap10.jsp"
 			},
 			{ 
-			    "file" : "cap11.jsp",
-			    "title": "Title"
+			    "file" : "cap11.jsp"
 			}
 		    ]
 		},
