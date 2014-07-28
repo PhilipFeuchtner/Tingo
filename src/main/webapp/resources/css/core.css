@@ -47,11 +47,18 @@ body {
 	
 }
 
+/*
 .form-control {
-    width:100px;
+     width:100px;
     display:inline;
-}
+} */
 
+.input-letter {
+    width: 1.5em;
+    padding-right: 0px;
+    text-align: right;
+    /* display: inline; */
+}
 .tingo-green-item {
     background-color: #A5FF8A;
 }

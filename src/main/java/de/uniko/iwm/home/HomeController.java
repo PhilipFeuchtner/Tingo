@@ -175,6 +175,7 @@ public class HomeController implements Serializable {
 
 					switch (ti.get(j).getType()) {
 					case TEXT:
+					case LETTER:
 						ti.get(j).setUserinput(v);
 						break;
 					case RADIO:

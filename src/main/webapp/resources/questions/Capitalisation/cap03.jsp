@@ -10,12 +10,12 @@
 
 <p>
 When Ingo heard about all his teacher's adventures, he decided that when he was older he would go abroad, too. He ordered a number of brochures fromÂ   
-<tingo:text questionid="q1" correct="u" placeholder="u" score="1"/>niversities 
+<tingo:letter questionid="q1" correct="u" placeholder="u" score="1"/>niversities 
 abroad, among them   
-<tingo:text questionid="q1" correct="H" placeholder="H" score="1"/>arvard 
+<tingo:letter questionid="q1" correct="H" placeholder="H" score="1"/>arvard 
 and the
-<tingo:text questionid="q1" correct="U" placeholder="U" score="1"/>niversity
-<tingo:text questionid="q1" correct="o" placeholder="o" score="1"/>f Koblenz-Landau.
+<tingo:letter questionid="q1" correct="U" placeholder="U" score="1"/>niversity
+<tingo:letter questionid="q1" correct="o" placeholder="o" score="1"/>f Koblenz-Landau.
 
 </p>
 

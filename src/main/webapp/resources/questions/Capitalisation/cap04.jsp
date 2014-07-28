@@ -10,11 +10,11 @@
 
 <p>
 After studying, he planned to work either for
-<tingo:text questionid="q1" correct="A" placeholder="A" score="1"/>mnesty   
-<tingo:text questionid="q1" correct="I" placeholder="I" score="1"/>nternational or to help organize a   
-<tingo:text questionid="q1" correct="S" placeholder="S" score="1"/>occer
-<tingo:text questionid="q1" correct="W" placeholder="W" score="1"/>orld   
-<tingo:text questionid="q1" correct="C" placeholder="C" score="1"/>up on his home island.
+<tingo:letter questionid="q1" correct="A" placeholder="A" score="1"/>mnesty   
+<tingo:letter questionid="q1" correct="I" placeholder="I" score="1"/>nternational or to help organize a   
+<tingo:letter questionid="q1" correct="S" placeholder="S" score="1"/>occer
+<tingo:letter questionid="q1" correct="W" placeholder="W" score="1"/>orld   
+<tingo:letter questionid="q1" correct="C" placeholder="C" score="1"/>up on his home island.
 
 </p>
 
