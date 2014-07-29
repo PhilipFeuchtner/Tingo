@@ -55,6 +55,10 @@ body {
     display:inline;
 } */
 
+.tingo-input {
+   text-align:center;
+}
+
 .input-letter {
     width: 1.5em;
     padding-right: 0px;

@@ -15,8 +15,8 @@
 	Integer	scoreValue = score == null ? 1 : score;
 %>
 
-<form:input path="resultList[${counter_question}][${counter_task}]" type="text" class="input-letter"
-	placeholder="<%= placeh %>" />
+<form:input path="resultList[${counter_question}][${counter_task}]" type="text" class="input-letter tingo-input"
+	placeholder="<%= placeh %>" maxlength="1" />
 	
 <c:set var="sc" value="<%= scoreValue %>" />
 <!-- ${correctValues.addTask(correct,sc,3)} -->
