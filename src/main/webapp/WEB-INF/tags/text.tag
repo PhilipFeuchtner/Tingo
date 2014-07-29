@@ -14,17 +14,17 @@
 <%
 	String placeh = placeholder == null ? "" : placeholder;
 	Integer scoreValue = score == null ? 1 : score;
-	String sizeClass = "form-control ";
+	String sizeClass = "form-control";
 	if (size != null) {
-		sizeClass = "tingo-" + size + " ";
+		sizeClass = "tingo-" + size;
 	}
 %>
 
 
 
 	<form:input path="resultList[${counter_question}][${counter_task}]"
-		type="text" class="<%= sizeClass %>"
-		placeholder="<%= placeh %>tingo-input" />
+		type="text" class="<%= sizeClass %> tingo-input"
+		placeholder="<%= placeh %>" />
 
 
 
