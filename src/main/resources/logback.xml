@@ -14,6 +14,12 @@
 	<root level="WARN">
 		<appender-ref ref="STDOUT" />
 	</root>
+	
+	  <!-- Apache Tiles -->
+    <logger name="org.apache.tiles">
+        <level value="ALL" />
+    </logger>
+	
 
 	<logger name="de.uniko.iwm" level="ALL" />
 </configuration>

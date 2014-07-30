@@ -45,7 +45,11 @@
                 <s:message code="${message.message}" arguments="${message.args}" text="${message.message}" />
             </div>
         </c:if>
-		<tiles:insertAttribute name="body" defaultValue="" />
+        
+        <!-- before body -->
+ 		<tiles:insertAttribute name="body" defaultValue="" /> 
+		<!-- after -->
+		
 	</div>
 	<!-- End of page content -->
 	<tiles:insertAttribute name="footer"  defaultValue="" />

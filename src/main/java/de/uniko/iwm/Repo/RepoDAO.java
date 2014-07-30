@@ -5,22 +5,26 @@ import java.io.IOException;
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Component;
 
-public class Init {
+@Component
+public class RepoDAO {
 
-	private Resource file;
+	// @Value("classpath:manifest.json")
+	private Resource manifestFile;
 	
-	public Init(Resource file) {
-			this.file = file;
-	}
-
-	public Repo getParse() {
-
+	private Repo repo;
+	
+	public RepoDAO() {
+		manifestFile = new ClassPathResource("manifest.json");
+		
 		ObjectMapper mapper = new ObjectMapper();
 
 		try {
-			return mapper.readValue(file.getFile(), Repo.class);
+			repo = mapper.readValue(manifestFile.getFile(), Repo.class);
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
@@ -29,6 +33,10 @@ public class Init {
 			e.printStackTrace();
 		}
 		
-		return null;
+		repo = null;		
+	}
+
+	public Repo getRepo() {
+		return repo;
 	}
 }

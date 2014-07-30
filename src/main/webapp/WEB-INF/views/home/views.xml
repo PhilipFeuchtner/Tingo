@@ -46,6 +46,6 @@
 
 	<definition name="questionDispatcher" extends="default">
 		<put-attribute name="body"
-			value="/WEB-INF/views/home/questionDispatcher.jsp"></put-attribute>
+			value="/WEB-INF/views/home/mansion.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
