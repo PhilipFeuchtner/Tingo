@@ -1,10 +1,11 @@
 package de.uniko.iwm.Repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Repo {
 
-	private List<Section> sectionlist;
+	private List<Section> sectionlist = new ArrayList<Section>();
 	private Navigation navigation;
 
 	public Repo() {

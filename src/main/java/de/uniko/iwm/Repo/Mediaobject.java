@@ -1,7 +1,7 @@
 package de.uniko.iwm.Repo;
 
 public class Mediaobject {
-	String label, link;
+	String label, link, index;
 	
 	public Mediaobject() {
 		
@@ -23,4 +23,11 @@ public class Mediaobject {
 		this.link = link;
 	}
 	
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
 }

@@ -7,13 +7,12 @@ public class QuestionItem {
 
 	private String file;
 	private String title;
-	private SimpleState state;
+	private SimpleState state = new SimpleState();;
+	private String index;
 	
-	private List<TaskItem> taskitemlist;
+	private List<TaskItem> taskitemlist = new ArrayList<TaskItem>();
 	
 	public QuestionItem() {
-		 taskitemlist = new ArrayList<TaskItem>();
-		 state = new SimpleState();
 	}
 
 	public List<TaskItem> getTaskitemlist() {
@@ -46,5 +45,13 @@ public class QuestionItem {
 
 	public void setState(SimpleState state) {
 		this.state = state;
+	}
+	
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
 	}
 }

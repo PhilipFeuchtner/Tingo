@@ -24,6 +24,8 @@ public class TaskItem implements Serializable {
 	private TYPE type;
 	private boolean valid;
 
+	// private String index;
+
 	public TaskItem() {
 		// System.out.println("Task created.");
 	}
@@ -73,9 +75,9 @@ public class TaskItem implements Serializable {
 			result = userinput.equals(correct);
 			break;
 		// case CHECK:
-		// 	result = (!userinput.isEmpty() && !correct.isEmpty())
-		// 			|| (userinput.isEmpty() && correct.isEmpty());
-		// 	break;
+		// result = (!userinput.isEmpty() && !correct.isEmpty())
+		// || (userinput.isEmpty() && correct.isEmpty());
+		// break;
 		default:
 			LOG.error("unknown type: " + type);
 			result = false;
@@ -129,9 +131,18 @@ public class TaskItem implements Serializable {
 		this.valid = valid;
 	}
 
+	// public String getIndex() {
+	// return index;
+	// }
+	//
+	// public void setIndex(String index) {
+	// this.index = index;
+	// }
+
 	@Override
 	public String toString() {
-		return "TaskItem [" + userinput + ", " + correct + ", " + score + ", "
+		return "TaskItem [" +
+		/* index + ", " + */userinput + ", " + correct + ", " + score + ", "
 				+ type + ", " + valid + "]";
 	}
 }

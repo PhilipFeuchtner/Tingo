@@ -1,15 +1,17 @@
 package de.uniko.iwm.Repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GroupItem {
 
-	private List<QuestionItem> questionitemlist;
-	private List<Mediaobject> media;
+	private List<QuestionItem> questionitemlist = new ArrayList<QuestionItem>();
+	private List<Mediaobject> media = new ArrayList<Mediaobject>();
 	private String base;
 	private String title;
 	private String image;
 	private SimpleState state;
+	private String index;
 	
 	public GroupItem() {
 		state = new SimpleState();
@@ -61,5 +63,13 @@ public class GroupItem {
 
 	public void setState(SimpleState state) {
 		this.state = state;
+	}
+	
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
 	}
 }

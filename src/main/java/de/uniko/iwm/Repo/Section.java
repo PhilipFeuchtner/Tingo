@@ -1,12 +1,14 @@
 package de.uniko.iwm.Repo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Section {
 
-	private List<GroupItem> groupitemlist;
+	private List<GroupItem> groupitemlist = new ArrayList<GroupItem>();
 	private String title;
 	private String svgid;
+	private String index;
 	
 	public Section() {
 		
@@ -34,5 +36,13 @@ public class Section {
 
 	public void setSvgid(String svgid) {
 		this.svgid = svgid;
+	}
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
 	}
 }
