@@ -10,11 +10,11 @@
 
 <p>
 Back then, apart from reading travel guides, Ingo also very much enjoyed books like   
-<tingo:text questionid="q1" correct="W" placeholder="W" score="1"/>aiting   
-<tingo:text questionid="q1" correct="f" placeholder="f" score="1"/>or
-<tingo:text questionid="q1" correct="G" placeholder="G" score="1"/>odot, which is why his favourite subject one year later was   
-<tingo:text questionid="q1" correct="c" placeholder="c" score="1"/>reative
-<tingo:text questionid="q1" correct="w" placeholder="w" score="1"/>riting.
+<tingo:letter questionid="q1" correct="W" placeholder="W" score="1"/>aiting   
+<tingo:letter questionid="q1" correct="f" placeholder="f" score="1"/>or
+<tingo:letter questionid="q1" correct="G" placeholder="G" score="1"/>odot, which is why his favourite subject one year later was   
+<tingo:letter questionid="q1" correct="c" placeholder="c" score="1"/>reative
+<tingo:letter questionid="q1" correct="w" placeholder="w" score="1"/>riting.
 	
 </p>
 

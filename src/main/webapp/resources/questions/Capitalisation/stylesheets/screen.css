@@ -1,0 +1,220 @@
+body 
+{
+	background-image:url(../images/bg.jpg);
+  background-repeat: repeat;
+  text-align: center;
+}
+
+#print{
+  text-align: right;
+}
+
+#mydiv
+{
+  margin: 50px auto;
+  border-top:1pt solid #222; 
+	border-right:1pt solid #ddd;
+  border-bottom:1pt solid #ddd; 
+  border-left:1pt solid #222;
+  background-color: #fff;
+  width: 700px;
+	padding: 30px 60px 10px 60px;
+  text-align: left;
+}
+
+.print_icon{
+  border: 0px;
+}
+
+.star{
+  margin-top: 0px;
+  float: left;
+  border: 0px;
+}
+
+.vip {
+  margin-top: 38px;
+  font: 14px Arial;
+  color: #ff0000;
+}
+
+.copy {
+  padding-top: 25px;
+  font: 12px Arial;
+  text-align: right;
+  margin-left: 70px;
+}
+
+.capital {
+  margin-top: 0px;
+  font: 26px Arial;
+  color: #ff0000;
+  font-variant: small-caps;
+}
+
+.tableTop {
+  text-align: left;
+  border: 0px;
+  table-layout: fixed;
+  background-repeat: no-repeat;
+  background-position: top right;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.tdTopLeft {
+  width: 40%;
+  vertical-align: top;
+}
+
+.tdTopMiddle {
+  width: 25%;
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+  font-size: 14px;
+  color: #000055;
+}
+
+.tdTopRight {
+  width: 35%;
+  text-align: right;
+}
+
+.tdTopRight img {
+  border: 0px;
+}
+
+.tdBottomLeft {
+  width: 150px;
+}
+
+.tdBottomRight {
+  padding-top: 30px;
+  font-family: 'Comic Sans MS', cursive;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  width: 550px;
+  color: #000055;
+}
+
+.tingoSpeaks {
+  text-align: justify;
+  font: 11.0px Arial;
+  padding: 0px 0px 20px 200px;
+}
+
+.examples {
+  font: 12px Arial;
+  color: #ff0000;
+  text-align: left;
+  padding-top: 15px;
+}
+
+.examplesLi {
+  font: 12px Arial;
+  text-align: left;
+  margin-left:14.2px;
+}
+
+li {
+  margin-left: 14.2px;
+}
+
+.headingBlue {
+  font:14px Arial;
+  color:#0000ff;
+  margin-bottom:12px;
+  margin-top:0px;
+}
+
+.headingOrange {
+  font: 14px Arial;
+  color: #ff6600;
+  margin-bottom: 12px;
+}
+
+.headingGreen {
+  font: 14px Arial;
+  color: #009900;
+  margin-bottom: 12px;
+}
+
+.headingPurple {
+  font: 14px Arial;
+  color: #990099;
+  margin-bottom: 12px;
+}
+
+.liP{
+margin-top: 6px;
+font: 11.0px Arial;
+}
+
+.num{
+color: #ff7200;
+}
+
+.numP{
+margin: 12.0px 0.0px 0.0px 0.0px;
+text-align: justify;
+font: 12.0px Arial;
+color: #000;
+}
+
+.letter{
+color: #ff6600;
+}
+
+.letterP{
+margin: 6.0px 0.0px 6.0px 28.4px;
+text-indent: -15px;
+text-align: justify;
+font: 12.0px Arial;
+}
+
+.letterTextP{
+margin: 6.0px 0.0px 6.0px 28.4px;
+text-align: justify;
+font: 12.0px Arial;
+}
+
+.textP{
+font: 12px Arial;
+}
+
+.textNum, .numTextP{
+font:12px Arial;
+margin-left:14.2px;
+text-align: justify;
+}
+
+.textEnd{
+font:12px Arial;
+margin:6px 0px 0px 0px;
+}
+
+.tableNum{
+margin-left:14.2px;
+border-collapse: collapse;
+}
+
+.tableNum td{
+border: 1px solid #bfbfbf;
+min-width: 280px;
+height: 34.0px;
+padding: 0.0px 5.0px 0.0px 5.0px;
+}
+
+.tableLetter{
+margin-left:42.6px;
+border-collapse: collapse;
+}
+
+.tableLetter td{
+border: 1px solid #bfbfbf;
+min-width: 280px;
+height: 34.0px;
+padding: 0.0px 5.0px 0.0px 5.0px;
+}

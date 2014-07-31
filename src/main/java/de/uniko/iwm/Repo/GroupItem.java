@@ -6,6 +6,7 @@ public class GroupItem {
 
 	private List<QuestionItem> questionitemlist;
 	private List<Mediaobject> media;
+	private String base;
 	private String title;
 	private String image;
 	private SimpleState state;
@@ -30,6 +31,14 @@ public class GroupItem {
 		this.media = media;
 	}
 
+	public String getBase() {
+		return base;
+	}
+
+	public void setBase(String base) {
+		this.base = base;
+	}
+	
 	public String getTitle() {
 		return title;
 	}

@@ -8,16 +8,16 @@
 
 <h5>Which of the following are generally capitalized?</h5>
 <ul class="list-group">
+	<li class="list-group-item"><tingo:check questionid="q1" score="1"
+			label="languages" /></li>
 	<li class="list-group-item"><tingo:check questionid="q1"
-			score="1" /> languages</li>
+			correct="true" score="1" label="proper names of persons" /></li>
 	<li class="list-group-item"><tingo:check questionid="q1"
-			correct="true" score="1" /> proper names of persons</li>
-	<li class="list-group-item"><tingo:check questionid="q1"
-			correct="true" score="1" /> trade names</li>
-	<li class="list-group-item"><tingo:check questionid="q1"
-			score="1" /> verbs</li>
-	<li class="list-group-item"><tingo:check questionid="q1"
-			score="1" /> nouns</li>
+			correct="true" score="1" label="trade names" /></li>
+	<li class="list-group-item"><tingo:check questionid="q1" score="1"
+			label="verbs" /></li>
+	<li class="list-group-item"><tingo:check questionid="q1" score="1"
+			label="nouns" /></li>
 </ul>
 
 

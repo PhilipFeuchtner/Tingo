@@ -5,8 +5,8 @@
 
 <p>Ned Stark</p>
 <p>
-	<tingo:text questionid="q3" placeholder="Winter" correct="Winter" />
+	<tingo:text questionid="q3" placeholder="Winter" correct="Winter" size="small"/>
 	is
-	<tingo:text questionid="q3" placeholder="comming" correct="comming" />
+	<tingo:text questionid="q3" placeholder="comming" correct="comming" size="small"/>
 	.
 </p>

@@ -47,10 +47,40 @@ body {
 	
 }
 
+/* ----------------------------------------- */
+
+/*
 .form-control {
-    width:100px;
+     width:100px;
     display:inline;
+} */
+
+.tingo-input {
+   text-align:center;
 }
+
+.input-letter {
+    width: 1.5em;
+    padding-right: 0px;
+    text-align: right;
+    /* display: inline; */
+}
+
+.tingo-small {
+	width: 8em;
+	display: inline;
+}
+
+.tingo-medium {
+	width: 12em;
+	display: inline;
+}
+
+.tingo-large {
+	width: 24em;
+	display: inline;
+}
+/* ----------------------------------------- */
 
 .tingo-green-item {
     background-color: #A5FF8A;

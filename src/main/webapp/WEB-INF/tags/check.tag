@@ -2,6 +2,7 @@
 
 <%@ attribute name="questionid" required="true"%>
 <%@ attribute name="correct" required="false" type="java.lang.Boolean"%>
+<%@ attribute name="label" required="true"%>
 <%@ attribute name="style" required="false"%>
 <%@ attribute name="score" required="false" type="java.lang.Integer"%>
 
@@ -13,8 +14,9 @@
 	boolean correctValue = correct != null && correct;
 %>
 
-<form:checkbox class="form-control"
+<form:checkbox id="check-${counter_question}-${counter_task}" class="form-control"
 	path="resultList[${counter_question}]" value="${counter_task}" />
+<label for="check-${counter_question}-${counter_task}"><%=label%></label>
 
 <c:set var="sc" value="<%=scoreValue%>" />
 

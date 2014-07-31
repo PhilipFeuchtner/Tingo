@@ -17,10 +17,11 @@
 	    "groupitemlist" : [
 		{ 
 		    "title": "Games of Thrones",
-		    "image": "got/game_of_thrones.png",
+		    "base": "got",
+		    "image": "game_of_thrones.png",
 		    "questionitemlist" : [
 			{ 
-			    "file" : "got/quotes01.jsp",
+			    "file" : "quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
 				{ "userinput": "Ygritte",
@@ -29,7 +30,7 @@
 			    ]
 			},
 			{ 
-			    "file" : "got/quotes02.jsp",
+			    "file" : "quotes02.jsp",
 			    "title": "Games of Thrones II",
 			    "taskitemlist" : [
 				{ "correct" : "C" },
@@ -37,7 +38,7 @@
 			    ]
 			},
 			{ 
-			    "file" : "got/quotes03.jsp",
+			    "file" : "quotes03.jsp",
 			    "title": "Games of Thrones III",
 			    "taskitemlist" : [
 				{ "correct" : "E" },
@@ -45,7 +46,7 @@
 			    ]
 			},
 			{ 
-			    "file" : "got/quotes04.jsp",
+			    "file" : "quotes04.jsp",
 			    "title": "Games of Thrones IV",
 			    "taskitemlist" : [
 				{ "userinput": "winter" },
@@ -58,61 +59,51 @@
 
 		{ 
 		    "title": "Capitalisation Calendar",
-		    "image": "Capitalisation/calendar_1.png",
+		    "base": "Capitalisation",
+		    "image": "calendar_1.png",
 		    "media": [
 			{
 			    "label": "Vip-Info",
-			    "link": "Capitalisation/capitalisation.html"
+			    "link": "capitalisation.html"
 			},
 						{
 			    "label": "Vip-Info II",
-			    "link": "Capitalisation/capitalisation.html"
+			    "link": "capitalisation.html"
 			}
 		    ],
 		    "questionitemlist" : [
 			{ 
-			    "file" : "Capitalisation/cap01.jsp",
-			    "title": "Title"
+			    "file" : "cap01.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap02.jsp",
-			    "title": "Title"
+			    "file" : "cap02.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap03.jsp",
-			    "title": "Title"
+			    "file" : "cap03.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap04.jsp",
-			    "title": "Title"
+			    "file" : "cap04.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap05.jsp",
-			    "title": "Title"
+			    "file" : "cap05.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap06.jsp",
-			    "title": "Title"
+			    "file" : "cap06.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap07.jsp",
-			    "title": "Title"
+			    "file" : "cap07.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap08.jsp",
-			    "title": "Title"
+			    "file" : "cap08.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap09.jsp",
-			    "title": "Title"
+			    "file" : "cap09.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap10.jsp",
-			    "title": "Title"
+			    "file" : "cap10.jsp"
 			},
 			{ 
-			    "file" : "Capitalisation/cap11.jsp",
-			    "title": "Title"
+			    "file" : "cap11.jsp"
 			}
 		    ]
 		},
@@ -122,7 +113,7 @@
 		    "title": "Cars & Busses",
 		    "questionitemlist" : [
 			{ 
-			    "file" : "got/quotes01.jsp",
+			    "file" : "quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
 				{ "correct" : "I" },
@@ -136,7 +127,7 @@
 		    "title": "Birds",
 		    "questionitemlist" : [
 			{ 
-			    "file" : "got/quotes01.jsp",
+			    "file" : "quotes01.jsp",
 			    "title": "Games of Thrones I",
 			    "taskitemlist" : [
 				{ "correct" : "K" },

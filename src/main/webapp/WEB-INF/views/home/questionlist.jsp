@@ -35,23 +35,26 @@
 				</c:url>
 
 				<c:if test="${not empty q.media}">
-					<c:forEach var="m" items="${q.media}">
-						<a
-							href="${pageContext.request.contextPath}/resources/questions/${m.link}"
-							class="list-group-item list-group-item-info"><span
+					<c:forEach var="m" items="${q.media}" varStatus="mIndex">
+						<c:url var="mUrl" value="${base}">
+							<c:param name="state" value="INCLUDE" />
+							<c:param name="media" value="${mIndex.index}" />
+						</c:url>
+
+						<a href="${mUrl}" class="list-group-item list-group-item-info"><span
 							class="glyphicon glyphicon-paperclip"></span> <c:out
 								value="${m.label}" /></a>
 					</c:forEach>
 				</c:if>
+
+				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
+					class="glyphicon glyphicon-arrow-right"></span> Start Quiz</a>
 
 				<c:if test="${q.state.count != 0}">
 					<a href="${pageContext.request.contextPath}/mansion/review"
 						class="list-group-item list-group-item-info"><span
 						class="glyphicon glyphicon-info-sign"></span> Review Results</a>
 				</c:if>
-
-				<a href="${quizUrl}" class="list-group-item list-group-item-info"><span
-					class="glyphicon glyphicon-arrow-right"></span> Start Quiz</a>
 
 				<c:set var="imagepanel" value="${q.image}" scope="request" />
 

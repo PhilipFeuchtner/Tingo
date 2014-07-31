@@ -17,7 +17,7 @@
 		<c:choose>
 			<c:when test="${not empty imagepanel}">
 				<img
-					src="${pageContext.request.contextPath}/resources/questions/${imagepanel}"
+					src="${pageContext.request.contextPath}/resources/questions/${repo.groupItem.base}/${imagepanel}"
 					class="img-responsive" alt="Responsive image">
 			</c:when>
 			<c:otherwise>

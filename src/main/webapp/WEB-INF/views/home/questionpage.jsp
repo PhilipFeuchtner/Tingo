@@ -17,13 +17,12 @@
 	<div id="Tingo-Feedback"></div>
 
 	<div class="panel-body">
-		<form:form method="post" modelAttribute="results">
+		<c:url var="targetUrl" value="/results" />
+		<form:form method="post" action="${targetUrl}" modelAttribute="results">
 
 			<c:set var="counter_question" value="0" scope="request" />
 
-			<c:forEach var="q"
-				items="${repo.questions}"
-				varStatus="status">
+			<c:forEach var="q" items="${repo.questions}" varStatus="status">
 
 				<%--
 						<div class="page-header">
@@ -38,7 +37,7 @@
 
 				<div class="well">
 					<%-- 							<h4>${q.title}</h4> --%>
-					<jsp:include page="/resources/questions/${q.file}" />
+					<jsp:include page="/resources/questions/${repo.groupItem.base}/${q.file}" />
 				</div>
 
 				<!-- ${results.addQuestion()} -->

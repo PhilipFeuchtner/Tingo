@@ -16,7 +16,7 @@ public class TaskItem implements Serializable {
 	private static final Logger LOG = LoggerFactory.getLogger(TaskItem.class);
 
 	public enum TYPE {
-		TEXT, RADIO, CHECK
+		TEXT, RADIO, CHECK, LETTER
 	};
 
 	private String correct = "", userinput = "";
@@ -50,6 +50,9 @@ public class TaskItem implements Serializable {
 		case 2:
 			this.type = TYPE.CHECK;
 			break;
+		case 3:
+			this.type = TYPE.LETTER;
+			break;
 		default:
 			LOG.error("unknown type: " + type);
 		}
@@ -66,6 +69,7 @@ public class TaskItem implements Serializable {
 		case TEXT:
 		case RADIO:
 		case CHECK:
+		case LETTER:
 			result = userinput.equals(correct);
 			break;
 		// case CHECK:
