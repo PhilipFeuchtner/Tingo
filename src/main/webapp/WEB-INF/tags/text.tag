@@ -25,8 +25,8 @@
 <form:input path="resultList[${counter_question}][${counter_task}]"
 	type="text" class="${sc} tingo-input" placeholder="<%= placeh %>" />
 
-<c:set var="sc" value="<%=scoreValue%>" />
-<!-- ${correctValues.addTask(correct,sc,0)} -->
+<c:set var="sv" value="<%=scoreValue%>" />
+<!-- ${correctValues.addTask(correct,sv,0)} -->
 
 <c:set var="i" value="${1+i}" scope="request" />
 <c:set var="counter_task" value="${counter_task+1}" scope="request" />
