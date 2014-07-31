@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import de.uniko.iwm.Repo.Init;
+import de.uniko.iwm.Repo.RepoDAO;
 import de.uniko.iwm.Repo.Navigation;
 import de.uniko.iwm.Repo.QuestionItem;
 import de.uniko.iwm.Repo.Repo;
@@ -53,15 +53,14 @@ public class HomeController implements Serializable {
 	public enum STATE {
 		IMAGE, QUIZ, REVIEW, INCLUDE
 	};
-
-	@Value("classpath:manifest.json")
-	private Resource manifestFile;
+	
+	@Autowired
+	RepoDAO repoDAO;
 
 	@ModelAttribute("repo")
 	public Repo repo() {
 		LOG.info("new reop.");
-		Init i = new Init(manifestFile);
-		return i.getParse();
+		return repoDAO.getRepo();
 	}
 
 	@ModelAttribute("correctValues")
