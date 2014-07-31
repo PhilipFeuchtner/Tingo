@@ -20,13 +20,10 @@
 	}
 %>
 
+<c:set var="sc" value="<%=sizeClass%>" />
 
-
-	<form:input path="resultList[${counter_question}][${counter_task}]"
-		type="text" class="<%= sizeClass %> tingo-input"
-		placeholder="<%= placeh %>" />
-
-
+<form:input path="resultList[${counter_question}][${counter_task}]"
+	type="text" class="${sc} tingo-input" placeholder="<%= placeh %>" />
 
 <c:set var="sc" value="<%=scoreValue%>" />
 <!-- ${correctValues.addTask(correct,sc,0)} -->
