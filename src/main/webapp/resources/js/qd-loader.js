@@ -18,14 +18,15 @@ window.onload = function() {
 		// ----------------------------- //
 		// demo: annimation
 
-		var del = gr.select("#attic_toolbox");
+		var del = gr.select("#attic_toolbox"),clone = del.clone();
 		
 		var myMatrix = new Snap.Matrix();
 		myMatrix.scale(0.25,0.25);		// play with scaling before and after the rotate 
 		myMatrix.translate(1800,1800);  
 		myMatrix.translate(500,0);  
 
-		del.animate({ transform: myMatrix },3000);
+		clone.animate({ transform: myMatrix },3000);
+		del.animate({opacity : 0.2}, 1000);
 
 		// ----------------------------- //
 
