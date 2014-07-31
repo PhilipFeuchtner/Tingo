@@ -14,10 +14,22 @@
    height="114.84375"
    id="svg3134"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.48.5 r10040"
    sodipodi:docname="demo.svg">
   <defs
      id="defs3136">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3999">
+      <stop
+         style="stop-color:#999999;stop-opacity:1;"
+         offset="0"
+         id="stop4001" />
+      <stop
+         style="stop-color:#999999;stop-opacity:0;"
+         offset="1"
+         id="stop4003" />
+    </linearGradient>
     <linearGradient
        inkscape:collect="always"
        xlink:href="#SVGID_1_"
@@ -565,6 +577,27 @@
          style="stop-color:#000000"
          id="stop186" />
     </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3999"
+       id="linearGradient4005"
+       x1="272.16666"
+       y1="58.018834"
+       x2="341.83332"
+       y2="58.018834"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter4007"
+       x="-0.260896"
+       width="1.521792"
+       y="-0.15900763"
+       height="1.3180153">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="7.4645242"
+         id="feGaussianBlur4009" />
+    </filter>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -574,7 +607,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.5"
-     inkscape:cx="287.74412"
+     inkscape:cx="170.74412"
      inkscape:cy="31.000396"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -584,9 +617,9 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1110"
-     inkscape:window-height="645"
-     inkscape:window-x="2011"
-     inkscape:window-y="247"
+     inkscape:window-height="884"
+     inkscape:window-x="1429"
+     inkscape:window-y="109"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata3139">
@@ -1350,7 +1383,7 @@
          style="fill:none;stroke:#333333;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3" />
     </g>
     <rect
-       style="fill:#999999;fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       style="fill:url(#linearGradient4005);fill-opacity:1;stroke:#000000;stroke-opacity:1;opacity:0.20000000000000001;filter:url(#filter4007)"
        id="object_dump"
        width="68.666664"
        height="112.66666"

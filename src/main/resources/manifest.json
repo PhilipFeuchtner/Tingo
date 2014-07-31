@@ -13,7 +13,7 @@
 	},
 	{
  	    "title": "Demosection",
-	    "svgid": "medic",
+	    "svgid": "chapter_calendar",
 	    "groupitemlist" : [
 		{ 
 		    "title": "Games of Thrones",
@@ -141,7 +141,7 @@
 	},
 	{ 
 	    "title": "Section 2: Music",
-	    "svgid": "music"
+	    "svgid": "attic_toolbox"
 	},
 	{ 
 	    "title": "Section 3: Games",

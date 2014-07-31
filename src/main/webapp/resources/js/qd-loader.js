@@ -11,16 +11,21 @@ window.onload = function() {
 
 	Snap.load("resources/img/demo.svg", function(f) {
 
-		var top = g.g(), gr = f.select("#svg3134-x");
+		var top = g.g(), gr = f.select("#svg3134");
 
 		top.add(gr);
-	});
-	
-	Snap.load("resources/img/simple.svg", function(f) {
 
-		var top = g.g(), gr = f.select("#simple");
+		// ----------------------------- //
+		// demo: annimation
 
-		top.add(gr);
+		var del = gr.select("#attic_toolbox");
+		
+		var myMatrix = new Snap.Matrix();
+		myMatrix.scale(0.25,0.25);		// play with scaling before and after the rotate 
+		myMatrix.translate(1800,1800);  
+		myMatrix.translate(500,0);  
+
+		del.animate({ transform: myMatrix },3000);
 
 		// ----------------------------- //
 
