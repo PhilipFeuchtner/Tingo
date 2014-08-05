@@ -19,6 +19,38 @@
   <defs
      id="defs3136">
     <linearGradient
+       id="linearGradient4010"
+       gradientUnits="userSpaceOnUse"
+       x1="0.5747"
+       y1="19.637699"
+       x2="0.5747"
+       y2="29.4627">
+      <stop
+         offset="0"
+         style="stop-color:#CB841B"
+         id="stop4012" />
+      <stop
+         id="stop4022"
+         style="stop-color:#dea860;stop-opacity:1;"
+         offset="0.12745" />
+      <stop
+         offset="0.2549"
+         style="stop-color:#F2CCA6"
+         id="stop4014" />
+      <stop
+         offset="0.4863"
+         style="stop-color:#CCDD33"
+         id="stop4016" />
+      <stop
+         offset="0.7451"
+         style="stop-color:#EEC86F"
+         id="stop4018" />
+      <stop
+         offset="1"
+         style="stop-color:#C59118"
+         id="stop4020" />
+    </linearGradient>
+    <linearGradient
        inkscape:collect="always"
        id="linearGradient3999">
       <stop
@@ -598,6 +630,17 @@
          stdDeviation="7.4645242"
          id="feGaussianBlur4009" />
     </filter>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4010"
+       id="radialGradient4008"
+       cx="270.66669"
+       cy="57.843754"
+       fx="270.66669"
+       fy="57.843754"
+       r="3.8333333"
+       gradientTransform="matrix(0.00595185,0.99998229,-7.304348,0.04347518,691.56662,-215.33291)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -607,7 +650,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.5"
-     inkscape:cx="170.74412"
+     inkscape:cx="211.03169"
      inkscape:cy="31.000396"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -616,10 +659,10 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1110"
-     inkscape:window-height="884"
-     inkscape:window-x="1429"
-     inkscape:window-y="109"
+     inkscape:window-width="1022"
+     inkscape:window-height="728"
+     inkscape:window-x="1366"
+     inkscape:window-y="0"
      inkscape:window-maximized="0" />
   <metadata
      id="metadata3139">
@@ -1389,6 +1432,14 @@
        height="112.66666"
        x="272.66666"
        y="1.6855062"
+       transform="translate(280.0359,395.18549)" />
+    <rect
+       style="opacity:0.20000000000000001;fill:url(#radialGradient4008);fill-opacity:1;stroke:#000000;stroke-opacity:1"
+       id="rect3229"
+       width="6.6666665"
+       height="115.33334"
+       x="267.33334"
+       y="0.17708333"
        transform="translate(280.0359,395.18549)" />
   </g>
 </svg>

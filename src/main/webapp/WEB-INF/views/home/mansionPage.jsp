@@ -5,10 +5,12 @@
 
 <!-- <h2>QuestionDispatcher</h2> -->
 
+<c:set var="showDemo" value="false" />
 
 <div class="modal-body row">
 	<div class="col-md-3">
 		<div class="list-group">
+		
 			<c:forEach var="q" items="${repo.sectionlist}" varStatus="status">
 			
 				<c:url var="link" value="/mansion/questiondefault/${status.index}" />
@@ -23,6 +25,12 @@
 					<c:otherwise>
 						<c:set var="svgids" value="${svgids} ${q.svgid}" />
 					</c:otherwise>
+				</c:choose>
+				
+				<c:choose>
+					<c:when test="${q.state.solved == 'CORRECT'}">
+								<c:set var="showDemo" value="true" />
+					</c:when>
 				</c:choose>
 
 			</c:forEach>
@@ -45,7 +53,7 @@
 <script src="<c:url value="/resources/js/snap.svg-min.js" />"></script>
 <script type="text/javascript">
 	var contextPath = "${pageContext.request.contextPath}", svgids_string = "${svgids}", svgids = svgids_string
-			.split(" ");
+			.split(" "), showDemo = ${showDemo};
 	// console.log(contextPath);
 </script>
 <script src="<c:url value="/resources/js/qd-loader.js" />"></script>

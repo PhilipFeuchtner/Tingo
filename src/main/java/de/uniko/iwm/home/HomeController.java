@@ -239,6 +239,10 @@ public class HomeController implements Serializable {
 		} else {
 			g_state.setSolved(sum_score == 0 ? SOLVED.INCORRECT : SOLVED.PARTLY);
 		}
+		
+		if (g_state.getSolved() == SOLVED.PARTLY) {
+			repo.getSection().getState().setSolved(SOLVED.CORRECT);
+		}
 
 		return "questionDefault";
 	}

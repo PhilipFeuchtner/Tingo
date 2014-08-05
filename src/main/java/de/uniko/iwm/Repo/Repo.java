@@ -13,6 +13,10 @@ public class Repo {
 	}
 	
 	// -------------------- hepler -------------------------------
+	
+	public Section getSection() {
+		return sectionlist.get(navigation.getSection());
+	}
 
 	public List<GroupItem> getGroups() {
 		return sectionlist.get(navigation.getSection()).getGroupitemlist();

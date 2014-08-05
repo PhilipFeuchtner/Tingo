@@ -8,10 +8,11 @@ public class Section {
 	private List<GroupItem> groupitemlist = new ArrayList<GroupItem>();
 	private String title;
 	private String svgid;
+	private SimpleState state;
 	private String index;
 	
 	public Section() {
-		
+		state = new SimpleState();
 	}
 
 	public List<GroupItem> getGroupitemlist() {
@@ -36,6 +37,14 @@ public class Section {
 
 	public void setSvgid(String svgid) {
 		this.svgid = svgid;
+	}
+	
+	public SimpleState getState() {
+		return state;
+	}
+
+	public void setState(SimpleState state) {
+		this.state = state;
 	}
 
 	public String getIndex() {
