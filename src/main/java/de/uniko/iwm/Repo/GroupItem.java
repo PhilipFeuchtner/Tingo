@@ -7,9 +7,7 @@ public class GroupItem {
 
 	private List<QuestionItem> questionitemlist = new ArrayList<QuestionItem>();
 	private List<Mediaobject> media = new ArrayList<Mediaobject>();
-	private String base;
-	private String title;
-	private String image;
+	private String base, title, file, image;
 	private SimpleState state;
 	private String index;
 	
@@ -47,6 +45,14 @@ public class GroupItem {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getFile() {
+		return file;
+	}
+
+	public void setFile(String file) {
+		this.file = file;
 	}
 
 	public String getImage() {

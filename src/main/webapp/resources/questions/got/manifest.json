@@ -1,0 +1,42 @@
+{ 
+    "title": "Games of Thrones",
+    "base": "got",
+    "file": "manifest.json",
+    "image": "game_of_thrones.png",
+    "questionitemlist" : [
+	{ 
+	    "file" : "quotes01.jsp",
+	    "title": "Games of Thrones I",
+	    "taskitemlist" : [
+		{ "userinput": "Ygritte",
+		  "correct" : "A" },
+		{ "correct" : "B" }
+	    ]
+	},
+	{ 
+	    "file" : "quotes02.jsp",
+	    "title": "Games of Thrones II",
+	    "taskitemlist" : [
+		{ "correct" : "C" },
+		{ "correct" : "D" }
+	    ]
+	},
+	{ 
+	    "file" : "quotes03.jsp",
+	    "title": "Games of Thrones III",
+	    "taskitemlist" : [
+		{ "correct" : "E" },
+		{ "correct" : "F" }
+	    ]
+	},
+	{ 
+	    "file" : "quotes04.jsp",
+	    "title": "Games of Thrones IV",
+	    "taskitemlist" : [
+		{ "userinput": "winter" },
+		{ "userinput": "Winter" },
+		{ "userinput": "Winter" }
+	    ]
+	}
+    ]
+}

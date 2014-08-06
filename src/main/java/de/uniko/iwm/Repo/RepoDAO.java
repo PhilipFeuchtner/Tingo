@@ -17,6 +17,12 @@ public class RepoDAO {
 	@Value("classpath:manifest.json")
 	private Resource file;
 
+	@Value("/resources/questions/Capitalisation/manifest.json")
+	private Resource testfile;
+
+	@Value("/resources/questions/")
+	private String QUESTIONBASE;
+
 	private Repo repo;
 
 	public RepoDAO() {
@@ -30,48 +36,61 @@ public class RepoDAO {
 
 		try {
 			repo = mapper.readValue(file.getFile(), Repo.class);
-			
+
 			String index = "";
 			int i0 = 0;
-			for (Section s: repo.getSectionlist()) {
-				index = "" +i0;
+			for (Section s : repo.getSectionlist()) {
+				index = "" + i0;
 				s.setIndex(index);
-				
+
 				int i1 = 0;
-				for (GroupItem g: s.getGroupitemlist()) {
+				for (GroupItem g : s.getGroupitemlist()) {
 					index = i0 + "-" + i1;
 					g.setIndex(index);
-					
-					int i2 = 0;
-					for (Mediaobject m: g.getMedia()) {
-						index = i0 + "-" + i1 + "-" + i2;
-						m.setIndex(index);
-						
-						i2++;
-					}
-					
-					i2 = 0;
-					for(QuestionItem q: g.getQuestionitemlist()) {
-						index = i0 + "-" + i1 + "-" + i2;
-						q.setIndex(index);
-						
-//						int i3 =0;
-//						for(TaskItem t: q.getTaskitemlist()){
-//							index = i0 + "-" + i1 + "-" + i2 + "-" + i3;
-//							t.setIndex(index);
-//							
-//							i3++;
-//						}
-						
-						i2++;
+
+					try {
+						GroupItem item = mapper.readValue(testfile.getFile(),
+								GroupItem.class);
+						System.out.println(" ----> " + item.getTitle());
+
+						int i2 = 0;
+						for (Mediaobject m : g.getMedia()) {
+							index = i0 + "-" + i1 + "-" + i2;
+							m.setIndex(index);
+
+							i2++;
+						}
+
+						i2 = 0;
+						for (QuestionItem q : g.getQuestionitemlist()) {
+							index = i0 + "-" + i1 + "-" + i2;
+							q.setIndex(index);
+
+							// int i3 =0;
+							// for(TaskItem t: q.getTaskitemlist()){
+							// index = i0 + "-" + i1 + "-" + i2 + "-" + i3;
+							// t.setIndex(index);
+							//
+							// i3++;
+							// }
+
+							i2++;
+						}
+
+					} catch (JsonGenerationException e) {
+						e.printStackTrace();
+					} catch (JsonMappingException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
 					
 					i1++;
 				}
-				
+
 				i0++;
 			}
-			
+
 			return repo;
 		} catch (JsonGenerationException e) {
 			e.printStackTrace();

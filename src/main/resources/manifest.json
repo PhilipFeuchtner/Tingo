@@ -14,10 +14,11 @@
 	{
  	    "title": "Demosection",
 	    "svgid": "chapter_calendar",
-	    "groupitemlist" : [
+	    "groupitemlist" : [ 
 		{ 
 		    "title": "Games of Thrones",
 		    "base": "got",
+		    "file": "manifest.json",
 		    "image": "game_of_thrones.png",
 		    "questionitemlist" : [
 			{ 
@@ -60,6 +61,7 @@
 		{ 
 		    "title": "Capitalisation Calendar",
 		    "base": "Capitalisation",
+		    "file": "manifest.json",
 		    "image": "calendar_1.png",
 		    "media": [
 			{
