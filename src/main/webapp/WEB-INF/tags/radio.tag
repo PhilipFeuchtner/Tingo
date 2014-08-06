@@ -13,10 +13,15 @@
 	Integer scoreValue = score == null ? 1 : score;
 %>
 
-<form:radiobutton id="check-${counter_question}-${counter_task}"
-	class="form-control" path="resultList[${counter_question}][0]"
-	value="${counter_task}" />
-<label for="check-${counter_question}-${counter_task}"><%=label%></label>
+<div class="row">
+	<div class="col-sm-1">
+		<form:radiobutton id="check-${counter_question}-${counter_task}"
+			path="resultList[${counter_question}][0]" value="${counter_task}" />
+	</div>
+	<div class="col-sm-11">
+		<label for="check-${counter_question}-${counter_task}"><%=label%></label>
+	</div>
+</div>
 
 <c:set var="sc" value="<%=scoreValue%>" />
 <!-- ${counter_task == 0 ? correctValues.addTask(correct,sc,1) : ""} -->
