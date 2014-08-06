@@ -11,7 +11,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <head>
-<c:url var="baseUrl" value="/resources/questions/${repo.groupItem.base}/" />
+<c:url var="baseUrl"
+	value="/resources/questions/${repo.groupItem.base}/" />
 <%-- <base href="${pageContext.request.contextPath}/resources/questions/${repo.groupItem.base}/" /> --%>
 <base href="${baseUrl}" />
 </head>
@@ -20,7 +21,10 @@
 	<c:url var="back" value="/mansion/questionpage/${return_index}" />
 
 	<div class="well">
-		<a href="${back}"><span class="label label-default">Back</span></a>
+		<a href="${back}">
+			<button class="btn btn-primary btn-lg" type="button">Back
+				&larr;</button>
+		</a>
 	</div>
 
 
@@ -43,7 +47,10 @@
 	</div>
 
 	<div class="well">
-		<a href="${back}"><span class="label label-default">Back</span></a>
+		<a href="${back}">
+			<button class="btn btn-primary btn-lg" type="button">Back
+				&larr;</button>
+		</a>
 	</div>
 
 </body>

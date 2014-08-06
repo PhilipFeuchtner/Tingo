@@ -46,7 +46,8 @@
 
 			</c:forEach>
 
-			<form:button class="btn" type="submit">Submit</form:button>
+			<form:button class="btn btn-primary btn-lg" type="submit">Continue &rarr;</form:button>
+			
 
 		</form:form>
 	</div>

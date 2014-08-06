@@ -45,8 +45,9 @@
 
 <div class="well">
 	<form id="qd_form" action="mansion/ajax" method="get">
-		<button id="qd_submit" type="submit" class="btn btn-default">
-			Weiter &rarr;</button>
+<!-- 		<button id="qd_submit" type="submit" class="btn btn-default"> -->
+<!-- 			Weiter &rarr;</button> -->
+			 <button id="qd_submit" type="submit" class="btn btn-primary btn-lg">Continue &rarr;</button>
 	</form>
 </div>
 
