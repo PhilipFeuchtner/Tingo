@@ -1,0 +1,50 @@
+"title": "Capitalisation Calendar",
+"base": "Capitalisation",
+"file": "manifest.json",
+"image": "calendar_1.png",
+"media": [
+    {
+	"label": "Vip-Info",
+	"link": "capitalisation.html"
+    },
+    {
+	"label": "Vip-Info II",
+	"link": "capitalisation.html"
+    }
+],
+"questionitemlist" : [
+    { 
+	"file" : "cap01.jsp"
+    },
+    { 
+	"file" : "cap02.jsp"
+    },
+    { 
+	"file" : "cap03.jsp"
+    },
+    { 
+	"file" : "cap04.jsp"
+    },
+    { 
+	"file" : "cap05.jsp"
+    },
+    { 
+	"file" : "cap06.jsp"
+    },
+    { 
+	"file" : "cap07.jsp"
+    },
+    { 
+	"file" : "cap08.jsp"
+    },
+    { 
+	"file" : "cap09.jsp"
+    },
+    { 
+	"file" : "cap10.jsp"
+    },
+    { 
+	"file" : "cap11.jsp"
+    }
+]
+

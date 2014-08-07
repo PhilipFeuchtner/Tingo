@@ -1,7 +1,5 @@
 { 
     "title": "Games of Thrones",
-    "base": "got",
-    "file": "manifest.json",
     "image": "game_of_thrones.png",
     "questionitemlist" : [
 	{ 

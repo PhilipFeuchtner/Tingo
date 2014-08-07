@@ -5,14 +5,26 @@ import java.util.List;
 
 public class Section {
 
+	private List<Entry> entries = new ArrayList<Entry>();
+	
 	private List<GroupItem> groupitemlist = new ArrayList<GroupItem>();
 	private String title;
 	private String svgid;
 	private SimpleState state;
 	private String index;
 	
+	
+	
 	public Section() {
 		state = new SimpleState();
+	}
+
+	public List<Entry> getEntries() {
+		return entries;
+	}
+
+	public void setEntries(List<Entry> entries) {
+		this.entries = entries;
 	}
 
 	public List<GroupItem> getGroupitemlist() {
@@ -54,4 +66,5 @@ public class Section {
 	public void setIndex(String index) {
 		this.index = index;
 	}
+	
 }
