@@ -32,7 +32,6 @@
 
 		<div class="nav-collapse collapse" id="nav-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">Test</a></li>
 				<li><security:authorize access="!isAuthenticated()">
 						<a href='<s:url value="/signin"></s:url>'> <span
 							class="label label-default">Sign in </span></a>
